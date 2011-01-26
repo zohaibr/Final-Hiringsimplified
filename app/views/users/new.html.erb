@@ -1,0 +1,80 @@
+<script language="javascript">
+  jQuery(document).ready(function(){
+  jQuery("#userForm").validate();
+  });
+</script>
+<div class="candidate_signup_box" id="candidate">
+  <%=flash[:notice]%>
+
+
+  <% @user.password = @user.password_confirmation = nil %>
+
+  <%= error_messages_for :user %>
+  <% form_for :user, :url => users_path, :html => {:id => "userForm"} do |f| %>
+    <% if params[:c_id] || params[:user][:user_type] == "candidate"%>
+      <%= f.hidden_field :user_type, :value => "candidate" %>
+      <h3>Sign up as a new user</h3>
+      <hr />
+      <div class="left_box">
+        <%= f.label :email %>
+        <%= f.text_field :email, :value => params[:c_id], :readonly => "true", :class => "required" %>
+      </div>
+      <div class="spacer"></div>
+      <div class="left_box"><%= f.label :password %>
+        <%= f.password_field :password, :class => "required"%></div>
+      <div class="left_box">
+        <%= f.label :password_confirmation, 'Confirm Password' %>
+        <%= f.password_field :password_confirmation, :class => "required"%>
+      </div>
+      <div class="spacer"></div>
+    <% else %>
+      <%= hidden_field :user, :user_type, :value => "recruiter" %>
+      <h3>Sign up as a new user</h3>
+      <hr />
+      <div class="left_box"><%= f.label :company_name %>
+        <%= f.text_field :company_name, :class => "required" %></div>
+      <div class="spacer"></div>
+
+
+      <div class="left_box"> <%= f.label :email %>
+        <%= f.text_field :email, :class => "required" %>
+      </div>
+      <div class="spacer"></div>
+
+
+      <div class="left_box"><label>Password</label>
+      <%= f.password_field :password, :class => "required" %></div>
+
+      <div class="left_box">
+        <%= f.label :password_confirmation, 'Confirm Password' %>
+        <%= f.password_field :password_confirmation, :class => "required" %></div>
+
+      <div class="spacer"></div>
+
+      <div class="left_box"> <%= f.label :first_name %>
+        <%= f.text_field :first_name, :class => "required" %></div>
+
+      <div class="left_box"><%= f.label :last_name %>
+        <%= f.text_field :last_name, :class => "required" %></div>
+      <div class="spacer"></div>
+
+      <div class="left_box"><%= f.label :city %>
+        <%= f.text_field :city, :class => "required" %></div>
+
+      <div class="left_box"><%= f.label :state %>
+        <%= f.text_field :state, :class => "required" %></div>
+
+      <div class="left_box"><%= f.label :country %>
+        <%= f.text_field :country, :class => "required" %></div>
+      <div class="left_box" style="width: 208px;font-size: 13px;">
+       <div class="left" style="text-align: left;width: 240px;margin-top: 20px;"><input type="checkbox" value="1" name="agree" id="agree" />
+        I agree to the <a href="/users/static_page/1?name=terms" style="color: #a52a2a;font-weight: bold;">Terms & Conditions</a>
+      </div></div>
+    <% end %>
+    <div class="spacer"></div>
+    <div class="right_box"><%= submit_tag 'Sign up', :class=>"silver_button_blue"%></div>
+    <div class="spacer"></div>
+
+  <% end -%>
+
+</div>

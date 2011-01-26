@@ -1,0 +1,18 @@
+<p>
+  <b>Candidate:</b>
+  <%=h @answer.candidate_id %>
+</p>
+
+<p>
+  <b>Questionare:</b>
+  <%=h @answer.questionare_id %>
+</p>
+
+<p>
+  <b>Answer:</b>
+  <%=h @answer.answer %>
+</p>
+
+
+<%= link_to 'Edit', edit_answer_path(@answer) %> |
+<%= link_to 'Back', answers_path %>

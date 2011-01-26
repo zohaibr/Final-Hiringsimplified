@@ -1,0 +1,41 @@
+<script language="javascript">
+  jQuery(document).ready(function(){
+  jQuery("#candidateForm").validate();
+  });
+
+  var curr_index = 0;
+  var cals=new Array();
+
+  function attach(obj) {
+    var dhxCalendarData = {
+        parent: obj,
+        isAutoDraw: false,
+        isYearEditable:true
+    };
+    cals[curr_index] = new dhtmlxCalendarObject(dhxCalendarData,true,{isYearEditable: true});
+    cals[curr_index].setSkin("dhx_blue");
+    cals[curr_index].setDateFormat("%m/%d/%Y");
+    curr_index++;
+
+
+}
+
+</script>
+<style type="text/css">
+  * { font-family: Verdana; font-size: 96%; }
+  label { width: 10em; float: left; }
+  label.error { float: none; color: red; padding-left: .5em; vertical-align: top; }
+  p { clear: both; }
+  .submit { margin-left: 12em; }
+  em { font-weight: bold; padding-right: 1em; vertical-align: top; }
+</style>
+
+<div class="candidate_signup_box" id="candidate">
+  <% form_for :candidate, :url => candidates_path, :html => {:multipart => true, :id => "candidateForm"} do |f| %>
+    <%= render :partial => 'fields', :locals => { :f => f } %>
+    <div class="spacer"></div>
+    <div class="right_box"><%= submit_tag "Submit",:class=>"silver_button_blue" %></div>
+
+  <% end %>
+  <div class="spacer"></div>
+</div>

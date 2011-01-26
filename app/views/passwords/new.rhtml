@@ -1,0 +1,25 @@
+<div align="center">
+<% form_for(:password, :url => passwords_path) do |f| %>
+<div class="candidate_signup_box" id="candidate" style="width: 450px;clear: both;float: none;" >
+   <h3>Trouble Accessing Your Account?</h3>
+  <hr />
+  Forgotten your password? Enter your login email and we will send you an email with a new password.<br /><br />
+  
+  	<div>
+          <label>Email: <%= f.text_field 'email' ,:class=>"blue_input" ,:style=>"width:380px;" %></label>
+           
+        </div>
+
+
+   <div class="spacer"></div>
+   <%= flash[:al] %>
+   <div class="spacer"></div>
+	<div class="right_box">
+        <%= submit_tag 'Reset Password' %>
+        </div>
+	<div class="spacer"></div>
+
+</div>
+        <% end %>
+
+</div>

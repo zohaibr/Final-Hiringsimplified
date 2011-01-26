@@ -1,0 +1,14 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+<div class="signup_box2" style="width: 750px;height:220px; padding: 15px;margin: 0px;float: left;" >
+  <%@recruiters.each do |member| %>
+    <div id="listing_<%=member.id%>">
+      <%=member.user.email%> --
+      <%=check_box_tag(:active, "1", "0",{:onchange => remote_function(:url => {:controller => "settings", :action => "update_status"}, :with => "'status='+$F(this)+'&uid='+#{member.child_id}+'&id='+#{member.id}")})%>
+      <%=link_to_remote "Delete", :url => { :controller => "settings", :action => "delete", :id => member.child_id, :mid => member.id }, :confirm => "Are you sure, you want to delete this user?"%>
+      <span id="status_<%=member.id%>"></span>
+    </div>
+  <% end %>
+</div>

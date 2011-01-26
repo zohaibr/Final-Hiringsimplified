@@ -1,0 +1,66 @@
+/* Scroll Bar Master Styling Starts Here */
+/* All comments can be freely removed from the css */
+
+
+
+.scrollgeneric {
+line-height: 1px;
+font-size: 1px;
+position: absolute;
+top: 0; left: 0;
+border:0;
+cursor: pointer;
+}
+
+.vscrollerbase {
+width: 10px;
+background-color: #c5c5c5;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border:0;
+
+}
+.vscrollerbar {
+width: 10px;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+background-color: #8a8a8a;
+border:0;
+}
+
+.vscrollerbar:hover {
+width: 10px;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+background-color: #333333;
+border:0;
+}
+.hscrollerbase {
+height: 10px;
+background-color: white;
+border:0;
+}
+.hscrollerbar {
+height: 10px;
+background-color: black;
+border:0;
+}
+
+.scrollerjogbox {
+width: 10px;
+height: 10px;
+top: auto; left: auto;
+bottom: 0px; right: 0px;
+background-color: gray;
+border:0;
+}
+
+.fixedwidth {
+/* a wide div is used for creating horizontal scrollbars for demonstration purposes */
+width: 550px;
+height: auto;
+position: relative;
+color: black;
+padding: 1px;
+border:none;
+}

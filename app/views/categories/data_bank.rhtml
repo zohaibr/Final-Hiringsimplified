@@ -1,0 +1,318 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Tabbed Accordion</title>
+
+        <%= stylesheet_link_tag 'style.css' %>
+        <%= stylesheet_link_tag 'flexcrollstyles.css' %>
+
+
+
+        <%= javascript_include_tag :defaults %>
+        <%= javascript_include_tag 'flexcroll' %>
+        <%= javascript_include_tag 'tabber' %>
+        <%#= javascript_include_tag 'prototype' %>
+        <%#= javascript_include_tag 'effects' %>
+        <%#= javascript_include_tag 'flexcroll' %>
+        <%#= javascript_include_tag 'code_highlighter' %>
+        <%#= javascript_include_tag 'javascript' %>
+        <%#= javascript_include_tag 'html' %>
+        <%#= javascript_include_tag 'window' %>
+        <%#= javascript_include_tag 'window_effects' %>
+<script>
+
+</script>
+<script>
+  var cat_id = null;
+  var do_nothing = false;
+  var id = '<%=params[:id]%>';
+
+
+  document.getElementById('questionare_interview_id').value = id;
+  alert(document.getElementById('questionare_interview_id').value);
+  //alert(document.getElementById('questionare_interview_id').value);
+  function get_questions(id, custom)
+  {
+    //alert(id);
+   // alert(cat_id);
+   if(do_nothing==false)
+     {
+
+
+    cat_id = id;
+
+    document.getElementById('questions').innerHTML = "";
+
+    $.ajax({complete:function(request){fleXenv.fleXcrollMain('uix');},
+        data:'authenticity_token=' + encodeURIComponent('FI9rvJiu/2Oe3xjYaGdzj2KAsl/kDWPHrrtrAh8bfzE='),
+        error:function(request){$('#error').html(request.responseText);},
+        success:function(request){$('#questions').html(request);},
+        type:'post',
+        url:'/category_questions/get_questions/'+id+'?custom='+custom});
+        return false;
+    //new Ajax.Updater({success:'questions',failure:'error'}, '/category_questions/get_questions/'+id+'?custom='+custom, {asynchronous:true, evalScripts:true,onComplete:function(request){fleXenv.fleXcrollMain('uix');}, parameters:'authenticity_token=' + encodeURIComponent('5T2ZRT7wG1O55U+11DErtojGAfsUwR4eKvqykmTlJ6M=')}); return false;
+
+    }
+    do_nothing=false;
+  }
+
+  function delete_category(id)
+  {
+
+    cat_id = id;
+
+    var d1=document.getElementById('custom_cat');
+    var d2=document.getElementById('cat_'+id);
+    d1.removeChild(d2);
+
+
+
+    document.getElementById('questions').innerHTML = "";
+
+    $.ajax({complete:function(request){fleXenv.fleXcrollMain('uix');},
+        data:'authenticity_token=' + encodeURIComponent('FI9rvJiu/2Oe3xjYaGdzj2KAsl/kDWPHrrtrAh8bfzE='),
+        error:function(request){$('#error').html(request.responseText);},
+        success:function(request){$('#questions').html(request);},
+        type:'post',
+        url:'/categories/destroy/'+id});
+        return false;
+
+    //new Ajax.Updater({success:'questions',failure:'error'}, '/categories/destroy/'+id, {asynchronous:true, evalScripts:true,onComplete:function(request){fleXenv.fleXcrollMain('uix');}, parameters:'authenticity_token=' + encodeURIComponent('5T2ZRT7wG1O55U+11DErtojGAfsUwR4eKvqykmTlJ6M=')}); return false;
+  }
+
+  function delete_question(id)
+  {
+
+
+    var d1=document.getElementById('qb2');
+    var d2=document.getElementById('ques_'+id);
+    d1.removeChild(d2);
+
+    $.ajax({complete:function(request){update_scroll();document.getElementById('questionare_question').value = '';},
+        data:'authenticity_token=' + encodeURIComponent('FI9rvJiu/2Oe3xjYaGdzj2KAsl/kDWPHrrtrAh8bfzE='),
+        error:function(request){$('#error').html(request.responseText);},
+        type:'post',
+        url:'/categories/destroy/'+id});
+        return false;
+
+
+    //new Ajax.Updater({success:'',failure:'error'}, '/category_questions/destroy/'+id, {asynchronous:true, evalScripts:true,onComplete:function(request){update_scroll();document.getElementById('questionare_question').value = '';}, parameters:'authenticity_token=' + encodeURIComponent('5T2ZRT7wG1O55U+11DErtojGAfsUwR4eKvqykmTlJ6M=')}); return false;
+
+  }
+
+   
+
+
+
+  function show_notice(flag)
+  {
+   // alert(flag);
+    if(flag==true)
+      {
+        alert("Question has been added.");
+
+      }
+    else
+      {
+        document.getElementById('uper').style.display = " none";
+        document.getElementById('timer ').style.display = " none";
+        document.getElementById('lower').style.display = " block";
+        alert("all available time has been consumed.");
+      }
+
+      document.getElementById("questionare_question").value = "";
+      document.getElementById("questionare_time_min").value = "";
+      document.getElementById("questionare_time_sec").value = "";
+
+      document.getElementById('browse').style.display = " none";
+      document.getElementById('questionare[sketchpad]').checked = false;
+      document.getElementById('questionare[notepad]').checked = false;
+    
+
+   // alert('show notice');
+
+
+
+
+  }
+
+  function closeHelpDiv(){
+  document.getElementById("q_st").style.display=" none";
+  
+  }
+
+
+
+
+  function clear_questions()
+  {
+
+    document.getElementById('questions').innerHTML = "";
+    update_scroll();
+
+  }
+
+  function update_scroll()
+  {
+    fleXenv.fleXcrollMain('dfd');
+    fleXenv.fleXcrollMain('ui');
+    fleXenv.fleXcrollMain('uix');
+  }
+
+  function sketchpad_click(id)
+  {
+    if(document.getElementById('questionare[sketchpad]').checked)
+      {
+        document.getElementById('browse').style.display = " block";
+
+      }
+    else
+      {
+        document.getElementById('browse').style.display = " none";
+      }
+  }
+
+
+
+</script>
+<script type="text/javascript">
+/* code from qodo.co.uk */
+// create as many regular expressions here as you need:
+var digitsOnly = /[1234567890]/g;
+var integerOnly = /[0-9\.]/g;
+var alphaOnly = /[A-Z]/g;
+
+function restrictCharacters(myfield, e, restrictionType) {
+	if (!e) var e = window.event
+	if (e.keyCode) code = e.keyCode;
+	else if (e.which) code = e.which;
+	var character = String.fromCharCode(code);
+
+	// if they pressed esc... remove focus from field...
+	if (code==27) { this.blur(); return false; }
+
+	// ignore if they are press other keys
+	// strange because code: 39 is the down key AND ' key...
+	// and DEL also equals .
+	if (!e.ctrlKey && code!=9 && code!=8 && code!=36 && code!=37 && code!=38 && (code!=39 || (code==39 && character=="'")) && code!=40) {
+		if (character.match(restrictionType)) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+}
+</script>
+<style type="text/css">
+<!--
+body {
+	background-image:none;
+}
+-->
+</style></head>
+<body >
+  <div id="timer" style="font-size: 10pt;margin-right: 30px;margin-top: 5px;text-align: right;" id="qu">
+<%#convert_ms @time_left%>
+    <!--<b><i>Time available: </i></b><%#= @timer%>!-->
+  </div>
+  <div id="lower" style="display: none;">
+     you do not have time left please buy more time
+  <a href="/dashboards">buy more time</a>
+  </div>
+<div class="question_bank_upper" id="qb" >
+  
+  <% if @time_left>0  %>
+  <div id="uper" style="display: block;">
+   <% form_remote_tag :url => "/questionares/add_question",:update=>'timer' do |f| %>
+
+  <div class="light_blue_box" id="question_box" style="height: 60px;">
+				<div><input class="light_blue_question_upper" id="questionare_question" name="questionare[question]" size="30" value="" type="text"></div>
+					<div class="light_blue_question_lower">
+                                          <div style="float: left;display: none;" id="browse">optional bg image <%= file_field :questionare,:uploaded_data,:size=>"5" %></div>
+                                          <div class="styled" style="margin-top: 3px;"><label><input name="questionare[sketchpad]" id="questionare[sketchpad]" type="checkbox" class="styled"  value="true"  />
+					Sketchpad</label></div>
+                                        <div class="styled" style="margin-top: 3px;"><label><input type="checkbox" name="questionare[notepad]" class="styled" value="true"/>Notepad</label></div>
+					<div class="styled_text" ><label>Minutes <input id="questionare_time_min" name="questionare[time_min]" size="2" value="" type="text" maxlength="2" onkeypress="return restrictCharacters(this, event, digitsOnly);"   >
+
+					</label></div>
+					<div class="styled_text" ><label>Seconds <input id="questionare_time_sec" name="questionare[time_sec]" size="2" value="" type="text" maxlength="2" onkeypress="return restrictCharacters(this, event, digitsOnly);"  >
+
+                                          </label></div><div id="q_st" style="display:none;float: left;color: red;margin-top: 3px;margin-left: 15px;" >Question saved</div>
+
+                                          <div class="right_container"><%= submit_tag 'ADD',:class=> "light_blue_button",:style=>"font-size:11px;;margin-right:0px;" %></div>
+
+
+				</div>
+			</div>
+<% end %>
+  
+  <div class="tabber" >
+
+  <div class="tabbertab" id="default_bank">
+       <h2>Default Databank</h2>
+       <div class="flexcrollx" id="dfd" >
+			<div class="spacer"></div>
+                        <% @default_categories.each do |category| %>
+                        <div class="category" onclick="get_questions(<%=category.id%>,'false');"  ><%=category.name%></div>
+                        <% end %>
+                        <script>
+                          update_scroll();
+                        </script>
+
+
+	   </div>
+     </div>
+
+
+  <div class="tabbertab" id="custom_bank">
+	  <h2 >Custom Bank</h2>
+          <% form_remote_tag  :url => {:controller => "/categories", :action => "create" },:complete =>"clear_questions();" do  %>
+          <div style="padding: 10px;">
+          <input id="category_user_id" name="category[user_id]" type="hidden" value="<%= current_user.id%> " />
+          <input id="category_type" name="category[category_type]" type="hidden" value="Custom" />
+
+            <input  id="category_name" name="category[name]" size="30" value="" type="text" style="float: left;margin-right: 8px;"/>
+          <%= submit_tag 'Add Category',:class=> "light_blue_button" %>
+          </div>
+
+           <% end %>
+
+           <div class="spacer"></div>
+           <div class="flexcrollx" id="ui" style="height: 200px">
+	
+                        <div class="spacer"></div>
+                        <div id="custom_cat">
+                            <% @custom_categories.each do |category| %>
+                          <div class="category" onclick="get_questions(<%=category.id%>,'true');" id="cat_<%=category.id%>" ><%=category.name%><div class="close" onclick="delete_category(<%=category.id%>);do_nothing = true;"></div></div>
+                            <% end %>
+                        </div>
+	  </div>
+     </div>
+
+
+
+
+  </div>
+
+
+  <div id="question_container" style="padding: 0px;margin-top: 7px;">
+  
+
+  <div id="questions">
+    <%=render :partial => "category_questions/show_questions", :locals => { :questions => @questions }%>
+  </div>
+</div>
+</div>
+  <% else %>
+  you do not have time left please buy more time
+  <a href="/dashboards">buy more time</a>
+  <% end %>
+</div>
+  <div class="spacer"></div>
+  <!--<div align="center">
+    <div class="silver_button_blue"  onclick="parent.get_current_questionare();window.top.hidePopWin();">DONE</div>
+    </div>
+  !-->
+</body>
+</html>

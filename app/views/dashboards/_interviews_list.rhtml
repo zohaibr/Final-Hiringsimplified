@@ -1,0 +1,10 @@
+<% interviews.each do |interview| %>
+<%get_duration interview.id%>
+<div class="question_container_default" title="<%=interview.name%>" onclick="ResetControl('candidates_list');change('db_'+<%=interview.id%>+'_');get_candidates('<%=interview.id%> ');" id="db_<%=interview.id%>_">
+  <div class="job" style="width: 150px;float: left;"><b><%=truncate(interview.name,:length=>40)%></b></div>
+        <span class="small_text" style="float: right;margin: 4px;">Duration <%=@duration%></span>
+     
+</div>
+
+
+<% end %>

@@ -1,0 +1,6 @@
+# TODO Operate on the page object
+page.visual_effect(:drop_out, "light_blue_box_"+params[:id])
+page.replace_html 'duration', @duration
+page.replace_html 'int_d_'+@int_id.to_s, @duration
+
+render :partial => "questionares/update_scr"

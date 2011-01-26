@@ -1,0 +1,75 @@
+<div class="candidate_signup_box" style="margin: 0px;border: 0px;background-color: transparent;" id="candidate">
+  <h3>Edit job</h3>
+  <hr />
+
+<% form_remote_for (@job_profile),:complete => "refresh_job(#{@job_profile.id});Dialog.okCallback();" do |f| %>
+  <%= f.error_messages %>
+
+
+  <div>
+      <div style="float: left; margin-top: 5px;padding-right: 15px;">
+        Company:<br />
+        <%= f.text_field :company, :value => current_user.company_name ,:size=>"20" %>
+     </div>
+  </div>
+  <div>
+      <div style="float: left; margin-top: 5px;">
+        Job title:<br />
+         <%= f.text_field :title ,:size=>"20" %>
+     </div>
+  </div>
+  <div class="spacerr"></div>
+  <% get_last_description
+      description = ""
+          unless @jd.blank?
+              description = @jd.company_description
+          end
+    %>
+  <div>
+      <div style="float: left; margin-top: 5px;">
+        Company description:<br />
+       <%= f.text_area :company_description ,:rows=>"5" ,:value => description %>
+
+     </div>
+  </div>
+
+  <div>
+      <div style="float: left; margin-top: 5px;margin-left: 20px;">
+        Job description:<br />
+       <%= f.text_area :description ,:rows=>"5" %>
+          
+     </div>
+  </div>
+
+  <div class="spacerr"></div>
+
+  <% fields_for @job_profile.location do |location_fields| %>
+  <div>
+      <div style="float: left; margin-top: 5px;padding-right: 15px;">
+        City:<br />
+       <%= location_fields.text_field :city,:size=>"20" %>
+         
+      </div>
+   </div>
+  <div>
+    <div style="float: left; margin-top: 5px;padding-right: 15px;">
+        State:<br />
+       <%= location_fields.text_field :state,:size=>"20" %>
+        
+    </div>
+    </div>
+  <div>
+    <div style="float: left; margin-top: 5px;padding-right: 15px;">
+        Country:<br />
+       <%= location_fields.text_field :country,:size=>"20" %>
+          
+    </div>
+  </div>
+  <div class="spacerr"></div>
+  <% end %>
+  <p>
+    <%= f.submit 'Update',:class=>"silver_button_blue" %>
+  </p>
+  <div class="spacerr"></div>
+<% end %>
+</div>

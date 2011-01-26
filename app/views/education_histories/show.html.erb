@@ -1,0 +1,33 @@
+<p>
+  <b>Candidate:</b>
+  <%=h @education_history.candidate_id %>
+</p>
+
+<p>
+  <b>School:</b>
+  <%=h @education_history.school %>
+</p>
+
+<p>
+  <b>Date attended:</b>
+  <%=h @education_history.date_attended %>
+</p>
+
+<p>
+  <b>Degree:</b>
+  <%=h @education_history.degree %>
+</p>
+
+<p>
+  <b>Major:</b>
+  <%=h @education_history.major %>
+</p>
+
+<p>
+  <b>Second major:</b>
+  <%=h @education_history.second_major %>
+</p>
+
+
+<%= link_to 'Edit', edit_education_history_path(@education_history) %> |
+<%= link_to 'Back', education_histories_path %>

@@ -1,0 +1,29 @@
+<div class="silver_box">
+
+  <div class="lleft_container" > <span class="blue_text_i" style="font-size: 12px;"><%=truncate(name,:length=>12)  %> , </span><span class="light_blue_text" style="font-size: 12px;">Duration <span id="duration"><%=duration%></span></span></div>
+				<%  if published == 'false' || published == false %>
+  <div class="right_container"><div class="silver_button" onclick="open_iframe('/categories/data_bank/<%= interview_id%>?title=<%= name %>&num=<%= rand(800)%>',920,500);">
+                                    ADD QUESTION</div>
+				<div class="dark_blue_button" onclick="publish_interview('<%= interview_id%>','<%= name%>','<%=duration%>');">DONE</div>
+                                <% end %>
+				</div>
+		    </div>
+<div id="questions"></div>
+
+<script>
+  $(document).ready(function() {
+
+  //alert('wow');
+  $("#data_bx").fancybox({
+
+                                'width'                 :960,
+                                'height'                 :460,
+				'autoScale'		: false,
+				'transitionIn'		: 'elastic',
+				'transitionOut'		: 'elastic',
+				'type'			: 'iframe',
+                                'scrolling'             : 'no'
+			});
+
+  });
+</script>

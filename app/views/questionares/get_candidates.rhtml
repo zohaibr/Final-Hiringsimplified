@@ -1,0 +1,4 @@
+<% @invitations.each do |invitation| %>
+  <% from_user invitation.candidate_email %>
+  <%=debug @user%>
+<% end %>

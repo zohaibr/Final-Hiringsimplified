@@ -1,0 +1,19 @@
+<%candidates.each do |answer|%>
+
+<%
+selected = ""
+if session[:default_candidate] == answer.c_id
+  selected =" selected"
+end
+%>
+<div class="question_container_default<%=selected%>" title="<%=answer.first_name%> <%=answer.last_name%>" onclick="navigate('/interviews/recruite/<%=interview_id %>?cid=<%=answer.c_id%>')">
+	<div class="key caption"></div>
+	<div class="icon"></div>
+        <img height=100% src="http://hiringsi.s3.amazonaws.com/user_data/<%=answer.c_id %>_<%=interview_id %>_<%=thumb_id %>_webcam.jpg" class="noclass" />
+<div class="picture"></div>
+</div>
+
+<% end %>
+
+
+

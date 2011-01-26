@@ -1,0 +1,506 @@
+
+
+
+
+
+<script>
+  $(document).ready(function() {
+
+
+
+ $('#getst').click(function() {
+  //alert('Handler for .click() called.');
+
+    open_dg('newjob', 900, 500);
+ 
+
+
+});
+
+
+
+
+});
+
+
+
+</script>
+
+<script>
+
+  var donothing = "";
+  function kill()
+  {
+   // closeAllModalWindows();
+    //OS.PageLoadComplete();
+    // alert('asdfasdf');
+  }
+
+
+
+  //Element.observe('error', 'click', buttonClick);
+
+  ///$('error').observe('click', buttonClick);
+
+  /*function buttonClick(event){
+    alert('event');
+  }
+  */
+  function clear_interviews()
+  {
+    stop_wait();
+
+    document.getElementById('newinterview').innerHTML ="";
+  }
+
+  function clear_questionares()
+  {
+
+    document.getElementById('questionare').innerHTML ="";
+  }
+
+
+</script>
+
+<script>
+  var test;
+
+ /* Event.observe(window, 'load', function () {
+    test = new Lightbox('question_bank');
+  });
+
+  Event.observe('lightboxLink', 'click', function () {
+    test.open();
+  });
+
+  Event.observe('closeLink', 'click', function () {
+    test.close();
+  });
+
+  */
+
+  function open_bank()
+  {
+    test.open();
+  }
+
+  function enable_div(id)
+  {
+    document.getElementById('question_edit_'+id).style.display="block";
+    document.getElementById('question_unedit_'+id).style.display="none";
+
+    update_scroller();
+  }
+
+  function disable_div(id)
+  {
+     document.getElementById('question_unedit_'+id).style.display="block";
+     document.getElementById('q_txt_'+id).innerHTML = document.getElementById('q_'+id).value;
+    document.getElementById('question_edit_'+id).style.display="none";
+    update_scroller();
+  }
+</script>
+<script>
+  function get_questionare(id,title,published,duration)
+  {
+    // alert(duration);
+    please_wait();
+   
+    document.getElementById('questionare').innerHTML ="";
+    if(donothing=="")
+      {
+
+        $.ajax({complete:function(request){stop_wait();},
+        data:'authenticity_token=' + encodeURIComponent('FI9rvJiu/2Oe3xjYaGdzj2KAsl/kDWPHrrtrAh8bfzE='),
+        error:function(request){$('#error').html(request.responseText);},
+        success:function(request){$('#questionare').html(request);},
+        type:'post',
+        url:'/questionares/get_questionare/'+id+'?title='+title+'&published='+published+"&duration="+duration});
+        return false;
+       // new Ajax.Updater({success:'questionare',failure:'error'}, '/questionares/get_questionare/'+id+'?title='+title+'&published='+published+"&duration="+duration, {asynchronous:true, evalScripts:true,onComplete:function(request){stop_wait();}}); return false;
+      }
+   donothing ="";
+
+  }
+
+  function get_current_questionare()
+  {
+        please_wait();
+
+        document.getElementById('questionare').innerHTML ="";
+        $.ajax({complete:function(request){stop_wait();},
+        data:'authenticity_token=' + encodeURIComponent('FI9rvJiu/2Oe3xjYaGdzj2KAsl/kDWPHrrtrAh8bfzE='),
+        error:function(request){$('#error').html(request.responseText);},
+        success:function(request){$('#questionare').html(request);},
+        type:'post',
+        url:'/questionares/get_current_questionare/'});
+        return false;
+
+
+     //   new Ajax.Updater({success:'questionare',failure:'error'}, '/questionares/get_current_questionare/', {asynchronous:true, evalScripts:true,onComplete:function(request){}}); return false;
+    
+
+  }
+
+   function delete_question(id)
+  {
+
+      //alert('adfaf');
+
+      //  document.getElementById('questionare').innerHTML ="";
+        $.ajax({complete:function(request){stop_wait();update_scroller();},
+        data:'authenticity_token=' + encodeURIComponent('FI9rvJiu/2Oe3xjYaGdzj2KAsl/kDWPHrrtrAh8bfzE='),
+        error:function(request){$('#error').html(request.responseText);},
+        type:'post',
+        url:'/questionares/delete/'+id});
+        return false;
+
+        update_scroller();
+
+
+   // new Ajax.Request('/questionares/delete/'+id, {asynchronous:true, evalScripts:true,onComplete:function(request){update_scroller();}}); return false;
+
+  }
+
+   function update_scroller()
+  {
+   // alert('upadted');
+    fleXenv.fleXcrollMain('ui');
+
+  }
+
+
+  function get_interviews(id)
+  {
+    clear_questionares();
+    if(donothing=="")
+      {
+
+        document.getElementById('questionare').innerHTML ="";
+        $.ajax({complete:function(request){clear_questionares();},
+        data:'authenticity_token=' + encodeURIComponent('FI9rvJiu/2Oe3xjYaGdzj2KAsl/kDWPHrrtrAh8bfzE='),
+        error:function(request){$('#error').html(request.responseText);},
+        success:function(request){$('#newinterview').html(request);},
+        type:'post',
+        url:'/interviews/get_interviews/'+id});
+        return false;
+
+        //new Ajax.Updater({success:'newinterview',failure:'error'}, '/interviews/get_interviews/'+id, {asynchronous:true, evalScripts:true,onComplete:function(request){OS.PageLoadComplete();clear_questionares();}}); return false;
+      }
+      donothing ="";
+  }
+
+  function publish_interview(id,name,duration)
+  {
+    if (confirm('This interview will not be editable.')) {
+    document.getElementById('edit_int'+id).innerHTML ="";
+    document.getElementById('edit_int'+id).style.display =" none";
+
+        $.ajax({complete:function(request){get_questionare(id,name,true,duration);},
+        data:'authenticity_token=' + encodeURIComponent('FI9rvJiu/2Oe3xjYaGdzj2KAsl/kDWPHrrtrAh8bfzE='),
+        error:function(request){$('#error').html(request.responseText);},
+        success:function(request){$('#questionare').html(request);},
+        type:'post',
+        url:'/interviews/publish_interview/'+id});
+        return false;
+
+     //new Ajax.Updater({success:'questionare',failure:'error'}, '/interviews/publish_interview/'+id, {asynchronous:true, evalScripts:true,onComplete:function(request){get_questionare(id,name,true,duration);}}); return false;
+    }; return false;
+    
+
+    
+
+  }
+
+  function create()
+  {
+    
+    OS.PageLoadComplete();
+  }
+
+  function invitation(id)
+  {
+   // donothing = "yes";
+
+    $.ajax({complete:function(request){open_dg('invitations_form',550,500);},
+        data:'authenticity_token=' + encodeURIComponent('FI9rvJiu/2Oe3xjYaGdzj2KAsl/kDWPHrrtrAh8bfzE='),
+        error:function(request){$('#error').html(request.responseText);},
+        success:function(request){$('#invitations_form').html(request);},
+        type:'post',
+        url:'/invitations/invitations_form?interview_id='+id});
+        return false;
+    //new Ajax.Updater({success:'invitations_form',failure:'error'}, '/invitations/invitations_form?interview_id='+id, {asynchronous:true, evalScripts:true, onComplete:function(request){openInvitation('invitations_form')}}); return false;
+
+  }
+
+  function delete_interview(id)
+  {
+    donothing = "yes";
+    if (confirm('This will also Delete Questionarre for this interview ?')) {
+      $.ajax({
+        data:'authenticity_token=' + encodeURIComponent('FI9rvJiu/2Oe3xjYaGdzj2KAsl/kDWPHrrtrAh8bfzE='),
+        error:function(request){$('#error').html(request.responseText);},
+        type:'post',
+        url:'/interviews/delete/'+id});
+        return false;
+      
+      //new Ajax.Request('/interviews/delete/'+id, {asynchronous:true, evalScripts:true});
+    }; return false;
+
+  }
+
+  function create_interview(id)
+  {
+
+        $.ajax({complete:function(request){openNewInterview('newinterviewdiv');},
+        data:'authenticity_token=' + encodeURIComponent('FI9rvJiu/2Oe3xjYaGdzj2KAsl/kDWPHrrtrAh8bfzE='),
+        error:function(request){$('#error').html(request.responseText);},
+        success:function(request){$('#newinterviewdiv').html(request);},
+        type:'post',
+        url:'/interviews/new?id='+id});
+        return false;
+
+    //new Ajax.Updater({success:'newinterviewdiv',failure:'error'}, '/interviews/new?id='+id, {asynchronous:true, evalScripts:true, onComplete:function(request){openNewInterview('newinterviewdiv')}}); return false;
+  }
+
+  function refresh_job(id)
+  {
+
+        $.ajax({complete:function(request){},
+        data:'authenticity_token=' + encodeURIComponent('FI9rvJiu/2Oe3xjYaGdzj2KAsl/kDWPHrrtrAh8bfzE='),
+        error:function(request){$('#error').html(request.responseText);},
+        success:function(request){$('#job_item_'+id).html(request);},
+        type:'post',
+        url:'/job_profiles/refresh_job?jid='+id});
+        return false;
+    //new Ajax.Updater({success:'job_item_'+id,failure:'error'}, '/job_profiles/refresh_job?jid='+id, {asynchronous:true, evalScripts:true}); return false;
+  }
+
+  function edit_job(id)
+  {
+
+    $.ajax({complete:function(request){open_dg('newinterviewdiv', 900, 500);},
+        data:'authenticity_token=' + encodeURIComponent('FI9rvJiu/2Oe3xjYaGdzj2KAsl/kDWPHrrtrAh8bfzE='),
+        error:function(request){$('#error').html(request.responseText);},
+        success:function(request){$('#newinterviewdiv').html(request);},
+        type:'post',
+        url:'/job_profiles/edit?jid='+id});
+        return false;
+    //new Ajax.Updater({success:'newinterviewdiv',failure:'error'}, '/job_profiles/edit?jid='+id, {asynchronous:true, evalScripts:true, onComplete:function(request){editJob('newinterviewdiv')}}); return false;
+  }
+
+  function delete_job(id)
+  {
+    donothing = "yes";
+    stop_wait();
+    if (confirm('This will also delete the questionnare of this interview ?')) 
+    {
+      stop_wait();
+      $.ajax({complete:function(request){clear_interviews();stop_wait();},
+        data:'authenticity_token=' + encodeURIComponent('FI9rvJiu/2Oe3xjYaGdzj2KAsl/kDWPHrrtrAh8bfzE='),
+        error:function(request){$('#error').html(request.responseText);},
+        type:'post',
+        url:'/job_profiles/delete/'+id});
+
+      //new Ajax.Request('/job_profiles/delete/'+id, {asynchronous:true, evalScripts:true, onComplete:function(request){clear_interviews();}});
+
+     }; return false;
+    }
+
+</script>
+
+<script type="text/javascript">
+/* code from qodo.co.uk */
+// create as many regular expressions here as you need:
+var digitsOnly = /[1234567890]/g;
+var integerOnly = /[0-9\.]/g;
+var alphaOnly = /[A-Z]/g;
+
+function restrictCharacters(myfield, e, restrictionType) {
+	if (!e) var e = window.event
+	if (e.keyCode) code = e.keyCode;
+	else if (e.which) code = e.which;
+	var character = String.fromCharCode(code);
+
+	// if they pressed esc... remove focus from field...
+	if (code==27) { this.blur(); return false; }
+
+	// ignore if they are press other keys
+	// strange because code: 39 is the down key AND ' key...
+	// and DEL also equals .
+	if (!e.ctrlKey && code!=9 && code!=8 && code!=36 && code!=37 && code!=38 && (code!=39 || (code==39 && character=="'")) && code!=40) {
+		if (character.match(restrictionType)) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+}
+
+function show_upload(hide_me,show_me)
+{
+  document.getElementById(hide_me).style.display =" none";
+  document.getElementById(show_me).style.display =" block";
+  
+}
+
+  function sketchpad_click(ch_box,show_me)
+  {
+    
+    if(document.getElementById(ch_box).checked)
+      {
+        document.getElementById(show_me).style.display = " block";
+
+      }
+    else
+      {
+        document.getElementById(show_me).style.display = " none";
+      }
+  }
+</script>
+<div id="error">
+</div>
+<div id="">
+  <div class="upper">
+    <div class="spacer"></div>
+
+
+
+    <div class="create_interview_left_container">
+      <div id="Crete_interview_Carousel" class="carousel">
+        <div class="q_container">
+
+          <div class="bt">
+            <div class="left_con">
+              <div class="blue_heading" >List of all Interviews</div>
+            </div>
+            <div class="right_con">
+              <div class="get_started"  id="getst"></div>
+            </div>
+            <div class="spacer"></div>
+            <div class="button navButton previous" onclick="ScrollBackward('jitem');" ></div>
+            
+          </div>
+          <div class="question_list_container" id="jobs" >
+            <div class="items" id="jitem" style="z-index:70;position:relative;margin-top: 5px;" >
+            <% unless @job_profiles.blank? %>
+                <% @job_profiles.each do |job_profile| %>
+                  <%=render :partial => "job_profiles/job", :locals => { :job_profile => job_profile }%>
+                <% end %>
+            <% end %>
+             </div>
+
+          </div>
+          <div class="bt">
+            <div class="button navButton next" onclick="ScrollForward('jitem');"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="create_interview_right_container">
+      
+      <div id="questionare" class="carousel" style="margin-top: 15px;">
+        
+      </div>
+
+    </div>
+    <div class="big_spacer"></div>
+    <!-- here the questionare -->
+    <div id="questionaree">
+
+    </div>
+    <div class="spacer"></div>
+  </div>
+
+
+
+  <div id="content">
+    <div id="links"></div>
+  </div>
+
+</div>
+
+
+<div style="display:none">
+<div id="newjob" >
+  <div class="candidate_signup_box" style="margin: 0px;border: 0px;background-color: transparent;" id="candidate">
+    <span style="font-size: 14pt;"><b>New Interview</b></span>
+  <hr />
+
+  <% form_remote_tag :url => { :action => "create" },
+    :complete => "close_dg();" do  %>
+
+    <div>
+      <div style="float: left; margin-top: 5px;padding-right: 15px;">
+        Company:<br />
+        <%= text_field :job_profile,:company, :value => current_user.company_name ,:size=>"20" %>
+     </div>
+  </div>
+  <div>
+      <div style="float: left; margin-top: 5px;">
+        Job title:<br />
+         <%= text_field :job_profile,:title ,:size=>"20" %>
+     </div>
+  </div>
+  <div class="spacerr"></div>
+  
+  <div>
+    <% get_last_description
+      description = ""
+          unless @jd.blank?
+              description = @jd.company_description
+          end
+    %>
+      <div style="float: left; margin-top: 5px;">
+        Company description:<br />
+         <%= text_area :job_profile,:company_description,:rows=>7,:value => description %>
+     </div>
+  </div>
+
+  <div>
+      <div style="float: left; margin-top: 5px;margin-left: 20px;">
+        Job description:<br />
+         <%= text_area :job_profile,:description,:rows=>7 %>
+     </div>
+  </div>
+
+
+  <div class="spacerr"></div>
+
+  <div >
+      <div style="float: left; margin-top: 5px;padding-right: 15px;">
+        City:<br />
+          <%= text_field :location ,:state ,:size=>"20" %>
+     </div>
+  </div>
+
+  <div>
+      <div style="float: left; margin-top: 5px;padding-right: 15px;">
+        State  :<br /> <%= text_field :location ,:state ,:size=>"20" %>
+     </div>
+  </div>
+  <div>
+      <div style="float: left; margin-top: 5px;padding-right: 15px;">
+        Country  :<br /> <%= text_field :location ,:country ,:size=>"20" %>
+     </div>
+  </div>
+
+  <div class="spacerr"></div>
+   
+      <%= submit_tag 'Create' ,:class=>"silver_button_blue" ,:style=>"border:0;" %>
+
+
+  <% end %><div class="spacer"></div>
+ </div>
+</div>
+  </div>
+
+<div id="newinterviewdiv" style="display:none"></div>
+<div id="invitations_form" style="display:none"></div>
+
+<div id="question_bank" ></div>
+<div class="spacer"></div>
+

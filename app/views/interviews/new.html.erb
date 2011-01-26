@@ -1,0 +1,26 @@
+<div class="candidate_signup_box" style="margin: 0px;border: 0px;background-color: transparent;" id="candidate">
+  <span style="font-size: 12pt">Create new interview</span>
+  <hr />
+  <%form_remote_tag :url => { :action => "create" },
+   :complete => "javascript:parent.kill();" do
+  # form_remote_tag :url => { :action => "create" } do %>
+  <%= hidden_field :interview, :job_profile_id, :value => params[:id] %>
+
+    <div>
+      <div style="float: left; margin-top: 5px;">
+        <label>Interview Name:
+        <%= text_field :interview, :name %>
+          </label>
+      </div>
+
+     <div style="float: left;margin-left: 15px;" >
+       <%= submit_tag 'Create', :class=>"silver_button_blue"%>
+      </div>
+
+    </div>
+
+
+
+<% end %><div class="spacer"></div>
+
+</div>

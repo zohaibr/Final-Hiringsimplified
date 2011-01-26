@@ -1,0 +1,7 @@
+<%= javascript_include_tag :defaults  %>
+<%#
+#The :c_id(candidate_id) and :i_id(interview_id) are hard coded, these should be updated according to the parent page.
+%>
+<% (1..10).each do |i| %>
+<%= link_to_remote i, :url => { :controller => "ratings", :action => "rate", :c_id => "1", :i_id => "6", :skill => skill, :stars => i}%>
+<%end%>

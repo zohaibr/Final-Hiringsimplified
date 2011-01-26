@@ -1,0 +1,30 @@
+<h1>Listing education_histories</h1>
+
+<table>
+  <tr>
+    <th>Candidate</th>
+    <th>School</th>
+    <th>Date attended</th>
+    <th>Degree</th>
+    <th>Major</th>
+    <th>Second major</th>
+  </tr>
+
+<% @education_histories.each do |education_history| %>
+  <tr>
+    <td><%=h education_history.candidate_id %></td>
+    <td><%=h education_history.school %></td>
+    <td><%=h education_history.date_attended %></td>
+    <td><%=h education_history.degree %></td>
+    <td><%=h education_history.major %></td>
+    <td><%=h education_history.second_major %></td>
+    <td><%= link_to 'Show', education_history %></td>
+    <td><%= link_to 'Edit', edit_education_history_path(education_history) %></td>
+    <td><%= link_to 'Destroy', education_history, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New education_history', new_education_history_path %>

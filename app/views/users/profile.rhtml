@@ -1,0 +1,47 @@
+<div style="text-align: left;margin-top: 20px;" >
+  <div class="profile_bx" style="float: left;width: 200px;font-size: 15px;margin-top: 15px;" >
+    <div class="knob"></div><div class="left"><b> Profile:</b></div>
+    <div class="knober">
+      <%= link_to_remote 'Edit Profile', :url =>{ :controller => "users", :action => "edit"},
+        :update => { :success => "content", :failure => "error"}%>
+      <br />
+      <%= link_to_remote 'Change Password', :url =>{ :controller => "passwords", :action => "edit"},
+        :update => { :success => "content", :failure => "error"}%>
+    </div>
+    <br />
+    <br />
+    <div class="knob"></div><div class="left"><b>Manage Users:</b></div>
+    <div class="knober">
+        <%= link_to_remote 'Add User', :url =>{ :controller => "users", :action => "add"},
+        :update => { :success => "content", :failure => "error"}%>
+     <br />
+        <%= link_to_remote 'Settings', :url =>{ :controller => "settings"},
+        :update => { :success => "content", :failure => "error"}%>
+      
+   </div>
+    <br />
+    <br />
+    <div class="knob"></div><div class="left"><b>Pricing:</b></div>
+    <div class="knober">
+        <%= link_to_remote 'Subscription', :url =>{ :controller => "users", :action => "view_packages"},
+        :update => { :success => "content", :failure => "error"}%>
+      <br />
+        <%= link_to_remote 'Time Remaining', :url =>{ :controller => "users", :action => "view_time"},
+        :update => { :success => "content", :failure => "error"}%>
+      
+    </div>
+
+</div>
+  <div id="content" style="float: left;">
+    <div class="signup_box2" style="width: 750px;height:220px; padding: 15px;margin: 0px;float: left;" >
+  
+    <%if @user.user_type !="candidate"%>
+        <%=render :partial => "users/details", :locals => { :user => @user }%>
+    <% end %>
+
+    <%if @user.user_type =="candidate"%>
+        <%=render :partial => "candidates/edit", :locals => { :candidate => @candidate }%>
+    <% end %>
+</div>
+</div>
+</div>

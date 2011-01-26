@@ -1,0 +1,1 @@
+page.insert_html :top,  "custom_cat", :partial => "categories/custom_cat", :locals => { :category => @category} , :complete =>'clear_questions()'

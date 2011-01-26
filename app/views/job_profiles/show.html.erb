@@ -1,0 +1,14 @@
+<p>
+  <b>Title:</b>
+  <%=h @job_profile.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @job_profile.description %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_job_profile_path(@job_profile) %> |
+<%= link_to 'Back', job_profiles_path %>

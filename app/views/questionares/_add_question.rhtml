@@ -1,0 +1,29 @@
+ <% form_remote_for question, :url => {:controller => "questionares", :action => "ajax_update" ,:id => question },
+   :complete => "Dialog.okCallback();OS.PageLoadComplete();", :html => { :multipart => true } do |f| %>
+			<div class="light_blue_box" id="light_blue_box_<%=question.id%>">
+                          <%=hidden_field :questionare,:id, :value => question.id%>
+
+                                <%=f.text_field :question, :class => "light_blue_question_upper" ,:disabled=>published%>
+					<div class="light_blue_question_lower">
+                                          <div style="float: left;display: none;" id="browse<%=question.id%>">optional bg image <input type="file" size="10" name="questionare[uploaded_data]" id="questionare_uploaded_data" /></div>
+					<div class="styled"><label>
+                                            <%= f.check_box :sketchpad , :class=>"styled" ,:disabled=>published,:id=>'ch'+question.id.to_s ,:onclick=>"sketchpad_click('ch#{question.id.to_s}','browse#{question.id}');" %>Sketchpad</label></div>
+                                          <div class="styled"><label>
+                                            <%= f.check_box :notepad , :class=>"styled" ,:disabled=>published %>Notepad</label></div>
+                                            <%  if published == false %><% unless question.filename.blank? %><div class="light_blue_button" style="display: block;" id="hide<%=question.id%>" onclick="show_upload('hide<%=question.id%>','browse<%=question.id%>')">CHANGE FILE</div><% end %><% end %>
+                                        <div class="styled_text"><label>Minutes  <%=f.text_field :time_min,:size=>1,:maxlength=>"2" ,:disabled=>published,:onkeypress=>"return restrictCharacters(this, event, digitsOnly);"%>
+					</label></div>
+					<div class="styled_text"><label>Seconds <%=f.text_field :time_sec,:size=>1,:maxlength=>"2" ,:disabled=>published,:onkeypress=>"return restrictCharacters(this, event, digitsOnly);" %>
+					</label></div>
+
+                                          <%  if published == false %>
+                                            <div class="right_container"><%= submit_tag 'UPDATE',:class=> "light_blue_button",:style=>"font-size:11px;" %><div class="red_button"><%=link_to_remote "REMOVE", :url => { :controller => "questionares", :action => "delete",:id =>question.id}%></div></div>
+                                          <% end %>
+				</div>
+
+			</div>
+
+
+
+<% end %>
+

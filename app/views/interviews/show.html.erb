@@ -1,0 +1,13 @@
+<p>
+  <b>Name:</b>
+  <%=h @interview.name %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @interview.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_interview_path(@interview) %> |
+<%= link_to 'Back', interviews_path %>

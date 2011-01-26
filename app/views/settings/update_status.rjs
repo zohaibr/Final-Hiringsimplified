@@ -1,0 +1,8 @@
+# TODO Operate on the page object
+if params[:status] == "1"
+  page.visual_effect :highlight, "listing_#{params[:id]}"
+  page.replace_html "status_#{params[:id]}", :text => "<span style='color:green;'>Activated</span>"
+else
+  page.visual_effect :highlight, "listing_#{params[:id]}"
+  page.replace_html "status_#{params[:id]}", :text => "<span style='color:red;'>Deactivated</span>"
+end

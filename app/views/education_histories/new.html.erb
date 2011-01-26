@@ -1,0 +1,35 @@
+<h1>New education_history</h1>
+
+<% form_for(@education_history) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :candidate_id %><br />
+    <%= f.text_field :candidate_id %>
+  </p>
+  <p>
+    <%= f.label :school %><br />
+    <%= f.text_field :school %>
+  </p>
+  <p>
+    <%= f.label :date_attended %><br />
+    <%= f.date_select :date_attended %>
+  </p>
+  <p>
+    <%= f.label :degree %><br />
+    <%= f.text_field :degree %>
+  </p>
+  <p>
+    <%= f.label :major %><br />
+    <%= f.text_field :major %>
+  </p>
+  <p>
+    <%= f.label :second_major %><br />
+    <%= f.text_field :second_major %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', education_histories_path %>

@@ -1,0 +1,1 @@
+<div class="bank_question" onclick="document.getElementById('questionare_question').value ='<%= q.question%>';" id="ques_<%=q.id%>"><% if type == 'true'%><div class="close_b" onclick="delete_question(<%=q.id%>);do_nothing = true;"></div><% end %><%= q.question %></div>

@@ -1,0 +1,11 @@
+<div class="signup_box2" style="width: 750px;height:220px; padding: 15px;margin: 0px;float: left;" >
+  <%#= debug current_user.id %>
+  <% unless @pckg.blank? %>
+  <b>Package Type:</b> <%=@pckg.package_type%> <br />
+  <b>Hours:</b> <%=@pckg.hours%> <br />
+  <b>Price:</b> <%=@pckg.price%> <br />
+  <% else %>
+  You have not subscribed to any package yet. please click <b><a href="/users/static_page/1?name=price">here</a></b> to view all available packages
+  <% end %>
+
+</div>

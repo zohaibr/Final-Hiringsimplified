@@ -1,0 +1,49 @@
+<script>
+  document.getElementById('int_d_<%=id%>').innerHTML ="<%=duration%>";
+</script>
+<%=render :partial => "questionares/questionare_title", :locals => { :name => title, :interview_id => id,:published=>published,:duration=>duration}%>
+<div class="flexcrollx" id="ui" style="height: 370px;width: 470px;padding: 0px;margin: 0px;margin-top: 10px;padding-right: 10px;">
+<% @questionare_list.each do |question| %>
+  <% form_remote_for question, :url => {:controller => "questionares", :action => "ajax_update" ,:id => question },
+   :complete => "disable_div('#{question.id}');", :html => { :multipart => true } do |f| %>
+			<div class="light_blue_box" id="light_blue_box_<%=question.id%>">
+                          <%=hidden_field :questionare,:id, :value => question.id%>
+
+                          <div class="q_conn" id="question_unedit_<%=question.id%>" style="display: block;"><div id="q_txt_<%=question.id%>"><%=question.question%></div>
+                           <% if published == false %>
+                            <div style="font-size: 10px;text-align: right;"><div class="green_button" style="float: right;cursor: pointer;" onclick="enable_div(<%=question.id%>)">EDIT</div></div>
+                           <% end %>
+                            <div class="spacer"></div>
+                          </div>
+                          <div id="question_edit_<%=question.id%>" style="display: none;"><%=f.text_area :question,:rows=>"5", :class => "light_blue_question_upper" ,:disabled=>published ,:id=>'q_'+question.id.to_s%></div>
+                                
+					<div class="light_blue_question_lower">
+                                          <div style="float: left;display: none;" id="browse<%=question.id%>">optional bg image <input type="file" size="10" name="questionare[uploaded_data]" id="questionare_uploaded_data" /></div>
+					<div class="styled"> Sketchpad<br />
+                                            <%= f.check_box :sketchpad  ,:disabled=>published,:id=>'ch'+question.id.to_s  %></div>
+                                          <div class="styled"> Notepad<br />
+                                            <%= f.check_box :notepad ,:disabled=>published %></div>
+                                            <%  if published == false %><% unless question.filename.blank? %><div class="light_blue_button" style="display: block;" id="hide<%=question.id%>" onclick="show_upload('hide<%=question.id%>','browse<%=question.id%>')">CHANGE FILE</div><% end %><% end %>
+                                        <div class="styled_text">Minutes<br />  <%=f.text_field :time_min,:size=>1,:maxlength=>"2" ,:disabled=>published,:onkeypress=>"return restrictCharacters(this, event, digitsOnly);"%>
+					</div>
+					<div class="styled_text">Seconds<br /> <%=f.text_field :time_sec,:size=>1,:maxlength=>"2" ,:disabled=>published,:onkeypress=>"return restrictCharacters(this, event, digitsOnly);" %>
+					</div>
+
+                                          <%  if published == false %>
+                                          <div class="right_container" style="margin-top: 13px;"><%= submit_tag 'UPDATE',:class=> "light_blue_button",:style=>"font-size:10px;" %><div class="red_button" style="font-weight: bold;font-size: 11px;" onclick="delete_question(<%=question.id%>);">REMOVE</div></div>
+                                          <% end %>
+				</div>
+                          <div class="spacer"></div>
+
+			</div>
+
+
+
+<% end %>
+ 
+<% end %>
+   </div>
+<script>
+ 
+  update_scroller();
+ </script>

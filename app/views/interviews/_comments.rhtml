@@ -1,0 +1,14 @@
+<div>
+<%comments.each do |comment|%>
+<%if comment.user_id != current_user.id%>
+<div class="comment_box_container" id="comment_box_container_<%=comment.user_id%>">
+			<div class="question_box_question">
+                          <% user = User.find(comment.user_id) %>
+				<div class="ques_heading"><span class="blue_heading_medium"><%=user.first_name %>:</span></div>
+                                <div class="brown_button" id="box_<%=comment.user_id%>" style="float: right;font-size: 8pt;" onclick="update_box('<%=comment.user_id%>')">view ratings</div>
+			</div>
+  <div style="margin: 15px;"> <div class="flexcroll" id="flexcroll_<%=comment.user_id%>"><%=comment.comment %></div></div>
+</div>
+<% end %>
+<% end %>
+  </div>

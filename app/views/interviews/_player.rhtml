@@ -1,0 +1,22 @@
+<div style="width:425px;height:300px;z-index: -10px;" >
+
+<object id="player" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" name="/images/player" width="100%" height="100%">
+		<param name="movie" value="/images/player.swf" />
+		<param name="allowfullscreen" value="true" />
+		<param name="allowscriptaccess" value="always" />
+                <param name="wmode" value="transparent" />
+		<param name="flashvars" value="file=http://hiringsi.s3.amazonaws.com/<%=candidate_id%>_<%=interview_id%>_<%=question%>.flv&image=/user_data/<%=thumb%>" />
+		<embed
+			type="application/x-shockwave-flash"
+			id="player2"
+			name="player2"
+			src="/images/player.swf"
+			width="100%"
+			height="100%"
+                        wmode="transparent"
+			allowscriptaccess="always"
+			allowfullscreen="true"
+			flashvars="file=http://hiringsi.s3.amazonaws.com/<%=candidate_id%>_<%=interview_id%>_<%=question%>.flv&image=/user_data/<%=thumb%>"
+		/>
+	</object>
+</div>

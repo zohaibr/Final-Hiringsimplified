@@ -1,0 +1,28 @@
+<p>
+  <b>Candidate:</b>
+  <%=h @prev_work_history.candidate_id %>
+</p>
+
+<p>
+  <b>Organisation:</b>
+  <%=h @prev_work_history.organisation %>
+</p>
+
+<p>
+  <b>Start date:</b>
+  <%=h @prev_work_history.start_date %>
+</p>
+
+<p>
+  <b>End date:</b>
+  <%=h @prev_work_history.end_date %>
+</p>
+
+<p>
+  <b>Job title:</b>
+  <%=h @prev_work_history.job_title %>
+</p>
+
+
+<%= link_to 'Edit', edit_prev_work_history_path(@prev_work_history) %> |
+<%= link_to 'Back', prev_work_histories_path %>

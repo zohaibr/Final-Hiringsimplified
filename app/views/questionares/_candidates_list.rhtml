@@ -1,0 +1,5 @@
+<% @invitations.each do |candidate| %>
+  <%#get_candidates_details candidate.candidate_email%><!--Un Comment these lines if you need-->
+  <%#=@candidate.login%><!-- If you want to access any info about candidate from users table you can simply get it by using this @candidate instance -->
+  <%=candidate.candidate_email%><br>
+<% end %>

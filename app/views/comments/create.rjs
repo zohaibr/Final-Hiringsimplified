@@ -1,0 +1,6 @@
+# TODO Operate on the page object
+page.show "msg"
+page.delay(2) do
+  page.visual_effect :fade, "msg"
+end
+page.form.reset("comment_form")

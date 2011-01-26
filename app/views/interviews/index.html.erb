@@ -1,0 +1,25 @@
+<%= javascript_include_tag "prototype.js" %>
+<h1>Listing interviews</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>User</th>
+  </tr>
+
+<% @interviews.each do |interview| %>
+  <tr>
+    <td><%=h interview.name %></td>
+    <td><%=h interview.user_id %></td>
+    <td><%= link_to 'Show', interview %></td>
+    <td><%= link_to 'Edit', edit_interview_path(interview) %></td>
+    <td><%= link_to 'Destroy', interview, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to_remote 'Invite', :url =>{ :controller => "invitations", :action => "invitations_form", :interview_id => interview},
+        :update => { :success => "invitations_form", :failure => "error"}%></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<div id="invitations_form"></div>
+<%#= link_to 'New interview', new_interview_path %>

@@ -1,0 +1,18 @@
+<p>
+  <b>Category:</b>
+  <%=h @category_question.category_id %>
+</p>
+
+<p>
+  <b>Question:</b>
+  <%=h @category_question.question %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @category_question.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_category_question_path(@category_question) %> |
+<%= link_to 'Back', category_questions_path %>

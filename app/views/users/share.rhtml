@@ -1,0 +1,97 @@
+
+
+<div class="candidate_signup_box" style="margin: 10px;border: 0px;background-color: transparent;" id="candidate">
+  <script language="javascript" type="text/javascript">
+document.getElementById('link_url').value = document.location.href;
+document.getElementById('link_url').disabled = true;
+
+</script>
+  <h3>Share With</h3>
+  <hr />
+
+  <%= error_messages_for :user %>
+   <% form_remote_for :user, :url => { :controller => "users", :action => "create",:id=>params[:id] },:complete => "Dialog.okCallback()" do |f| -%>
+    <% @user.password = @user.password_confirmation = nil %>
+    <%= f.hidden_field :user_type, :value => "recruiter" %>
+    <%= f.hidden_field :parent_id, :value => current_user.id %>
+    <%#= f.hidden_field :cid, :value => params[:cid] %>
+
+  
+
+
+    <%@pwd=create_code%>
+    <%= f.hidden_field :password_confirmation, :value => @pwd %>
+    <%= f.hidden_field :password, :value => @pwd %>
+
+    <%#="http://"+@host_port+"#{controller.action_name}/"+"#{params[:id]}?cid="+"#{params[:cid]}"%>
+  
+ 
+    
+  <div style="float: left;margin-right: 10px;">
+        Email address:<br />
+        <%= f.text_field :email,:class => "textbox" %>
+      </div>
+    
+
+    <div>
+      <div style="float: left;margin-right: 10px;">
+        Company name:<br />
+        <%= f.text_field :company_name,:class => "textbox" %>
+      </div>
+    </div>
+    <div class="spacer"></div>
+    <div>
+      <div style="float: left;margin-right: 10px;">
+        First name:<br />
+        <%= f.text_field :first_name,:class => "textbox" %>
+      </div>
+    </div>
+
+    <div>
+      <div style="float: left;margin-right: 10px;">
+        Last name:<br />
+        <%= f.text_field :last_name,:class => "textbox" %>
+      </div>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div>
+      <div>
+        URL:<br />
+        <input type="text" class="textbox" size="50" name="link[url]" id="link_url" value="<%= params[:url] %>" disabled="true"  />
+        
+      </div>
+    </div>
+
+    <div style="display: none;">
+      <div class="left_box">
+        Select Candidate:<br />
+        <select name="user[candidate]">
+           <%# @candidates.each do |candidate| %>
+                <option value="<%#=candidate.id%>"><%#=candidate.first_name%> <%#=candidate.last_name%></option>
+            <%# end %>
+        </select>
+      </div>
+
+
+       <div class="left_box">
+        All Candidates:<br />
+        <%= check_box_tag 'all', 'all' %>
+      </div>
+
+
+    </div>
+
+
+    <div class="spacer"></div>
+
+    
+    <div class="left_box">
+      <%= submit_tag 'Share',:class=>"silver_button_blue" %>
+    </div>
+    <div class="spacer"></div>
+
+  <% end -%>
+</div>
+

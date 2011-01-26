@@ -1,0 +1,81 @@
+
+
+<div class="signup_box2" style="width: 750px;height:220px; padding: 15px;margin: 0px;float: left;" >
+
+  <%= error_messages_for :user %>
+  <% form_for(@user) do |f| -%>
+    <% @user.password = @user.password_confirmation = nil %>
+    <%= f.hidden_field :user_type, :value => "recruiter" %>
+    <%= f.hidden_field :parent_id, :value => current_user.id %>
+    <%= hidden_field_tag :coming_from, "child" %>
+    <%@pwd=create_code%>
+    <%= f.hidden_field :password_confirmation, :value => @pwd %>
+    <%= f.hidden_field :password, :value => @pwd %>
+
+    <div style="float: left;margin-right: 10px;">
+      Email address:<br />
+      <%= f.text_field :email,:class => "textbox" %>
+    </div>
+
+
+    <div>
+      <div style="float: left;margin-right: 10px;">
+        Company name:<br />
+        <%= f.text_field :company_name,:class => "textbox" %>
+      </div>
+    </div>
+    <div class="spacer"></div>
+    <div>
+      <div style="float: left;margin-right: 10px;">
+        First name:<br />
+        <%= f.text_field :first_name,:class => "textbox" %>
+      </div>
+    </div>
+
+    <div>
+      <div style="float: left;margin-right: 10px;">
+        Last name:<br />
+        <%= f.text_field :last_name,:class => "textbox" %>
+      </div>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div>
+      <div>
+        Access:<br />
+        <%=radio_button(:group,:active,"Admin")%> Admin <%=radio_button(:group,:active,"Self")%> Self
+      </div>
+    </div>
+
+    <div style="display: none;">
+      <div class="left_box">
+        Select Candidate:<br />
+        <select name="user[candidate]">
+  <%# @candidates.each do |candidate| %>
+          <option value="<%#=candidate.id%>"><%#=candidate.first_name%> <%#=candidate.last_name%></option>
+  <%# end %>
+        </select>
+      </div>
+
+
+      <div class="left_box">
+        All Candidates:<br />
+        <%= check_box_tag 'all', 'all' %>
+      </div>
+
+
+    </div>
+
+
+    <div class="spacer"></div>
+
+
+    <div class="left_box">
+      <%= submit_tag 'Share',:class=>"silver_button_blue" %>
+    </div>
+    <div class="spacer"></div>
+
+  <% end -%>
+</div>
+

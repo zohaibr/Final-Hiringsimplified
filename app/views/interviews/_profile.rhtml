@@ -1,0 +1,16 @@
+<% candidate = Candidate.find(:first, :conditions => ["user_id = ?",candidate_id])%>
+
+<div class="profile_box">
+  <div class="profile_pati"><%=candidate.first_name%> <%=candidate.last_name%></div>
+  <!--<div class="profile_detail">
+					<div class="spacer"></div>
+					<i><b>&nbsp;<%=candidate.country%></b></i><br />
+					&nbsp;<%=candidate.city%>, <%=candidate.state%><br/><br />
+
+				</div>!-->
+  <%unless candidate.filename.blank?%>
+    <div class="profile_detail" style="float: none;">
+      <a href="http://docs.google.com/viewer?url=<%=candidate.public_filename%>" target="_blank"><img height="151" border="0" width="124" src="/images/cv.jpg" /></a>
+    </div>
+  <% end %>
+</div>

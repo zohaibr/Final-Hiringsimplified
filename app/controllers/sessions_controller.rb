@@ -1,0 +1,75 @@
+# This controller handles the login/logout function of the site.  
+class SessionsController < ApplicationController
+  require 'digest/sha1'
+  layout "main"
+    
+  skip_before_filter :login_required,:candidate_demo
+  
+  # Be sure to include AuthenticationSystem in Application Controller instead
+  include AuthenticatedSystem
+
+  # render new.erb.html
+  def new
+    @key = 'IEJgyjS-Umgs2GBiVJsb'
+    @msg = Digest::SHA1.hexdigest('update_payment--316130--IEJgyjS-Umgs2GBiVJsb')
+    if params[:frm] == "inv"
+      redirect_back_or_default('/direct_login')
+    else
+      render :action => "new"
+    end
+    @name = "home"
+  end
+
+  def create
+    logout_keeping_session!
+    user = User.authenticate(params[:login], params[:password])
+    if user
+      # Protects against session fixation attacks, causes request forgery
+      # protection if user resubmits an earlier form using back
+      # button. Uncomment if you understand the tradeoffs.
+      # reset_session
+      self.current_user = user
+      new_cookie_flag = (params[:remember_me] == "1")
+      handle_remember_cookie! new_cookie_flag
+      if user.user_type == "candidate"
+        @user_id = Candidate.find_by_user_id user.id
+        if @user_id.blank?
+          redirect_back_or_default("/candidates/new?uid=#{user.id}")
+        else
+          redirect_back_or_default("/interviews/interviews_list?c_id=#{params[:login]}")
+        end
+      else
+        redirect_back_or_default('/dashboards')
+      end
+      flash[:notice] = "Logged in successfully"
+    else
+      redirect_to :action => 'direct_login'
+      note_failed_signin
+      @login       = params[:login]
+      @remember_me = params[:remember_me]
+      #render :action => 'new'
+    end
+  end
+
+  def destroy
+    logout_killing_session!
+    flash[:notice] = "You have been logged out."
+    redirect_back_or_default('/')
+  end
+
+  def direct_login
+    render :action => "direct_login"
+  end
+
+  protected
+  # Track failed login attempts
+  def note_failed_signin
+    flash[:error] = "Couldn't log you in as '#{params[:login]}'"
+    logger.warn "Failed login for '#{params[:login]}' from #{request.remote_ip} at #{Time.now.utc}"
+  end
+
+  def candidate_demo
+    
+      render :nothing => true
+  end
+end

@@ -1,0 +1,109 @@
+<%= stylesheet_link_tag 'all_css.css' ,:media=>"all"%>
+<%= javascript_include_tag :defaults %>
+
+<style>
+  body{
+    background-image: none;
+    background-color: transparent;
+    
+}
+</style>
+<script>
+  function update()
+  {
+   // alert('adfadf');
+    //document.getElementById('wait').style.display =" block";
+  //  document.getElementById('send').style.display =" none";
+  }
+  function close_dg()
+{
+
+
+  parent.$("#fancybox-close").trigger('click');
+
+
+}
+</script>
+
+<div style="font-size: 10pt;margin-top: 10px;text-align: left;" id="note">
+<%@interview_time = convert_ms @time_left
+  @t_time = convert_ms @total_time
+  @balance = convert_ms (@total_time - @time_left)
+%>
+  <%get_duration @interview_id%>
+  <b>Total Time: </b><%= @t_time%><br />
+  <b>Pending Invitations: </b><%= @interview_time%><br />
+  <b>Balance Available: </b><%= @balance%><br />
+  <b>Interview Duration: </b><%=@duration%><br />
+</div>
+<div class="candidate_signup_box" style="margin: 0px;border: 0px;background-color: transparent;" id="candidate">
+  
+<%#=debug @time_left %>
+<% if @published == true %>
+<% form_remote_tag :update=>"note",:url => {:controller => "invitations", :action => "send_invitations"},:complete => "javascript:document.getElementById('wait').style.display =' none';" do %>
+  <%= hidden_field :invitation, :user_id , :value => current_user.id%>
+  <%= hidden_field :invitation, :interview_id, :value => params[:interview_id]%>
+
+  <div style="float: left; margin-top: 20px;margin-right: 10px;">
+        <label>Candidate email 1:</label><br />
+        <input id="invitation_candidate_email" name="invitation[candidate_email][]"  type="text" class="required" /> <br />
+<br />
+        <label>Candidate email 2:</label><br />
+        <input id="invitation_candidate_email" name="invitation[candidate_email][]"  type="text" class="required" /> <br />
+
+<br />
+        <label>Candidate email 3:</label><br />
+        <input id="invitation_candidate_email" name="invitation[candidate_email][]"  type="text" class="required" /> <br />
+
+<br />
+        <label>Candidate email 4:</label><br />
+        <input id="invitation_candidate_email" name="invitation[candidate_email][]"  type="text" class="required" /> <br />
+
+<br />
+        <label>Candidate email 5:</label><br />
+        <input id="invitation_candidate_email" name="invitation[candidate_email][]"  type="text" class="required" /> <br />
+
+          
+   </div>
+  <div style="float: left; margin-top: 5px;margin-right: 10px;">
+    <a href="#" onclick="javascript:document.getElementById('more2').style.display =' block';" style="color: black;">More +</a>
+    <div style="display: none;" id="more2">
+    <label>Candidate email 6:</label><br />
+        <input id="invitation_candidate_email" name="invitation[candidate_email][]"  type="text" class="required" /> 
+    <br /><br />
+
+    <label>Candidate email 7:</label><br />
+        <input id="invitation_candidate_email" name="invitation[candidate_email][]"  type="text" class="required" />
+    <br /><br />
+
+    <label>Candidate email 8:</label><br />
+        <input id="invitation_candidate_email" name="invitation[candidate_email][]"  type="text" class="required" />
+    <br /><br />
+
+
+    <label>Candidate email 9:</label><br />
+        <input id="invitation_candidate_email" name="invitation[candidate_email][]"  type="text" class="required" />
+    <br /><br />
+
+    <label>Candidate email 10:</label><br />
+        <input id="invitation_candidate_email" name="invitation[candidate_email][]"  type="text" class="required" />
+    <br /><br />
+  </div>
+
+   
+
+  </div>
+
+  
+  <div style="display: none;text-align: center;" id="">Email(s) sent successfully</div>
+  <div class="spacer"></div>
+  <div class="wait" id="wait" style="display: none;float: right;"></div>
+  <div style="float: right; margin-top: 5px;display: block;" id="send" >
+    <%= submit_tag 'Send',:class=>"blue_button" ,:style=>"cursor:pointer;" ,:onclick=>"javascript:document.getElementById('wait').style.display =' block';document.getElementById('sent').style.display =' none';" %>
+    <input type="button" name="Submit" value="Cancel" class="pink_button" style="cursor: pointer;" onclick="close_dg();"/>
+  </div>
+<% end %>
+  <% else %>
+  <span style="font-size: 14pt;"><b>Please press the Done button below to invite candidates. Once you press the "Done" button, questionnaire will not be editable</b></span>
+  <% end %>
+</div>

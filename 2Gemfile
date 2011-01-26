@@ -1,0 +1,16 @@
+source 'http://rubygems.org'
+
+gem 'rails', '2.3.8'
+gem 'haml'
+gem 'json', '1.4.3'
+gem 'aws-s3'
+gem 'rack', '1.1.0'
+gem 'sqlite3-ruby', :require => 'sqlite3', :group => :development
+
+gem 'ruby-hmac'
+gem 'ruby-debug'
+
+group :production do
+  gem 'memcache-client'
+  gem 'memcached-northscale', :require => 'memcached'
+end

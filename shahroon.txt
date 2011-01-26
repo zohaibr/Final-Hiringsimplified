@@ -1,0 +1,16 @@
+<% users.each do |name| %>
+<div class="blue_alert">New User <span class="dark_blue_alert"><%=name.first_name%></span> has been created on "<%=name.created_at.strftime("%m/%d/%Y")%>"</div>
+<% end %>
+
+<% interviews.each do |interview| %>
+<div class="brown_alert">New Interview <span class="dark_brown_alert"><%=interview.name%></span> created on "<%=interview.created_at.strftime("%m/%d/%Y")%>"</div>
+<% end %>
+
+<% jobs.each do |job| %>
+<div class="red_alert">Job Profile <span class="dark_red_alert"><%=job.title%></span> created on "<%=job.created_at.strftime("%m/%d/%Y")%>"</div>
+<% end %>
+
+
+<% invitations.each do |invitation| %>
+<div class="blue_alert">Invitation for <span class="dark_blue_alert"><%=invitation.interview.name%></span> sent to <span class="dark_blue_alert"><%=invitation.candidate_email%></span> on "<%=invitation.created_at.strftime("%m/%d/%Y")%>"</div>
+<% end %>

@@ -1,0 +1,18 @@
+<p>
+  <b>Candidate email:</b>
+  <%=h @invitation.candidate_email %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @invitation.user_id %>
+</p>
+
+<p>
+  <b>Interview:</b>
+  <%=h @invitation.interview_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_invitation_path(@invitation) %> |
+<%= link_to 'Back', invitations_path %>

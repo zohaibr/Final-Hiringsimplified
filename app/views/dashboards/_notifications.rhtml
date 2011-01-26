@@ -1,0 +1,43 @@
+<%#= debug events %>
+
+<% events.each do |event| %>
+<% cycle("red","brown","blue") %>
+<%
+subject = ""
+body = ""
+msg = ""
+color = ""
+
+if event.class.name=="Invitation"
+    interview = Interview.find(event.interview_id)
+    subject = "Invitation for <span class='dark_brown_alert'>"+interview.name+"</span> sent to"
+    msg = event.candidate_email
+    body = "on"
+    color = "brown"
+elsif event.class.name=="User"
+  subject = "New User "
+  msg = event.first_name+" "+event.last_name
+  body = "has been created on"
+  color = "red"
+elsif event.class.name=="Interview"
+  subject = "New Interview "
+  msg = event.name
+  body = "has been created on"
+  color ="blue"
+elsif event.class.name=="JobProfile"
+  subject = "Job Profile "
+  msg = event.title
+  body = "created on"
+  color = "grey"
+
+
+
+end
+
+%>
+<div class="<%= color %>_alert"><%=subject%>
+   <b class="dark_<%= color %>_alert"><%=msg%></b>
+  <%=body%> "<%=event.created_at.strftime("%m/%d/%Y")%>"
+  
+</div>
+<% end %>

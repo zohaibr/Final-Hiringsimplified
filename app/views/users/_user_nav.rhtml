@@ -1,0 +1,47 @@
+<div>
+  <div style="float: left;margin-top: 5px;">
+    <% if logged_in? %>
+      <%
+      @dashclass = "btn_dashboard"
+      @jobclass = "btn_interview"
+      @interclass = "btn_portal"
+      if controller_name == "dashboards"
+        @dashclass = "btn_dashboard_s"
+        @jobclass = "btn_interview"
+        @interclass = "btn_portal"
+      elsif controller_name == "job_profiles"
+        @dashclass = "btn_dashboard"
+        @jobclass = "btn_interview_s"
+        @interclass = "btn_portal"
+      elsif controller_name == "interviews"
+        @dashclass = "btn_dashboard"
+        @jobclass = "btn_interview"
+        @interclass = "btn_portal_s"
+      end
+    %>
+      <% page_name=""
+      if @name
+        page_name = @name
+      end
+    %>
+
+
+      <% if current_user.user_type =="recruiter" %>
+        <div class="<%=@dashclass%>" onclick="navigate('/dashboards/')"></div>
+        <div class="<%=@jobclass%>" onclick="navigate('/job_profiles/')"></div>
+        <div class="<%=@interclass%>" onclick="navigate('/interviews/pre_interview/')"></div>
+        
+      <% end %>
+
+    <% else %>
+
+      <div class="btn_home<% if @name=="home"%><%="_s"%><% end %>" onclick="navigate('/users/static_page/1?name=home')"></div>
+      <div class="btn_register<% if @name=="product"%><%="_s"%><% end %>" onclick="navigate('/users/static_page/1?name=product')"></div>
+      
+      <div class="btn_clients<% if @name=="price"%><%="_s"%><% end %>" onclick="navigate('/users/static_page/1?name=price')"></div>
+     
+
+    <% end %>
+  </div>
+</div>
+

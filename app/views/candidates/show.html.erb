@@ -1,0 +1,43 @@
+<p>
+  <b>First name:</b>
+  <%=h @candidate.first_name %>
+</p>
+
+<p>
+  <b>Middle name:</b>
+  <%=h @candidate.middle_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%=h @candidate.last_name %>
+</p>
+
+<p>
+  <b>Contact num:</b>
+  <%=h @candidate.contact_num %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%=h @candidate.address %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%=h @candidate.city %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%=h @candidate.state %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%=h @candidate.country %>
+</p>
+
+
+<%= link_to 'Edit', edit_candidate_path(@candidate) %> |
+<%= link_to 'Back', candidates_path %>

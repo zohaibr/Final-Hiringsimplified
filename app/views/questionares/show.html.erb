@@ -1,0 +1,28 @@
+<p>
+  <b>Question:</b>
+  <%=h @questionare.question %>
+</p>
+
+<p>
+  <b>Time min:</b>
+  <%=h @questionare.time_min %>
+</p>
+
+<p>
+  <b>Time sec:</b>
+  <%=h @questionare.time_sec %>
+</p>
+
+<p>
+  <b>Interview:</b>
+  <%=h @questionare.interview_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @questionare.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_questionare_path(@questionare) %> |
+<%= link_to 'Back', questionares_path %>

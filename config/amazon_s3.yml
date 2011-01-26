@@ -1,0 +1,14 @@
+development:
+  bucket_name: hiringsi
+  access_key_id: AKIAJLGQKT6XHTJLWOBA
+  secret_access_key: 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
+
+test:
+  bucket_name: appname_test
+  access_key_id: 
+  secret_access_key: 
+
+production:
+  bucket_name: hiringsi
+  access_key_id: AKIAJLGQKT6XHTJLWOBA
+  secret_access_key: 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

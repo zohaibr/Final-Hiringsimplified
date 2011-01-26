@@ -1,0 +1,28 @@
+<div align="center">
+  <% form_tag session_path do -%>
+    <% if params[:frm] == "inv" %>
+      <%flash[:user_type] = "candidate"%>
+    <% else %>
+      <div class="candidate_signup_box" id="candidate" style="width: 410px;clear: both;float: none;" >
+        <h3>LOGIN</h3>
+        <hr />
+        <div style="float: left;margin-right: 15px;">
+          Email Address:<br/>
+          <%= text_field_tag 'login', @login,:class=>"textbox" %>
+         </div>
+          
+        <div style="float: left;">
+          Password:<br/>
+            <%= password_field_tag 'password', nil, :id =>"password",:class=>"textbox"  %>
+         </div>
+        
+        <div class="spacer"></div>
+        <div class="right_box">
+          <%= submit_tag '', :class=>"login_button" %>
+        </div>
+        <div class="spacer"></div>
+
+      </div>
+    <% end %>
+  <% end -%>
+</div>

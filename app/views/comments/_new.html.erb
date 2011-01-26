@@ -1,0 +1,16 @@
+<%# form_for(@comment) do |f| %>
+<%#
+#The :candidate_id and :interview_id are hard coded, these should be updated according to the parent page.
+%>
+<%form_remote_tag :url => '/comments', :html => {:id => "comment_form"} do %>
+  <p>
+    Comment<br />
+    <%= text_area :comment, :comment, :size => "20" %>
+    <%= hidden_field :comment, :candidate_id, :value => "1" %>
+    <%= hidden_field :comment, :interview_id, :value => "6" %>
+    <%= hidden_field :comment, :user_id , :value => current_user.id%>
+  </p>
+  <p>
+    <%= submit_tag 'Create' %>
+  </p>
+<% end %>

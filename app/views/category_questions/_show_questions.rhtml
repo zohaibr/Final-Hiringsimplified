@@ -1,0 +1,28 @@
+
+<div style="padding-left: 10px;height: 20px;width: 570px;">
+  <% if type == 'true'%>
+<% form_remote_tag :url => { :controller => "category_questions", :action => "create" },:complete =>"update_scroll();" do %>
+<%=hidden_field :category_question, :category_id, :value => cat_id%>
+<%=hidden_field :category_question, :user_id, :value => current_user.id%>
+
+  <%=text_field :category_question, :question, :style=>"float: left;margin-right: 8px;width:405px;"%>
+
+  <%=submit_tag "Add Question",:class=> "light_blue_button" %>
+  
+
+<% end %>
+<% end %>
+  
+  </div>
+  <div class="spacer"></div>
+  <div class="flexcrolll" id="uix" style="width: 515px">
+
+    <div id="qb2" style="margin-left: 5px;">
+<% unless @questions.blank?%>
+  
+  <% @questions.each do |q| %>
+  <div class="bank_question" onclick="document.getElementById('questionare_question').value ='<%= q.question%>';" id="ques_<%=q.id%>"><% if type == 'true'%><div class="close_b" onclick="delete_question(<%=q.id%>);do_nothing = true;"></div><% end %><%= q.question %></div>
+  <% end %>
+</div>
+<% end %>
+</div>

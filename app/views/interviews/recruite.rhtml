@@ -1,0 +1,523 @@
+<script type="text/javascript" language="javascript" charset="utf-8">
+  var effect_1 = null;
+</script>
+
+<script type="text/javascript">
+  
+
+  function LaunchWindow(what)
+  {
+  ttl = '';
+  name = '';
+  if(what == 'ntpd')
+    {
+      name = '#ntpd_'+$('#ntpdx').html();
+      ttl = "Notepad";
+    }
+
+  if(what == 'skpd')
+    {
+      name = '#skpd_'+$('#skpdx').html();
+      ttl = "sketchpad";
+      
+    }
+  var $dialog = $('<div></div>')
+		.html($(name).html())
+		.dialog({
+			autoOpen: false,
+			title: ttl,
+                        position : 'top',
+                        width: 640
+		});
+
+                $dialog.dialog('open');
+
+  }
+
+</script>
+
+<script>
+
+  function open_tools()
+  {
+  document.getElementById('caro1_content').style.display= 'none';
+  handle_accordion('caro1');
+  effect_1 = null;
+  }
+
+  function open_nodepad()
+  {
+
+  document.getElementById('caro4_content').style.display= 'none';
+  handle_nested_accordion('caro4');
+
+
+  }
+
+  function open_sketchpad()
+  {
+
+
+  document.getElementById('caro5_content').style.display= 'none';
+  handle_nested_accordion('caro5');
+
+
+
+  //handle_nested_accordion()
+  }
+		function handle_accordion(id)
+		{
+
+
+
+
+
+
+					if(effect_1==null)
+					{
+                                              style = $('#'+id+'_content').css('display')
+						if(style == 'none')
+						{
+
+                                                        effect_1 = $('#'+id+'_content').slideDown();
+							//effect_1 = Effect.SlideDown(id+'_content',{duration:.3});
+							effect_1 = null;
+                                                        $('#'+id).removeClass('accordion_toggle');
+                                                        $('#'+id).addClass('accordion_toggle_active');
+							//$(id).removeClassName('accordion_toggle');
+							//$(id).addClassName('accordion_toggle_active');
+						}
+						else
+						{
+                                                        effect_1 = $('#'+id+'_content').slideUp();
+							//effect_1 = Effect.SlideUp(id+'_content',{duration:.3});
+							effect_1 = null;
+                                                        $('#'+id).removeClass('accordion_toggle_active');
+                                                        $('#'+id).addClass('accordion_toggle');
+							//$(id).removeClassName('accordion_toggle_active');
+							//$(id).addClassName('accordion_toggle');
+						}
+					}
+
+
+					return false;
+
+
+
+
+
+
+  }
+
+		function handle_nested_accordion(id)
+		{
+			if(effect_1==null)
+					{
+						if($('#'+id+'_content').css('display')== 'none')
+						{
+                                                        effect_1 = $('#'+id+'_content').slideDown();
+							//effect_1 = Effect.SlideDown(id+'_content',{duration:.3});
+							effect_1 = null;
+
+                                                        $('#'+id).removeClass('vertical_accordion_toggle');
+                                                        $('#'+id).addClass('vertical_accordion_toggle_active');
+
+
+							//$(id).removeClassName('vertical_accordion_toggle');
+							//$(id).addClassName('vertical_accordion_toggle_active');
+						}
+						else
+						{
+                                                        effect_1 = $('#'+id+'_content').slideUp();
+							//effect_1 = Effect.SlideUp(id+'_content',{duration:.3});
+							effect_1 = null;
+
+                                                        $('#'+id).removeClass('vertical_accordion_toggle_active');
+                                                        $('#'+id).addClass('vertical_accordion_toggle');
+							//$(id).removeClassName('vertical_accordion_toggle_active');
+							//$(id).addClassName('vertical_accordion_toggle');
+						}
+					}
+
+
+					return false;
+
+		}
+
+</script>
+
+<script>
+
+function play_video(url,text,index,cid,qid,notepad,sketchpad,thumb)
+  {
+  // alert('adfadf');
+  document.getElementById('contactLink').innerHTML ="\" ";
+  document.getElementById('contactLink').innerHTML +=text;
+  document.getElementById('contactLink').innerHTML +=" \"";
+
+  $('#skt').html('');
+
+  if($('#ntpd_'+index).html() != '')
+    {
+     
+     $('#ntpdx').html(index);
+
+     open_nodepad();
+    }
+   if($('#skpd_'+index).html() != '')
+    {
+
+     $('#skpdx').html(index);
+     
+     open_sketchpad();
+     $('#skt').html($('#skpd_'+index).html());
+    }
+
+    if($('#skpdx').html() !="" || $('#ntpdx').html() !="" )
+      {
+        open_tools();
+      }
+
+ /* document.getElementById('notepad').innerHTML ="";
+  // document.getElementById('notepad_value').innerHTML.style.display= 'none';
+
+  document.getElementById('sketchpad').innerHTML ="";
+
+  if( document.getElementById(notepad).innerHTML!="")
+  {
+  var temp =document.getElementById(notepad).innerHTML;
+
+
+  document.getElementById('notepad').innerHTML = "<a href='#'  onclick=\"LanchWindow('"+temp+"')\"><img src=\"/images/nt.jpg\" width=\"100%\" class=\"tool_img\" /> </a>";
+  open_nodepad();
+  }
+
+  if(sketchpad!="")
+  {
+
+  document.getElementById('sketchpad').innerHTML = "<a href='#'  onclick=\"LanchS('http://hiringsi.s3.amazonaws.com/user_data/"+sketchpad+"')\"><img src=\"http://hiringsi.s3.amazonaws.com/user_data/"+sketchpad+"\" width=\"100%\" class=\"tool_img\" /> </a>";
+  open_sketchpad();
+  }
+  */
+/*
+  if(sketchpad!="" || document.getElementById(notepad).innerHTML!="")
+  {
+  open_tools();
+  }
+*/
+
+  document.getElementById('q_num').innerHTML =index;
+
+  document.getElementById('main_player').innerHTML = "";
+
+  jwplayer("main_player").setup({
+  flashplayer: "/images/player_c.swf",
+  file: "http://hiringsi.s3.amazonaws.com/"+url+".flv",
+  image:"http://hiringsi.s3.amazonaws.com/user_data/"+thumb,
+  height: 300,
+  wmode:"transparent",
+  overstretch: 'true',
+  width: 425
+  });
+
+
+
+  get_compare(cid,qid);
+
+  }
+
+  function play_video_only(url,thumb)
+  {
+  document.getElementById('main_player').innerHTML = "";
+
+  jwplayer("main_player").setup({
+  flashplayer: "/images/player_c.swf",
+  file: "http://hiringsi.s3.amazonaws.com/"+url+".flv",
+  image:"http://hiringsi.s3.amazonaws.com/user_data/"+thumb,
+  height: 300,
+  wmode:"transparent",
+  overstretch: 'true',
+  width: 425
+  });
+
+  }
+</script>
+<script>
+  var interview_id = '<%=params[:id]%>';
+  var candidate_id = '<%=@default_candidate_id%>';
+  function get_anwers_list(cid,int_id)
+  {
+  //alert('id');
+
+  document.getElementById('answers_list').innerHTML ="";
+
+        $.ajax({complete:function(request){},
+        data:'authenticity_token=' + encodeURIComponent('FI9rvJiu/2Oe3xjYaGdzj2KAsl/kDWPHrrtrAh8bfzE='),
+        error:function(request){$('#error').html(request.responseText);},
+        success:function(request){$('#answers_list').html(request);},
+        type:'post',
+        url:'/interviews/get_answers_list/'+int_id+'?cid='+cid});
+        return false;
+        //new Ajax.Updater({success:'answers_list',failure:'error'}, '/interviews/get_answers_list/'+int_id+'?cid='+cid, {asynchronous:true, evalScripts:true,onComplete:function(request){OS.PageLoadComplete();}, parameters:'authenticity_token=' + encodeURIComponent('CUtXryTu3s++Z8fnSrQmBwrmgRs4r/pI6GIADe4FhNU=')}); return false;
+
+
+  }
+
+
+
+  function get_compare(cid,qid)
+  {
+  //alert('id');
+
+  document.getElementById('compare_list').innerHTML ="";
+
+        $.ajax({complete:function(request){},
+        data:'authenticity_token=' + encodeURIComponent('FI9rvJiu/2Oe3xjYaGdzj2KAsl/kDWPHrrtrAh8bfzE='),
+        error:function(request){$('#error').html(request.responseText);},
+        success:function(request){$('#compare_list').html(request);},
+        type:'post',
+        url:'/interviews/get_compare_list/'+cid+'?qid='+qid});
+        return false;
+        //new Ajax.Updater({success:'compare_list',failure:'error'}, '/interviews/get_compare_list/'+cid+'?qid='+qid, {asynchronous:true, evalScripts:true,onComplete:function(request){OS.PageLoadComplete();}, parameters:'authenticity_token=' + encodeURIComponent('CUtXryTu3s++Z8fnSrQmBwrmgRs4r/pI6GIADe4FhNU=')}); return false;
+
+
+  }
+
+  function update_box(id)
+  {
+  var current = document.getElementById('box_'+id).innerHTML;
+
+  if(current == 'view ratings')
+  {
+  document.getElementById('box_'+id).innerHTML = 'view comments';
+
+        $.ajax({complete:function(request){},
+        data:'authenticity_token=' + encodeURIComponent('FI9rvJiu/2Oe3xjYaGdzj2KAsl/kDWPHrrtrAh8bfzE='),
+        error:function(request){$('#error').html(request.responseText);},
+        success:function(request){$('#flexcroll_'+id).html(request);},
+        type:'post',
+        url:'/ratings/get_ratings/'+interview_id+'?cid='+candidate_id+'&uid='+id});
+        return false;
+
+        //new Ajax.Updater({success:'flexcroll_'+id,failure:'error'}, '/ratings/get_ratings/'+interview_id+'?cid='+candidate_id+'&uid='+id, {asynchronous:true, evalScripts:true,onComplete:function(request){}, parameters:'authenticity_token=' + encodeURIComponent('CUtXryTu3s++Z8fnSrQmBwrmgRs4r/pI6GIADe4FhNU=')}); return false;
+
+  }
+  else
+  {
+  document.getElementById('box_'+id).innerHTML = 'view ratings';
+  $.ajax({complete:function(request){},
+        data:'authenticity_token=' + encodeURIComponent('FI9rvJiu/2Oe3xjYaGdzj2KAsl/kDWPHrrtrAh8bfzE='),
+        error:function(request){$('#error').html(request.responseText);},
+        success:function(request){$('#flexcroll_'+id).html(request);},
+        type:'post',
+        url:'/comments/get_user_comments/'+interview_id+'?cid='+candidate_id+'&uid='+id});
+        return false;
+        //new Ajax.Updater({success:'flexcroll_'+id,failure:'error'}, '/comments/get_user_comments/'+interview_id+'?cid='+candidate_id+'&uid='+id, {asynchronous:true, evalScripts:true,onComplete:function(request){}, parameters:'authenticity_token=' + encodeURIComponent('CUtXryTu3s++Z8fnSrQmBwrmgRs4r/pI6GIADe4FhNU=')}); return false;
+  }
+
+  }
+
+  function share_interview()
+  {
+
+
+  open_iframe("/users/add/<%=@interview_id%>?cid=<%=@default_candidate%>&url='+document.location.href'",600,600);
+  /*$.ajax({complete:function(request){open_dg('share_interview', 900, 500)},
+        data:'authenticity_token=' + encodeURIComponent('FI9rvJiu/2Oe3xjYaGdzj2KAsl/kDWPHrrtrAh8bfzE='),
+        error:function(request){$('#error').html(request.responseText);},
+        success:function(request){$('share_interview').html(request);},
+        type:'post',
+        url:'/users/share/<%=@interview_id%>?cid=<%=@default_candidate%>&url='+document.location.href});
+        return false;
+        //new Ajax.Updater({success:'share_interview',failure:'error'}, '/users/share/<%=@interview_id%>?cid=<%=@default_candidate%>&url='+document.location.href, {asynchronous:true, evalScripts:true, onComplete:function(request){openShareDialog('share_interview')}, parameters:'authenticity_token=' + encodeURIComponent('ymA4uIe8Y4R93JtQrV7OPxJZWBL8boSlw50gmnu7W+o=')}); return false;
+*/
+  }
+
+</script>
+
+
+<%#=debug @default_candidate%>
+<div id="" style="text-align: left;">
+
+  <div class="upper">
+
+    <div class="brown_heading" style="margin-left:23px;"><div style="float: left;">Candidate List</div>
+      <% if current_user.user_type == "recruiter" %>
+        <div class="share_interview" style="float: right;margin-right:23px"  onclick="share_interview();"></div>
+      <% end %>
+      <div class="spacer"></div></div>
+    <!-- Candidates list!-->
+    <div id="Carousel2">
+      <div class="button navButton previous" onclick="ScrollBackward('candidates_list_h');"></div>
+
+      <div class="question_list_container">
+        <div class="items" id="candidates_list">
+
+
+          <%=render :partial => "interviews/candidates_list" , :locals => { :candidates => @candidates, :thumb_id=>@thumb_id, :interview_id =>@interview_id }%>
+
+
+
+
+        </div>
+      </div>
+
+      <div class="button navButton next" onclick="ScrollForward('candidates_list_h');"></div>
+    </div>
+
+    <div class="spacer"></div>
+
+    <!-- answers list !-->
+    <div class="left_container">
+
+      <div id="Carousel" class="carousel">
+        <div class="q_container">
+          <div class="bt"><div class="blue_heading" style="text-align:left;margin-left:23px;">Question List</div>
+            <div class="button navButton previous" onclick="ScrollBackward('answers_list');" ></div>
+          </div>
+
+          <div class="question_list_container">
+            <div class="items" id="answers_list">
+              <%=render :partial => "interviews/answers_list" , :locals => { :cid => @default_candidate_id, :questionare_list=>@questionare_list}%>
+            </div>
+          </div>
+          <div class="bt"><div class="button navButton next" onclick="ScrollForward('answers_list');"></div></div>
+        </div>
+      </div>
+
+
+      <!-- Emplyee profile !-->
+      <div class="question_box_question" style="margin-top:15px;">
+        <div class="ques_heading"><span class="brown_heading">Candidate Profile </span></div>
+      </div>
+      <%=render :partial => "interviews/profile", :locals => { :candidate_id => @default_candidate_id} %>
+    </div>
+
+    <div class="middle_container">
+      <div class="player_container" style="background-color: black;">
+        <div id="main_player" style="width:425px;height:300px;z-index: -10px;" >
+          <% thumb=get_answer_cid_qid(@default_candidate_id,@questionare_list.first.id)%>
+          <embed
+            id="player"
+            name="player"
+            src="/images/player_c.swf"
+            width="100%"
+            height="100%"
+            allowscriptaccess="always"
+            allowfullscreen="true"
+            wmode="transparent"
+            flashvars="file=http://hiringsi.s3.amazonaws.com/<%=@default_candidate_id%>_<%=@interview_id%>_<%=@thumb_id%>.flv&image=http://hiringsi.s3.amazonaws.com/user_data/<%=thumb.vdo_thumbnail%>"
+            />
+
+<%#=render :partial => "interviews/player", :locals => { :candidate_id => @default_candidate_id, :interview_id=>@interview_id, :question=>@thumb_id} %>
+        </div>
+
+      </div>
+      <div class="question_box">
+        <div class="question_box_question">
+          <div class="ques_heading"><span class="brown_heading" style="cursor:pointer" onclick="handle_accordion();">Question</span></div><div class="ques_number" id="q_num">1</div>
+        </div>
+        <div id="d1" style=""><div id="contactLink" class="ques_question">
+            " <%=@default_question%> "</div>
+        </div>
+      </div>
+      <div class="question_box_question">
+        <div class="ques_heading"><span class="brown_heading">Candidate Ratings</span></div><div class="ques_c_rate">Average Rating <span class="q_tx"><b id="rating"><%=@avg_rating%></b></span></div>
+      </div>
+      <div class="spacer"></div>
+      <div id="star">
+        <%=render :partial => "ratings/rate" , :locals => { :candidate_id=>@default_candidate_id, :interview_id=>@interview_id,:user_id=>current_user.id}%>
+
+      </div>
+
+
+      <% form_remote_for @comment, :url => { :controller => "comments",:action => "update",:id => @comment.id } do  %>
+        <div class="comment_box">
+
+
+          <textarea class="comment_text_area" name="comment[comment]" id="comment_comment"><%=@comment.comment unless @comment.comment.blank?%></textarea>
+
+        </div>
+
+        <div class="comment_box_save"><%= submit_tag '',:class=>"save_button" %></div>
+      <% end %>
+    </div>
+
+
+
+
+    <div id="vertical_container" >
+
+      <% answers=get_answer_cid_qid(@default_candidate_id,@questionare_list.first.id)%>
+      <div class="accordion_toggle" onclick="handle_accordion('caro1')" id="caro1">Tools</div>
+      <div class="accordion_content"  id="caro1_content" style="display:<%if !answers.notepad.blank? || !answers.sketchpad.blank? %><%='block;'%><%else%><%='none;'%><% end %>background-color: #E6EEFA;background-image: none;">
+
+        <div id="vertical_nested_container" >
+
+          <div class="vertical_accordion_toggle" onclick="handle_nested_accordion('caro4')" id="caro4">
+
+            <img src="/images/notepad.png" class="vertical_icon" />NOTEPAD</div>
+          <div class="vertical_accordion_content" id="caro4_content" style="display:<%if !answers.notepad.blank?%><%='block;'%><%else%><%='none;'%><% end %>">
+
+            <p id="notepad">
+              
+
+              <a href='#'  onclick="LaunchWindow('ntpd');"><img src="/images/nt.jpg" width="100%" class="tool_img" /> </a>
+            <div id="ntpdx" style="display: none;"></div>
+            </p>
+          </div>
+          <br />
+          <div class="vertical_accordion_toggle" onclick="handle_nested_accordion('caro5')" id="caro5"><img src="/images/skpad.png" class="vertical_icon" />SKETCHPAD</div>
+          <div class="vertical_accordion_content" id="caro5_content" style="display:<%if !answers.sketchpad.blank?%><%='block;'%><%else%><%='none;'%><% end %>">
+            <p id="sketchpad">              
+              <a href='#'  onclick="LaunchWindow('skpd')"><div id="skt"><img src="http://hiringsi.s3.amazonaws.com/user_data/<%=answers.sketchpad %>" width="100%" class="tool_img"  /></div> </a>
+            <div id="skpdx" style="display: none;"></div>
+              
+            </p>
+          </div>
+
+
+        </div>
+
+      </div>
+
+      <div class="accordion_toggle"  onclick="handle_accordion('caro2')" id="caro2">Comparison List</div>
+      <div class="accordion_content" id="caro2_content" style="display:nfone">
+        <div id="Carousel3">
+          <div class="bt">
+            <div class="button navButton previous" ></div>
+          </div>
+          <div class="question_list_container">
+            <div class="items" id="compare_list">
+              <%=render :partial => "interviews/compare" , :locals => { :candidates => @candidates, :thumb_id=>@thumb_id, :qid =>@questionare_list.first.id, :interview_id =>@interview_id }%>
+            </div>
+
+          </div>
+
+          <div class="bt">
+            <div class="button navButton next" ></div>
+          </div>
+        </div>
+
+
+        <div id="horizontal_container" ></div>
+
+
+      </div>
+
+      <div class="accordion_toggle" onclick="handle_accordion('caro3')" id="caro3">Comments & Ratings</div>
+      <div class="accordion_content" id="caro3_content" >
+        <%=render :partial => "interviews/comments" , :locals => { :comment => @comments}%>
+      </div>
+    </div>
+
+  </div>
+
+
+</div>
+
+
+
+<div id="share_interview" style="display:none">
+
+</div>

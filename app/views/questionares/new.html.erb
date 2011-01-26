@@ -1,0 +1,33 @@
+<h1>New questionare</h1>
+
+<% form_for(@questionare, :html => { :multipart => true }) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :question %><br />
+    <%= f.text_area :question %>
+  </p>
+  <p>
+    <%= f.label :time_min %><br />
+    <%= f.text_field :time_min %>
+  </p>
+  <p>
+    <%= f.label :time_sec %><br />
+    <%= f.text_field :time_sec %>
+  </p>
+  <p>
+    <%= f.label :interview_id %><br />
+    <%= f.text_field :interview_id %>
+  </p>
+  <p>
+    <%= f.label :user_id %><br />
+    <%= f.text_field :user_id %>
+  </p>
+  Upload A File:
+  <%= f.file_field :uploaded_data %>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', questionares_path %>

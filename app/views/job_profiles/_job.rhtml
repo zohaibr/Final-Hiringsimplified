@@ -1,0 +1,34 @@
+<%  interview = Interview.find_by_job_profile_id job_profile.id %>
+<%get_duration interview.id%>
+<div class="question_container_default" title="<%=job_profile.company%>, <%=job_profile.title%>" id="job_item_<%=job_profile.id %>"  onclick="change_selected('jitem',<%=job_profile.id %>);get_questionare(<%=h interview.id %>,'<%=h interview.name %>','<%=interview.published%>','<%=@duration%>');" >
+  
+  <%#= debug interview %>
+  
+  <div class="upper_container">
+                                                     <div style="float: left;">
+							<div class="blue_text" style="width: 230px;float: left;font-size: 13px;text-align: left;">Company Name: <b><%=truncate(job_profile.company,:length=>20)%></b><br />
+                                                          Interview Duration: <b><span id="int_d_<%=interview.id%>"><%=@duration%> </span></b></div>
+							</div>
+
+                                                          <div class="right_container">
+                                                            <div class="blue_text" style="width: 150px;float: right;text-align: right;">Job Title: <b><%=truncate(job_profile.title,:length=>16) %></b></div>
+							 </div>
+						    </div>
+
+						<div class="lower_container">
+						  <div class="left_container">
+                                                    <!--<div class="blue_button" onclick="get_interviews(<%#=h job_profile.id %>);">INTERVIEWS</div>!-->
+
+                                                      <div class="blue_button" style="margin-left: 40px;width: 55px;" onclick="open_iframe('/invitations/invitations_form?interview_id=<%=interview.id %>',550,510);">INVITE</div>
+								   </div>
+									 <div class="right_container">
+
+<% if !interview.published %><div class="green_button" id="edit_int<%=interview.id%>" onclick="edit_job(<%=h job_profile.id %>);">EDIT</div><% end %>
+                                                                           <div class="pink_button" onclick="delete_job(<%=h job_profile.id %>);">DELETE</div>
+									 </div>
+								 </div>
+
+									<div class="key caption"></div>
+									<div class="email"></div>
+                        </div>
+

@@ -1,0 +1,38 @@
+<%#= debug invites %>
+<% i =0 %>
+<% candidates.each do |candidate| %>
+
+<div class="question_container_default" title="<%=candidate.first_name%> <%=candidate.last_name%>" >
+  <div class="number"><div style="margin-top: 17px;"><%= [i+1]  %></div></div>
+    <div class="q_text_default"><%=candidate.first_name%> <%=candidate.last_name%> </div>
+    <% if candidate.status ==true%>
+    <div class="gol_gr"><div class="brown_button" onclick="navigate('/interviews/recruite/<%=interview_id%>?cid=<%=candidate.c_id%>')">VIEW INTERVIEW</div>
+      <!--<div class="brown_button">REFER</div>!-->
+
+    </div>
+    <%  else %>
+    <div class="gol_gr"><div class="brown_button" style="cursor: default;float: right;background-color: transparent;border: none;" >INTERVIEW PENDING</div>
+      </div>
+    <% end %>
+
+    
+
+    </div>
+<% i= i +1 %>
+<% end %>
+
+<% invites.each do |invite| %>
+<% is_user invite.candidate_email %>
+<% if @is_there == false %>
+<div class="question_container_default" title="<%=invite.candidate_email%>" >
+  <div class="number"><div style="margin-top: 20px;"><%= [i+1]  %></div></div>
+  <div class="q_text_default">
+ <%=truncate(invite.candidate_email,:length=>25)%>
+  </div>
+  <div class="gol_gr"><div class="brown_button" style="cursor: default;float: right;background-color: transparent;border: none;" >INTERVIEW PENDING</div></div>
+
+</div>
+<% end %>
+
+<% end %>
+

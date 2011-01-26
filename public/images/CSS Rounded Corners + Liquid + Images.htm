@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Language" content="en-us">
+<title>CSS Rounded Corners + Liquid + Images</title>
+<meta name="description" content="css rounded corners">
+<meta name="keywords" content="Search Engine Optimization,Internet Marketing,Website Promotion,SEO,SEO Articles,Web Site Promotion,Search Engine Marketing">
+<style type="text/css">
+body {
+	background:#EFF2F3;
+	background-color: #000000;
+}
+#liquid-round {
+	width:90%;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+	background-color: #d9e5f8;
+	background-image: url(leftside.jpg);
+	background-repeat: repeat-y;
+	background-position: left top;
+}
+.top {
+width:100%;
+height:20px;
+background:url(top.jpg) no-repeat left top;
+background-color: #d9e5f8;
+
+}
+.top span {
+display:block;
+position:relative;
+height:20px;
+background:url(top-right.jpg) no-repeat right top;
+}
+.center-content {
+position:relative;
+background:url(rightside.jpg) repeat-y right top;
+padding:1px 20px 1px 25px;
+margin:-1px 0 -50px 0;
+}
+.bottom {
+width:100%;
+height:60px;
+background:url(bottom.jpg) no-repeat left bottom;
+}
+.bottom span {
+display:block;
+position:relative;
+height:60px;
+background:url(bottom-right.jpg) no-repeat right top;
+}
+p {margin:0 0 1em 0}
+</style>
+</head><body>
+<div id="liquid-round">
+    <div class="top"><span></span></div>
+    <div class="center-content">
+        <!-- CONTENT BEGIN -->
+        <p>this is some text this is some text this is some text this is
+ some text this is some text this is some text this is some text this is
+ some text this is some text this is some text this is some text this is
+ some text this is some text this is some text this is some text</p>
+        <p>this is some text this is some text this is some text this is
+ some text this is some text this is some text this is some text this is
+ some text this is some text this is some text this is some text this is
+ some text this is some text this is some text this is some text</p>
+        <!-- CONTENT END -->
+    </div>
+    <div class="bottom"><span></span></div>
+</div>
+</body></html>

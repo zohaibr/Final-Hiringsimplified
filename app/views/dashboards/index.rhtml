@@ -1,0 +1,125 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+
+<%#=debug @job_feeds%>
+
+<script>
+  var selected_item ='';
+  function get_candidates(id)
+  {
+
+
+   // change_selection(id);
+        please_wait();
+
+        $.ajax({complete:function(request){stop_wait();},
+        data:'authenticity_token=' + encodeURIComponent('FI9rvJiu/2Oe3xjYaGdzj2KAsl/kDWPHrrtrAh8bfzE='),
+        error:function(request){$('#error').html(request.responseText);},
+        success:function(request){$('#candidates_list').html(request);},
+        type:'post',
+        url:'/dashboards/get_candidates/'+id});
+        return false;
+
+        //new Ajax.Updater({success:'candidates_list',failure:'error'}, '/dashboards/get_candidates/'+id, {asynchronous:true, evalScripts:true,onComplete:function(request){ResetControl('candidates_list');stop_wait();}, parameters:'authenticity_token=' + encodeURIComponent('CUtXryTu3s++Z8fnSrQmBwrmgRs4r/pI6GIADe4FhNU=')}); return false;
+
+  }
+
+  function get_interviews(id)
+  {
+
+        $.ajax({complete:function(request){clear_questionares();},
+        data:'authenticity_token=' + encodeURIComponent('FI9rvJiu/2Oe3xjYaGdzj2KAsl/kDWPHrrtrAh8bfzE='),
+        error:function(request){$('#error').html(request.responseText);},
+        success:function(request){$('#interviews_list').html(request);},
+        type:'post',
+        url:'/interviews/get_pre_interviews/'+id});
+        return false;
+        //new Ajax.Updater({success:'interviews_list',failure:'error'}, '/interviews/get_pre_interviews/'+id, {asynchronous:true, evalScripts:true,onComplete:function(request){OS.PageLoadComplete();clear_questionares();}, parameters:'authenticity_token=' + encodeURIComponent('CUtXryTu3s++Z8fnSrQmBwrmgRs4r/pI6GIADe4FhNU=')}); return false;
+
+  }
+
+  function change_selection(id)
+  {
+    if(selected_item!=null && selected_item!="")
+      {
+        document.getElementById(selected_item).className = 'blue_button';
+      }
+
+     document.getElementById('int_'+id).className = 'blue_button_s';
+     selected_item = 'int_'+id;
+
+  }
+</script>
+
+
+<div class="spacer"></div><div class="spacer"></div>
+<div class="left_half_container" style="width:490px;">
+  <div id="dashboard_left_box">
+    <div class="inner_box"><div class="heading"><b><%=current_user.company_name%></b></div><br /><div class="baker">Welcome,<b> <%=current_user.first_name%> <%=current_user.last_name%> </b>- Click on <b>"Get Started"</b> to create a customizable Job description & Interview Questionnaire </div></div>
+  </div>
+      <!-- job list starts !-->
+      <div id="pre_interview" class="carousel"  style="width: 50%;">
+    <div class="q_container">
+      <div class="bt">
+        <div class="left_con">
+          <div class="blue_heading" >List of all Interviews</div>
+        </div>
+         <div class="right_con">
+           <div class="get_started" onclick="navigate('/job_profiles/');" ></div>
+		 </div>
+
+        <div class="spacer"></div>
+        <div class="button navButton previous" onclick="ScrollBackward('jobs_list');" ></div>
+      </div>
+      <div class="question_list_container">
+        <div class="items" id="jobs_list" style="z-index:70;position:relative;" >
+          <% unless @job_profiles.blank? %>
+            <%=render :partial => "interviews/pre_jobs" , :locals => { :jobs => @job_profiles} %>
+          <% else %>
+            No Records Found.
+          <% end %>
+        </div>
+      </div>
+      <div class="bt">
+        <div class="button navButton next" onclick="ScrollForward('jobs_list');"></div>
+      </div>
+    </div>
+  </div>
+      <!-- end here !-->
+</div>
+<div class="left_half_container">
+  <div id="daboard_alerts">
+    <div class="flexcroll">
+      <%=render :partial => "notifications", :locals => { :events => @events} %>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <div id="dashboard_interviews" class="carousel">
+    <div class="list_container">
+      <div class="bt2">
+        <div class="blue_heading">Candidates</div>
+        <div class="button navButton previous"  onclick="ScrollBackward('candidates_list');"></div>
+      </div>
+      <div class="question_list_container">
+        <div class="items" id="candidates_list" style="z-index:70;position:relative;" >
+          <% unless @candidates.blank? %>
+            <%=render :partial => "dashboards/candidates_list", :locals => { :candidates => @candidates,:interview_id => @interviews.first.id} %>
+          <% else %>
+            No Records Found.
+          <% end %>
+        </div>
+      </div>
+      <div class="bt2">
+        <div class="button navButton next" onclick="ScrollForward('candidates_list');"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="spacer"></div>
+<div class="spacer"></div>
+
+

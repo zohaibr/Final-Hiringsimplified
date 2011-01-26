@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  question: MyText
+  time_min: 1
+  time_sec: 1
+  interview_id: 1
+  user_id: 1
+
+two:
+  question: MyText
+  time_min: 1
+  time_sec: 1
+  interview_id: 1
+  user_id: 1

@@ -1,0 +1,111 @@
+<script>
+
+  function post_rating(skill,stars)
+  {
+
+       $.ajax({complete:function(request){},
+        data:'authenticity_token=' + encodeURIComponent('FI9rvJiu/2Oe3xjYaGdzj2KAsl/kDWPHrrtrAh8bfzE='),
+        error:function(request){$('#error').html(request.responseText);},
+        success:function(request){$('#rating').html(request);},
+        type:'post',
+        url:'/ratings/rate?skill='+skill+'&stars='+stars});
+        return false;
+
+        //new Ajax.Updater({success:'rating',failure:'error'}, '/ratings/rate?skill='+skill+'&stars='+stars, {asynchronous:true, evalScripts:true,onComplete:function(request){OS.PageLoadComplete();}, parameters:'authenticity_token=' + encodeURIComponent('CUtXryTu3s++Z8fnSrQmBwrmgRs4r/pI6GIADe4FhNU=')}); return false;
+  }
+
+</script>
+
+<%rate = get_rating candidate_id, 'communication', interview_id ,user_id%>
+
+
+<div class="rate_box" style="border-bottom: 2px solid #dfdad1;"><div style="float: left;width:180px;">Communication Skills</div>
+  <div id="rt_com" style="float: right;"></div>
+<script type="text/javascript">
+			$(function() {
+
+				$('#rt_com').raty({
+                            start : <%=rate%>,
+                            number : 10,
+                            onClick: function(score) {
+                              //alert('score: ' + score);
+                              post_rating('communication',score);
+                            }
+                          });
+
+			});
+
+
+</script>
+</div>
+
+<%rate = get_rating candidate_id, 'critical_thinking', interview_id ,user_id%>
+
+<div class="rate_box" style="border-bottom: 2px solid #dfdad1;"><div style="float: left;width:180px;">Critical thinking</div>
+  <div id="rt_ct" style="float: right;"></div>
+<script type="text/javascript">
+			$(function() {
+
+				$('#rt_ct').raty({
+                            start : <%=rate%>,
+                            number : 10,
+                            onClick: function(score) {
+                              //alert('score: ' + score);
+                              post_rating('critical_thinking',score);
+                            }
+                          });
+
+			});
+
+
+</script>
+</div>
+
+<%rate = get_rating candidate_id, 'knowledge', interview_id ,user_id%>
+
+<div class="rate_box" style="border-bottom: 2px solid #dfdad1;"><div style="float: left;width:180px;">Knowledge</div>
+
+  <div id="rt_kn" style="float: right;"></div>
+<script type="text/javascript">
+			$(function() {
+
+				$('#rt_kn').raty({
+                            start : <%=rate%>,
+                            number : 10,
+                            onClick: function(score) {
+                              //alert('score: ' + score);
+                              post_rating('knowledge',score);
+                            }
+                          });
+
+			});
+
+
+</script>
+
+</div>
+
+<%rate = get_rating candidate_id, 'confidence_level', interview_id ,user_id%>
+
+<div class="rate_box" style="border-bottom: 2px solid #dfdad1;"><div style="float: left;width:180px;">Confidence Level</div>
+
+    <div id="rt_cf" style="float: right;"></div>
+<script type="text/javascript">
+			$(function() {
+
+				$('#rt_cf').raty({
+                            start : <%=rate%>,
+                            number : 10,
+                            onClick: function(score) {
+                              //alert('score: ' + score);
+                              post_rating('confidence_level',score);
+                            }
+                          });
+
+			});
+
+
+</script>
+ 
+</div>
+		

@@ -1,0 +1,7 @@
+# TODO Operate on the page object
+if(@flag == "true")
+  #page.replace_html :message, :text => "Saved Successfully"
+  page.insert_html :top,  "interview_items", :partial => "interviews/interview", :locals => { :interview => @interview}
+else
+  page.replace_html :message, :text => "Not Saved"
+end

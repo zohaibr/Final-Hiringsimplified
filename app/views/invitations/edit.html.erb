@@ -1,0 +1,24 @@
+<h1>Editing invitation</h1>
+
+<% form_for(@invitation) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :candidate_email %><br />
+    <%= f.text_area :candidate_email %>
+  </p>
+  <p>
+    <%= f.label :user_id %><br />
+    <%= f.text_field :user_id %>
+  </p>
+  <p>
+    <%= f.label :interview_id %><br />
+    <%= f.text_field :interview_id %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @invitation %> |
+<%= link_to 'Back', invitations_path %>

@@ -1,0 +1,10 @@
+<div class="signup_box2" style="width: 750px;height:220px; padding: 15px;margin: 0px;float: left;" >
+    <%if @user.user_type !="candidate"%>
+        <%=render :partial => "users/details", :locals => { :user => @user }%>
+    <% end %>
+
+    <%if @user.user_type =="candidate"%>
+        <%=render :partial => "candidates/edit", :locals => { :candidate => @candidate }%>
+    <% end %>
+</div>
+

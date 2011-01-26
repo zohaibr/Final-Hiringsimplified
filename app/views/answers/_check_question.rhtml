@@ -1,0 +1,76 @@
+
+
+
+<% form_for(@answer)  do |f| %>
+
+  <% get_job_details params[:jp_id] %>
+  <div id="header">
+    <div id="logo_img"><img src="../images/logo.jpg" alt="Hiring Simplified" width="180" height="86" />
+      <div id="header_container">
+        <div class="q_heading">Question <%=session[:questions_iter]%> of <%=session[:all_questions]%>
+        </div>
+
+        <div class="normal_brown"><b>Job Title: </b><i><%=@job_profile.title%></i></div>
+        <div class="normal_brown"><b>Company: </b><i><%=@job_profile.company%></i></div>
+      </div>
+    </div>
+    <div id="nav_q_container">
+      <div id="topnav">
+        <%=render :partial => "users/user_bar"%>
+      </div>
+      <div class="spacer"></div>
+      <div class="candidate_question_container" style="padding: 0px;margin-top: 5px;"><div class="con"><b>“</b><%=@question.question%><b>“</b>
+        </div>
+        <div class="next_container" >
+          <div class="q_heading_timer"><b>Time Left: </b><span id="timer">"Please wait"</span></div>
+
+          <div class="next_button" id="nxt_btn" onclick="stop_recording();" style="margin-top: 5px;padding: 0px;display: none;" ></div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+<div class="spacer"></div><div class="spacer"></div><div class="spacer"></div>
+
+<div id="container_extended">
+
+
+
+  <%= f.error_messages %>
+ <input id="answer_video_url" name="answer[video_url]" type="hidden" value="<%=current_user.id%>_<%=session[:interview_id]%>_<%=@question.id%>" />
+ <input id="answer_vdo_thumbnail" name="answer[vdo_thumbnail]" type="hidden" value="<%=current_user.id%>_<%=session[:interview_id]%>_<%=@question.id%>_webcam.jpg" />
+<% if @question.sketchpad %>
+  <input id="answer_sketchpad" name="answer[sketchpad]" type="hidden" value="<%=current_user.id%>_<%=session[:interview_id]%>_<%=@question.id%>_sketchpad.jpg" />
+ <% end %>
+  <%= f.hidden_field :candidate_id, :value => current_user.id %>
+  <%= f.hidden_field :questionare_id, :value => @question.id %>
+  <%= f.hidden_field :interview_id, :value => session[:interview_id] %>
+  <%= hidden_field :interview, :job_profile_id, :value => params[:jp_id] %>
+
+
+</div>
+
+ <div align="center" >
+
+   <% if @question.notepad %>
+   <div class="daba">
+     <div id="notepad">Notepad</div><%= text_area:answer, :notepad, :style=>"width: 300px;height: 292px;", :rows=>"15", :cols=>"80" %>
+    </div>
+
+   <% end %>
+
+   <div  class="daba">
+     <div id="webcam">Webcam</div><%=render :partial => "layouts/webcam", :locals => { :question => @question }%>
+     </div>
+
+   
+
+ <% if @question.sketchpad %>
+   <div class="daba" style="height: 300px;padding-bottom: 30px; width: 450px;">
+     <div id="sketchpadd">Sketchpad</div><%=render :partial => "layouts/sketchpad", :locals => { :question => @question }%>
+  </div>
+ <% end %>
+
+<% end %>
+</div>

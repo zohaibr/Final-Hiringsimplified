@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>HS-Candidate_interview</title>
+
+  <%= stylesheet_link_tag 'style.css' %>
+  <%= javascript_include_tag 'prototype' %>
+  <%= javascript_include_tag 'SkyByte' %>
+  <%= javascript_include_tag 'SkyByteDD' %>
+  <%= javascript_include_tag 'skybytedemo' %>  
+  <%= javascript_include_tag 'links' %>
+  <%= javascript_include_tag 'AC_OETags' %>
+  <%= javascript_include_tag 'countDown' %>
+  <%= javascript_include_tag 'tiny_mce' %>
+<script>
+    tinyMCE.init({
+		mode : "textareas",
+		theme : "simple"
+	});
+
+</script>
+
+
+
+
+
+
+
+<script language="JavaScript" type="text/javascript">
+<!--
+// -----------------------------------------------------------------------------
+// Globals
+// Major version of Flash required
+var requiredMajorVersion = 9;
+// Minor version of Flash required
+var requiredMinorVersion = 0;
+// Minor version of Flash required
+var requiredRevision = 124;
+// -----------------------------------------------------------------------------
+// -->
+</script>
+<script language="JavaScript" type="text/javascript">
+  <% skp = false
+    unless @question.sketchpad.blank?
+      skp = @question.sketchpad
+    end
+    %>
+  var sketchpad = <%=skp%>;
+  </script>
+
+
+<script language="JavaScript" type="text/javascript">
+  
+    function start_recording()
+    {
+      document.getElementById("nxt_btn").style.display = 'block';
+
+
+      // saveDrawing
+        document.getElementById("cam_recorder").startRecording("test");
+    }
+
+	function stop_recording()
+	{
+         //alert('stop');
+
+          if(sketchpad == true)
+            {
+
+
+              document.getElementById("sketchpad").saveDrawing("<%=current_user.id%>_<%=session[:interview_id]%>_<%=@question.id%>_sketchpad");
+              sketchpad = false;
+
+            }
+
+            else
+              {
+                document.getElementById("cam_recorder").stopRecording("stop");
+              }
+
+	}
+
+	function show_next(message)
+	{
+          
+          document.forms["new_answer"].submit();
+          document.getElementById("nxt_btn").style.display = 'none';
+          document.getElementById("timer").style.display = 'none';
+
+		//alert(message);
+	}
+</script>
+ <script type="text/javascript">
+      var curvyCornersVerbose = false;
+    </script>
+
+
+
+
+
+<style>
+body
+{
+background: url('../images/uppertile_extended.jpg') repeat-x;
+	margin: 0px;
+	padding: 0px;
+	text-align: center;
+	background-color:#f4f0e5;
+	font-family:Helvetica, Arial, sans-serif;
+}
+</style>
+</head>
+
+  <body onload="timer_init(<%=@question.time_min%>,<%=@question.time_sec%>);ext_links();drags_init();">
+  <%#= debug @question %>
+    
+
+ <%= yield %>
+
+</body>
+</html>

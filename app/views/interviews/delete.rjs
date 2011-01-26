@@ -1,0 +1,2 @@
+# TODO Operate on the page object
+page.visual_effect(:drop_out, "interview_item_"+params[:id])

@@ -1,0 +1,9 @@
+<%@interview_time = convert_ms time_left
+  @t_time = convert_ms total_time
+  @balance = convert_ms (total_time - time_left)
+%>
+  <%get_duration interview_id%>
+  <b>Total Time: </b><%= @t_time%><br />
+  <b>Pending Invitations: </b><%= @interview_time%><br />
+  <b>Balance Available: </b><%= @balance%><br />
+  <b>Interview Duration: </b><%=@duration%><br />

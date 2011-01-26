@@ -1,0 +1,42 @@
+<% jobs.each do |job| %>
+<%  interview = Interview.find_by_job_profile_id job.id
+    invitations = Invitation.count(:conditions => "interview_id = #{interview.id}")
+
+%>
+<%get_duration interview.id%>
+
+<div class="question_container_default" style="cursor: pointer;" onclick="get_candidates('<%=interview.id%>');">
+  <div class="left" style="padding-top: 38px;">
+    <div class="job" style="width: 150px;" title="<%=job.title%>" ><b><%=truncate(job.title,:length=>24)%></b></div>
+        </div>
+
+  <div class="right" style="text-align: right;margin-top: 15px;">
+         <%get_ints job.id%>
+          
+           
+
+     <div class="blue_buttonx" title="<%=interview.name%>" id="int_<%=interview.id%>" style="text-align: right;" >
+                  <i>Created at: </i>
+                  <b><%=job.created_at.strftime("%m/%d/%Y")%></b>
+            </div> <br />
+
+    <div class="blue_buttonx" title="<%=interview.name%>" id="int_<%=interview.id%>" style="text-align: right;" >
+                  <i>Duration: </i>
+                  <b><%=@duration%></b>
+            </div> <br />
+          <div class="blue_buttonx" title="<%=interview.name%>" id="int_<%=interview.id%>" style="text-align: right;" >
+                  <i>Candidates Invited: </i>
+                  <% unless invitations.blank? %>
+                    <b><%=invitations%></b>
+                  <% end %>
+            </div>
+              <div class="spacer"></div>
+            
+              
+      </div>
+   <div class="key caption"></div>
+   <div class="email"></div>
+  </div>
+
+
+<% end %>

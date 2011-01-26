@@ -1,0 +1,25 @@
+
+
+<% i =0 %>
+<%questionare_list.each do |questionn|%>
+
+<% answers=get_answer_cid_qid(cid,questionn.id)%>
+
+<div class="question_container_default" title="<%= questionn.question  %>" style="text-align: left;" id="answers_item_<%=questionn.id%>" onclick="change_selected('answers_list',<%=questionn.id %>);play_video('<%=answers.video_url%>','<%=questionn.question %>','<%=[i+1] %>','<%=cid %>','<%=questionn.id %>','<%=answers.video_url%>','<%=answers.sketchpad %>','<%=  answers.vdo_thumbnail%>')">
+  <img src="http://hiringsi.s3.amazonaws.com/user_data/<%=  answers.vdo_thumbnail%>" class="q_img" />
+  <div class="q_text_default" ><%=truncate(questionn.question,:length=>55)%></div>
+  <div style="display: none;">
+    <div id="ntpd_<%=[i+1]%>"><div align="left" style="font-size: 12px;"><%=answers.notepad%></div></div>
+    <div id="skpd_<%=[i+1]%>"><img src="http://hiringsi.s3.amazonaws.com/user_data/<%=answers.sketchpad %>" width="100%" height="100%"  /></div>
+  </div>
+  <div class="gol_gr"><%= [i+1]  %></div>
+  <div class="key caption"></div>
+  <div class="email" id="<%=answers.video_url%>" style="display: none;"><% unless answers.notepad.blank? %><%=h answers.notepad.gsub(/(['"~`%!^()]|&nbsp;|\r|\n)/,"") %><%end%></div>
+</div>
+<% i= i +1 %>
+<% end %>
+
+
+
+
+

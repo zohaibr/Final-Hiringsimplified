@@ -1,0 +1,32 @@
+<h1>Feedback</h1>
+<p>Please leave us feedback, it's really appreciated.</p>
+<div style="text-align: left;">
+<% form_for :feedback, @feedback, :url => feedback_path, :html => {:id => "feedback_form"} do |f| -%>
+<%= f.hidden_field 'page' %>
+<% unless @error_message.blank? %>
+<p class="error">
+	<%=h @error_message %>
+</p>
+<% end %>
+<p>
+	<%= f.label 'subject:' %>
+	<%= f.select 'subject', ['Issues', 'Suggestion', 'Question', 'Other'] %>
+</p>
+<p>
+   <%= f.label 'name:' %>
+   <%= f.text_field 'name' ,:class=>"blue_input" %>
+</p>
+<p>
+   <%= f.label 'email:' %>
+   <%= f.text_field 'email',:class=>"blue_input" %>
+</p>
+
+<p>
+  <%= f.label 'comment:' %><br />
+  <%= f.text_area 'comment', :rows => 10, :cols => 30,:class=>"blue_input" %>
+</p>
+</div>
+<p><%= f.submit 'Send' %></p>
+
+<% end -%>
+

@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  candidate_id: 1
+  school: MyString
+  date_attended: 2010-09-04
+  degree: MyString
+  major: MyString
+  second_major: MyString
+
+two:
+  candidate_id: 1
+  school: MyString
+  date_attended: 2010-09-04
+  degree: MyString
+  major: MyString
+  second_major: MyString

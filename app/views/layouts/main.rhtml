@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>HiringSimplified - Video Interview Platform</title>
+    <%= stylesheet_link_tag 'all_css.css' ,:media=>"all"%>
+    <%#= stylesheet_link_tag 'spread.css' %>
+    <%#= stylesheet_link_tag 'default.css' %>
+    <%#= stylesheet_link_tag 'flexcrollstyles.css' %>
+    <%#= stylesheet_link_tag 'subModal.css' %>
+    <%#= stylesheet_link_tag 'calendar.css' %>
+    <%#= stylesheet_link_tag 'lighting.css' %>
+    <%#= stylesheet_link_tag 'dhtmlxcalendar.css' %>
+    <%#= stylesheet_link_tag 'skins/dhtmlxcalendar_dhx_blue.css' %>
+    <%#= stylesheet_link_tag 'sifr.css' %>
+
+    <%= stylesheet_link_tag 'jquery.fancybox-1.3.4.css' %>
+    <%= stylesheet_link_tag 'jquery-ui-1.8.9.custom.css' %>
+   
+    
+    <%= feedback_includes %>
+    <%= javascript_include_tag :defaults %>
+    
+    <%#= javascript_include_tag 'common' %>
+     <%#= javascript_include_tag 'stars' %>
+    
+    <%= javascript_include_tag 'curvycorners' %>
+    <%#= javascript_include_tag "JQuery/jq.js" %>
+    <%= javascript_include_tag "JQuery/jquery.validate.js" %>
+    <%= javascript_include_tag "jquery-ui-1.8.9.custom.min" %>
+
+
+    <%#= javascript_include_tag 'prototype' %>
+    <%#= javascript_include_tag 'effects' %>
+    <%= javascript_include_tag 'flexcroll' %>
+    <%#= javascript_include_tag 'code_highlighter' %>
+    <%#= javascript_include_tag 'dragdrop' %>
+    <%#= javascript_include_tag 'lightbox' %>
+    <%#= javascript_include_tag 'tooltips' %>
+    <%= javascript_include_tag 'AC_OETags' %>
+
+
+
+
+
+    
+
+
+
+    <%= javascript_include_tag 'jquery.fancybox-1.3.4.pack.js' %>
+    <%= javascript_include_tag 'jquery.raty.min.js' %>
+
+
+
+
+    <%#= javascript_include_tag 'javascript' %>
+    <%#= javascript_include_tag 'html' %>
+    <%#= javascript_include_tag 'window' %>
+    <%#= javascript_include_tag 'window_effects' %>
+<%#= javascript_include_tag 'clientscript/os' %>
+<%#= javascript_include_tag 'clientscript/model/carousel' %>
+<%#= javascript_include_tag 'clientscript/behavior/application' %>
+    <%#= javascript_include_tag 'scriptaculous' %>
+    <%= javascript_include_tag 'jwplayer' %>
+    <%#= javascript_include_tag 'subModal' %>
+    <%= javascript_include_tag 'tabber' %>
+    <%= javascript_include_tag 'functions' %>
+    <%= javascript_include_tag 'dhtmlxcommon' %>
+    <%= javascript_include_tag 'dhtmlxcalendar' %>
+
+    <%= javascript_include_tag 'sifr' %>
+    <%= javascript_include_tag 'sifr-debug' %>
+    <%= javascript_include_tag 'sifr-config' %>
+    <%#= javascript_include_tag 'all_js' %>
+
+
+   <script>
+
+    window.dhx_globalImgPath = "<%=request.host%>:<%=request.port%>/stylesheets/imgs/";
+
+    </script>
+
+    <script language="JavaScript" type="text/javascript">
+      <!--
+      // -----------------------------------------------------------------------------
+      // Globals
+      // Major version of Flash required
+      var requiredMajorVersion = 9;
+      // Minor version of Flash required
+      var requiredMinorVersion = 0;
+      // Minor version of Flash required
+      var requiredRevision = 124;
+      // -----------------------------------------------------------------------------
+      // -->
+    </script>
+
+
+    <script type="text/javascript" charset="utf-8">
+      window._token = '<%= form_authenticity_token -%>';
+    </script>
+
+    <script type="text/javascript">
+      var curvyCornersVerbose = false;
+    </script>
+    <%= javascript_include_tag 'ribbon' %><noscript><a href="http://quickribbon.com/">Quickribbon</a></noscript>
+    <%#= feedback_tab(:position => 'bottom') %>
+  </head>
+
+  <body>
+    <div id="top"></div>
+    <div id="container">
+      <div id="header">
+        <div class="h_left" onclick="navigate('http://www.hiringsimplified.com/');"></div>
+
+        <div class="h_right">
+          <div>
+            <%=render :partial => "users/user_bar"%>
+          </div>
+          <div class="spacer"></div>
+          <%=render :partial => "users/user_nav" %>
+        </div>
+
+      </div>
+      <div class="spacer"></div>
+      <div class="loader_container">
+        <div class="loaderr" id="please_wait" style="display: none;"></div>
+      </div>
+      
+      <%= yield %>
+      <div id="Viewer" style="display:none;"></div>
+      <div id="footer-spacer"></div>
+    </div>
+    <div class="spacer"></div>
+    <div id="footer">
+
+      <div class="f_cp" >© 2010 Hiring Simplified Inc.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/users/static_page/1?name=terms">Terms & Conditions</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/users/static_page/1?name=privacy">Privacy Policy</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/users/static_page/1?name=contact">Contact Us</a></div>
+      
+      
+
+    </div>
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+
+  _gaq.push(['_setAccount', 'UA-19610456-1']);
+
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+
+  })();
+
+</script>
+  </body>
+</html>
+

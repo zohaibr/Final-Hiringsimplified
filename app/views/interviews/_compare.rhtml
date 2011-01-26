@@ -1,0 +1,14 @@
+<%#=debug candidates%>
+
+<%candidates.each do |answer|%>
+<%  if answer.c_id != session[:default_candidate] %>
+
+<% answers=get_answer_cid_qid(answer.c_id,qid)%>
+  <div class="question_container_default" title="<%=answer.first_name%> <%=answer.last_name%>" onclick="play_video_only('<%=answers.video_url%>','<%=  answers.vdo_thumbnail%>')">
+    <img src="http://hiringsi.s3.amazonaws.com/user_data/<%=answers.vdo_thumbnail%>" class="com_list_img" />
+    <div class="com_list_text"><%=answer.first_name%> <%=answer.last_name%></div>
+    <div class="key caption"></div>
+    <div class="email"></div>
+  </div>
+<% end %>
+<% end %>

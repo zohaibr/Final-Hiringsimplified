@@ -1,0 +1,18 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+
+
+<div style="float:left;">
+  <div>Communication <span style="margin-left:10px;"><%= render :partial => "stars", :locals => { :skill => "communication"} %></span></div>
+  <div>Gesture <span style="margin-left:10px;"><%= render :partial => "stars", :locals => { :skill => "gesture"} %></span></div>
+  <div>Technical <span style="margin-left:10px;"><%= render :partial => "stars", :locals => { :skill => "technical"} %></span></div>
+  <div>Sharp <span style="margin-left:10px;"><%= render :partial => "stars", :locals => { :skill => "sharp"} %></span></div>
+  <div>Smart <span style="margin-left:10px;"><%= render :partial => "stars", :locals => { :skill => "smart"} %></span></div>
+</div>
+<br>
+<div style="float:left;color:green;display: none;" id="msg">Comment added successfully.</div>
+<div style="float:left;">
+  <%=render :partial => "comments/new"%>
+</div>

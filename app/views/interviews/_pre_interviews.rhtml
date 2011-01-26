@@ -1,0 +1,12 @@
+<div class="items" id="interview_items" >
+     <% interviews.each do |interview| %>
+
+        <div class="question_container_default" onclick="get_candidates('<%=interview.id%>');">
+            <div class="q_text_default"><%=h interview.name %>, <span class="brown_text">Duration: 20:40</span> </div>
+
+          	<div class="key caption"></div>
+          	<div class="email"></div>
+        </div>
+
+<% end %>
+</div>

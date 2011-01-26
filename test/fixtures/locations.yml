@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  city: MyString
+  state: MyString
+  country: MyString
+  job_profile_id: 1
+
+two:
+  city: MyString
+  state: MyString
+  country: MyString
+  job_profile_id: 1

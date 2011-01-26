@@ -1,0 +1,9 @@
+<%get_duration interview.id%>
+<div class="question_container_default" title="<%=interview.name%>, <%=@duration%>" id="interview_item_<%=interview.id %>" onclick="change_selected('interview_items',<%=h interview.id %>);get_questionare(<%=h interview.id %>,'<%=h interview.name %>','<%=interview.published%>','<%=@duration%>');">
+  <div class="q_text_default" ><div class="rokwell_tx" style="margin-bottom: 5px;width: 260px;font-style: normal;font-size: 13px;"><b><%=truncate(interview.name,:length=>25) %></b></div> <span class="brown_text">Duration: <span id="int_ffd_<%=interview.id%>"><%=@duration%> </span></span> </div>
+     <div class="gol_gr" ><% if !interview.published %>
+       <div class="green_button" style="display: block;" id="edit_int<%=interview.id%>">EDIT</div><% end %>
+       <div class="pink_button" onclick="delete_interview('<%=h interview.id %>');">DELETE</div>
+       <div class="blue_button" onclick="invitation('<%=h interview.id %>');">INVITE</div>
+     </div>
+ </div>

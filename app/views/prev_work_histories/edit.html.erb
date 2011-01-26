@@ -1,0 +1,32 @@
+<h1>Editing prev_work_history</h1>
+
+<% form_for(@prev_work_history) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :candidate_id %><br />
+    <%= f.text_field :candidate_id %>
+  </p>
+  <p>
+    <%= f.label :organisation %><br />
+    <%= f.text_field :organisation %>
+  </p>
+  <p>
+    <%= f.label :start_date %><br />
+    <%= f.date_select :start_date %>
+  </p>
+  <p>
+    <%= f.label :end_date %><br />
+    <%= f.date_select :end_date %>
+  </p>
+  <p>
+    <%= f.label :job_title %><br />
+    <%= f.text_field :job_title %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @prev_work_history %> |
+<%= link_to 'Back', prev_work_histories_path %>

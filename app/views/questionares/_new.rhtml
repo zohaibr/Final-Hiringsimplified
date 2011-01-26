@@ -1,0 +1,24 @@
+<h1>New questionare</h1>
+
+<% form_remote_tag :url => { :controller => "questionares", :action => "create" }, :complete => "javascript:parent.kill();" do %>
+  <p>
+    <%= label :questionare, :question %><br />
+    <%= text_area :questionare, :question, :rows => "1" %>
+  </p>
+  <p>
+    <%= label :questionare, :time_min %><br />
+    <%= text_field :questionare, :time_min %>
+  </p>
+  <p>
+    <%= label :questionare, :time_sec %><br />
+    <%= text_field :questionare, :time_sec %>
+  </p>
+  <p>
+    <%= hidden_field :questionare, :interview_id, :value => qid%>
+  </p>
+  <p>
+    <%= submit_tag 'Create' %>
+  </p>
+<% end %>
+  <div id="sortingDiv"></div>
+  <%= link_to 'Back', :controller => "dashboards", :action => "index" %>

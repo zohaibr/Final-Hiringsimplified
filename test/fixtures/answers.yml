@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  candidate_id: 1
+  questionare_id: 1
+  answer: MyText
+
+two:
+  candidate_id: 1
+  questionare_id: 1
+  answer: MyText

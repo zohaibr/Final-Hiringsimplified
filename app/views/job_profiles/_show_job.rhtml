@@ -1,0 +1,29 @@
+  <%get_recruiter_info job_profile.user_id%>
+
+<div class="question_container_default" id="job_item_<%=job_profile.id %>"  onclick="change_selected('jitem',<%=job_profile.id %>);get_interviews(<%=h job_profile.id %>);" >
+						   <div class="upper_container">
+                                                     <div style="float: left;">
+							<div class="grey_text">COMPANY NAME: <span class="dark_grey_text"><%=truncate(job_profile.company,:length=>20)%></span></div>
+							</div>
+
+                                                          <div class="right_container">
+                                                            <div class="grey_text">JOB TITLE: <span class="dark_grey_text"><%=truncate(job_profile.title,:length=>16) %></span></div>
+							 </div>
+						    </div>
+
+						<div class="lower_container">
+						  <div class="left_container">
+                                                    <!--<div class="blue_button" onclick="get_interviews(<%#=h job_profile.id %>);">INTERVIEWS</div>!-->
+
+                                                    <div class="blue_button" style="margin-left: 40px;" onclick="create_interview(<%=h job_profile.id %>);">CREATE INTERVIEW</div>
+								   </div>
+									 <div class="right_container">
+
+                                                                           <div class="green_button" onclick="edit_job(<%=h job_profile.id %>);">EDIT</div>
+                                                                           <div class="pink_button" onclick="delete_job(<%=h job_profile.id %>);">DELETE</div>
+									 </div>
+								 </div>
+
+									<div class="key caption"></div>
+									<div class="email"></div>
+                        </div>

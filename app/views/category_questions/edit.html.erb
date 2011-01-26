@@ -1,0 +1,24 @@
+<h1>Editing category_question</h1>
+
+<% form_for(@category_question) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :category_id %><br />
+    <%= f.text_field :category_id %>
+  </p>
+  <p>
+    <%= f.label :question %><br />
+    <%= f.text_area :question %>
+  </p>
+  <p>
+    <%= f.label :user_id %><br />
+    <%= f.text_field :user_id %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @category_question %> |
+<%= link_to 'Back', category_questions_path %>

@@ -1,0 +1,60 @@
+
+<%=f.hidden_field :user_id, :value => params[:uid]%>
+
+<h3>Basic Information</h3>
+<hr />
+<div class="left_box">
+  <%= f.label :first_name %><br />
+  <%= f.text_field :first_name, :class => "required" %>
+</div>
+
+<div class="left_box">
+  <%= f.label :middle_name %><br />
+  <%= f.text_field :middle_name, :class => "bluex" %>
+</div>
+<div class="left_box">
+  <%= f.label :last_name %><br />
+  <%= f.text_field :last_name, :class => "required" %>
+</div><div class="spacer"></div>
+
+
+<div class="left_box">
+  <%= f.label :contact_Number %><br />
+  <%= f.text_field :contact_num, :class => "bluex" %>
+</div><div class="spacer"></div>
+<div>
+  <%= f.label :address %><br />
+  <%= f.text_field :address, :style=>"width:708px;" , :class => "bluex"%>
+</div><div class="spacer"></div>
+
+<div class="left_box">
+  <%= f.label :city %><br />
+  <%= f.text_field :city, :class => "required" %>
+</div>
+<div class="left_box">
+  <%= f.label :state %><br />
+  <%= f.text_field :state, :class => "required" %>
+</div>
+<div class="left_box">
+  <%= f.label :country %><br />
+  <%= f.text_field :country , :class => "bluex" %>
+</div><div class="spacer"></div>
+
+<div class="left_box">File:<br />
+  <%= f.file_field :uploaded_data %>
+</div> <div class="spacer"></div>
+
+<h3>Education History</h3>
+<hr />
+
+<div id="education_histories">
+  <%= render :partial => 'candidates/education_history', :collection => @candidate.education_histories %>
+</div>
+<div class="right_box"><div class="green_button" ><%= add_education_history_link "ADD" %></div></div>
+<h3>Previous Work History</h3>
+<hr />
+<div id="prev_work_histories">
+  <%= render :partial => 'candidates/prev_work_history', :collection => @candidate.prev_work_histories %>
+</div>
+<div class="right_box"><div class="green_button"><%= add_prev_work_history_link "ADD" %></div></div>
+<div class="spacer"></div>

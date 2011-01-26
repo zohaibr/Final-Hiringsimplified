@@ -1,0 +1,2 @@
+# TODO Operate on the page object
+ page.insert_html :top,  "qb2", :partial => "category_questions/question", :locals => { :q => @category_question,:cat_id =>@cat_id}

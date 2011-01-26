@@ -1,0 +1,9 @@
+<%= javascript_include_tag :defaults %>
+<%@my_interviews.each do |my_interview|%>
+  <%= link_to_remote my_interview.name, :url => { :controller => "invitations", :action => "get_invitations", :id => my_interview.id},
+    :update => { :success => "int_invitations_list", :failure => "error"}%>
+  <%= link_to_remote 'Invite', :url =>{ :controller => "invitations", :action => "invitations_form", :interview_id => my_interview.id},
+    :update => { :success => "invitations_form", :failure => "error"}%><br>
+<%end%>
+<div id="invitations_form"></div>
+<div id="int_invitations_list"></div>

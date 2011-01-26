@@ -1,0 +1,101 @@
+<div id="Company_view" style="margin: 0px;">
+  <div class="upper">
+      <h2>Instructions</h2>
+      <hr />
+      <div class="med">
+          Please make sure that your webcam and microphone are attached and installed properly.<br /><br />
+          For help with "Allow popup" please click <a class="hyper" href="http://www.macromedia.com/support/documentation/en/flashplayer/help/help05.html" target="_blank">here</a><br /><br />
+For Help with "Camera" please click <a class="hyper" href="http://www.macromedia.com/support/documentation/en/flashplayer/help/help04.html#117089" target="_blank">here</a><br /><br />
+For hep with "microphone" please click <a class="hyper" href="http://www.macromedia.com/support/documentation/en/flashplayer/help/help03.html" target="_blank">here</a><br /><br />
+<br />
+On the right you see a flash player, please record a video and play it back; make sure you are in the middle of the screen, there are no background noises,
+and there is ample light in the room.<br /><br />
+
+You will have 15 seconds before the timer starts for each question.<br /><br />
+
+Good Luck and please email your recruiter or us at <a class="hyper" href="mailto:support@hiringsimplified">support@hiringsimplified</a> if you encounter any problem.<br />
+
+        </div>
+    </div>
+
+
+  
+</div>
+<div style="float: left;margin-left: 15px;text-align: center;" >
+<script language="JavaScript" type="text/javascript">
+<!--
+// Version check for the Flash Player that has the ability to start Player Product Install (6.0r65)
+var hasProductInstall = DetectFlashVer(6, 0, 65);
+
+// Version check based upon the values defined in globals
+var hasRequestedVersion = DetectFlashVer(requiredMajorVersion, requiredMinorVersion, requiredRevision);
+
+if ( hasProductInstall && !hasRequestedVersion ) {
+	// DO NOT MODIFY THE FOLLOWING FOUR LINES
+	// Location visited after installation is complete if installation is required
+	var MMPlayerType = (isIE == true) ? "ActiveX" : "PlugIn";
+	var MMredirectURL = window.location;
+    document.title = document.title.slice(0, 47) + " - Flash Player Installation";
+    var MMdoctitle = document.title;
+
+	AC_FL_RunContent(
+		"src", "playerProductInstall",
+		"FlashVars", "MMredirectURL="+MMredirectURL+'&MMplayerType='+MMPlayerType+'&MMdoctitle='+MMdoctitle+"",
+		"width", "300",
+		"height", "300",
+		"align", "middle",
+		"id", "player",
+		"quality", "high",
+		"bgcolor", "#869ca7",
+		"name", "/images/player",
+		"allowScriptAccess","sameDomain",
+		"type", "application/x-shockwave-flash",
+		"pluginspage", "http://www.adobe.com/go/getflashplayer"
+	);
+} else if (hasRequestedVersion) {
+	// if we've detected an acceptable version
+	// embed the Flash Content SWF when all tests are passed
+	AC_FL_RunContent(
+			"src", "/images/player",
+			"width", "300",
+			"height", "300",
+			"align", "middle",
+			"id", "player",
+			"quality", "high",
+			"bgcolor", "#869ca7",
+			"name", "/images/player",
+                        "flashvars",'name=<%=current_user.id%>_test',
+			"allowScriptAccess","always",
+			"type", "application/x-shockwave-flash",
+			"pluginspage", "http://www.adobe.com/go/getflashplayer"
+	);
+  } else {  // flash is too old or we can't detect the plugin
+    var alternateContent = 'Alternate HTML content should be placed here. '
+  	+ 'This content requires the Adobe Flash Player. '
+   	+ '<a href=http://www.adobe.com/go/getflash/>Get Flash</a>';
+    document.write(alternateContent);  // insert non-flash content
+  }
+// -->
+</script>
+<noscript>
+  	<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+			id="player" width="300" height="300"
+			codebase="http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab">
+			<param name="movie" value="/images/player.swf" />
+			<param name="quality" value="high" />
+			<param name="bgcolor" value="#869ca7" />
+			<param name="allowScriptAccess" value="sameDomain" />
+			<embed src="/images/player.swf" quality="high" bgcolor="#869ca7"
+				width="300" height="300" name="player" align="middle"
+				play="true"
+				loop="false"
+				quality="high"
+				allowScriptAccess="always"
+				type="application/x-shockwave-flash"
+				pluginspage="http://www.adobe.com/go/getflashplayer">
+			</embed>
+	</object>
+</noscript>
+<br /><br />
+<div class="brown_button2" onclick="navigate('/answers/interview_area?int_id=<%=params[:int_id]%>&jp_id=<%=params[:jp_id]%>');" style="background-color: transparent;border: 0;">Begin Interview</div>
+</div>

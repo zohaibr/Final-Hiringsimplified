@@ -1,0 +1,22 @@
+<%random_password
+st_dt = @newpass
+ed_dt = @newpass +'end'
+%>
+<div class="prev_work_histories" style="padding:5px;">
+  <% fields_for_prev_work_history(prev_work_history) do |prev_work_history_form| %>
+    <div class="left_box">Organization: <%= prev_work_history_form.text_field :organization , :class => "bluex"%></div>
+    <div class="left_box">Start Date: <%= prev_work_history_form.text_field :start_date,:id=>st_dt, :class => "bluex"%></div>
+    <div class="left_box">End Date: <%= prev_work_history_form.text_field :end_date,:id=>ed_dt, :class => "bluex" %></div>
+    <div class="spacer"></div>
+
+    <div class="left_box">Job Title: <%= prev_work_history_form.text_field :job_title, :class => "bluex"%></div>
+    <div class="spacer"></div>
+    <div class="pink_button"><%= link_to_function "REMOVE", "$(this).up('.prev_work_histories').remove()" %></div>
+    <div class="spacer"></div>
+ <script>
+  attach("<%=st_dt%>");
+  attach("<%=ed_dt%>");
+</script>
+  <% end %>
+ 
+</div>

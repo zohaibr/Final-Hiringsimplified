@@ -1,0 +1,5 @@
+# TODO Operate on the page object
+page.visual_effect :highlight,"light_blue_box_"+params[:id]
+page.replace_html 'duration', @duration
+page.replace_html 'int_d_'+session[:current_interview], @duration
+

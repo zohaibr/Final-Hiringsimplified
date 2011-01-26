@@ -1,0 +1,9 @@
+# TODO Operate on the page object
+
+if(@flag == "true")
+
+  page.insert_html :top,  "jitem", :partial => "job_profiles/job", :locals => { :job_profile => @job_profile} 
+  
+else
+  page.replace_html :message, :text => "Not Saved"  
+end

@@ -1,0 +1,1 @@
+page.visual_effect(:drop_out, "job_item_"+params[:id])

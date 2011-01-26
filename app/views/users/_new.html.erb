@@ -1,0 +1,97 @@
+<div class="candidate_signup_box" id="candidate">
+   <h3>Sign up as a new user</h3>
+  <hr />
+
+<%= error_messages_for :user %>
+<% form_for :user, :url => users_path do |f| -%>
+<% @user.password = @user.password_confirmation = nil %>
+
+    
+<% if params[:c_id] %>
+<%= f.hidden_field :user_type, :value => "candidate" %>
+  <% end %>
+<div>
+  	<div class="left_box">
+		First name:<br />
+                <%= f.text_field :first_name,:class => "textbox" %>
+        </div>
+ </div>
+
+ <div>
+  	<div class="left_box">
+		Last name:<br />
+                <%= f.text_field :last_name,:class => "textbox" %>
+        </div>
+ </div>
+
+ <div class="spacer"></div>
+
+
+ <div>
+  	<div class="left_box">
+		Email address:<br />
+                <%= f.text_field :email,:class => "textbox" %>
+        </div>
+ </div>
+
+ <div>
+  	<div class="left_box">
+		Company name:<br />
+               <%= f.text_field :company_name,:class => "textbox" %>
+        </div>
+ </div>
+
+ <div class="spacer"></div>
+
+
+ <div>
+  	<div class="left_box">
+		Password:<br />
+                <%= f.password_field :password,:class => "textbox" %>
+        </div>
+ </div>
+
+ <div>
+  	<div class="left_box">
+		Confirm Password:<br />
+              <%= f.password_field :password_confirmation,:class => "textbox" %>
+        </div>
+ </div>
+
+ <div class="spacer"></div>
+
+
+ <div>
+  	<div class="left_box">
+		Country:<br />
+                <%= f.text_field :country,:class => "textbox" %>
+        </div>
+ </div>
+
+ <div>
+  	<div class="left_box">
+		State:<br />
+               <%= f.text_field :state,:class => "textbox" %>
+        </div>
+ </div>
+
+ <div>
+  	<div class="left_box">
+		City:<br />
+              <%= f.text_field :city,:class => "textbox" %>
+        </div>
+ </div>
+
+
+ <div class="spacer"></div>
+
+ <div class="spacer"></div>
+	<div class="right_box">
+        <%= submit_tag 'Sign up' %>
+        </div>
+	<div class="spacer"></div>
+
+<% end -%>
+</div>
+
+ 

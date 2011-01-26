@@ -1,0 +1,22 @@
+
+<%random_password%>
+
+<div class="edu_histories">
+  <% fields_for_education_history(education_history) do |education_history_form| %>
+
+  <div class="left_box">School: <%= education_history_form.text_field :school, :class => "bluex" %></div>
+  <div class="left_box">Date Attended: <%= education_history_form.text_field :date_attended,:id=>@newpass, :class => "bluex" %></div>
+  <div class="left_box">Degree: <%= education_history_form.text_field :degree, :class => "bluex" %></div>
+  <div class="spacer"></div>
+
+
+  <div class="left_box">Major: <%= education_history_form.text_field :major, :class => "bluex"%></div>
+  <div class="left_box">2nd Major: <%= education_history_form.text_field :second_major, :class => "bluex"%></div>
+  <div class="spacer"></div>
+      <div class="pink_button"><%= link_to_function "REMOVE", "$(this).up('.edu_histories').remove()" %></div>
+  <% end %>
+</div>
+<script>
+  attach("<%=@newpass%>");
+</script>
+<div class="spacer"></div>

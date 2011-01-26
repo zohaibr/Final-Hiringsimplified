@@ -1,0 +1,68 @@
+
+<script>
+  function get_invitation(id,int_id)
+  {
+    please_wait();
+    $.ajax({complete:function(request){stop_wait();},
+        data:'authenticity_token=' + encodeURIComponent('FI9rvJiu/2Oe3xjYaGdzj2KAsl/kDWPHrrtrAh8bfzE='),
+        error:function(request){$('#error').html(request.responseText);},
+        success:function(request){$('#job_details').html(request);},
+        type:'post',
+        url:'/job_profiles/get_job_details/'+id+'?int_id='+int_id});
+        return false;
+
+    //new Ajax.Updater({success:'job_details',failure:'error'}, '/job_profiles/get_job_details/'+id+'?int_id='+int_id, {asynchronous:true, evalScripts:true, parameters:'authenticity_token=' + encodeURIComponent('BKOB/3IqAE09qexSp9AqHKkAPGeXAdYnykCF47m0z+8=')}); return false;
+  }
+</script>
+<div class="blue_heading" style="text-align:left;margin-bottom: 15px;">Interview Invitations List</div>
+<div class="left_container">
+  <div id="Carousel5" class="carousel">
+    <div class="list_container">
+      <div class="bt2">
+        
+        <div class="button navButton previous"  onclick="ScrollBackward('c_int');"></div>
+      </div>
+
+
+      <div class="question_list_container">
+        <div class="items" id="c_int">
+          <%@invitations.each do |invitations|%>
+            <%get_interview invitations.interview_id%>
+            <% unless @interview.blank? %>
+             <%get_duration invitations.interview_id%>
+          <div class="question_container_default" title="<%=@interview.name%>" onclick="change_selected('c_int',<%=invitations.interview_id%>);get_invitation(<%=@interview.job_profile_id%>,<%=invitations.interview_id%>);" id="interview_item_<%=invitations.interview_id%>">
+
+            <div class="q_text_default" style="margin-top: 12px;"><b><%= truncate(@interview.name,:length=>25)%>
+                </b><div class="q_text_default_small"></div>
+              </div>
+              <div class="gol_gr"><i>Time <b><%=@duration%></b></i></div>
+              <div class="key caption"></div>
+              <div class="email"></div>
+            </div>
+            <% else %>
+              No Records found.
+            <% end %>
+          <%end%>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="bt2">
+        <div class="button navButton next" onclick="ScrollForward('c_int');"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="interviews_list" style="float:left;">
+
+</div>
+
+<div id="job_details" ></div>
+

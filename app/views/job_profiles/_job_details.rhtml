@@ -1,0 +1,50 @@
+
+
+<div id="Company_view">
+  <div>
+    <%#= @date%>
+    <%get_recruiter_info @job_profiles.user_id%>
+    <div class="upper">
+      <div class="small_para">
+      <p>
+      <b>Company Name: </b><%=@job_profiles.company%><br />
+      </p>
+       <p>
+       <b>Location: </b><%=@recruiter.city%>, <%=@recruiter.country%><br />
+       </p>
+       <p>
+         <b>Job Title: </b><%=@job_profiles.title%>
+       </p>
+        <p>
+          <b>Company Description:</b><br />
+          <%=@job_profiles.company_description%>
+        </p>
+        <p>
+          <b>Job Description:</b><br />
+          <%=@job_profiles.description%>
+        </p>
+
+          
+         
+      </div>
+    </div>
+    <% if @date <= 10%>
+
+        <%check_answer params[:int_id]%>
+        <% if @questions.count == @answers.count %>
+    <b>Interview Already conducted</b>
+        <% else %>
+          <% if @answer.blank? %>
+          <div class="brown_button" onclick="navigate('/interviews/record_test?int_id=<%=params[:int_id]%>&jp_id=<%=@job_profiles.id%>');" style="background-color: transparent;border: 0;">Accept</div>
+          <% else %>
+            <div class="brown_button" onclick="navigate('/answers/interview_area?from=resume&int_id=<%=params[:int_id]%>&jp_id=<%=@job_profiles.id%>&q_id=<%=@answer.questionare_id%>');" style="background-color: transparent;border: 0;">Resume</div>
+          <% end %>
+          <div class="brown_button" style="background-color: transparent;border: 0;">
+            Decline
+          </div>
+        <% end %>
+    <% else %>
+            <b>Interview expired</b>
+    <% end %>
+  </div>
+</div>

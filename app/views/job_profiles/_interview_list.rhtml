@@ -1,0 +1,6 @@
+<div class="items" id="interview_items" style="z-index:70;position:relative;margin-top: 5px;" >
+<% interviews_list.each do |interview| %>
+  <%get_duration interview.id%>
+  <%=render :partial => "interviews/interview", :locals => { :interview => interview}%>
+<% end %>
+</div>

@@ -1,0 +1,6 @@
+<div class="question_box_question">
+                          <% user = User.find(comment.user_id) %>
+				<div class="ques_heading"><span class="blue_heading_medium"><%=user.first_name %>:</span></div>
+                                <div class="brown_button" style="float: right;font-size: 8pt;">view ratings</div>
+			</div>
+  <div class="flexcroll"><%=comment.comment %></div>

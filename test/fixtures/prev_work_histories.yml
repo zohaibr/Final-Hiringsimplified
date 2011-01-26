@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  candidate_id: 1
+  organisation: MyString
+  start_date: 2010-09-04
+  end_date: 2010-09-04
+  job_title: MyString
+
+two:
+  candidate_id: 1
+  organisation: MyString
+  start_date: 2010-09-04
+  end_date: 2010-09-04
+  job_title: MyString

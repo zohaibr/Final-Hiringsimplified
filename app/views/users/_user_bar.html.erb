@@ -1,0 +1,41 @@
+<div style="float: right;height: 40px;">
+<% if logged_in? -%>
+  <div style="margin-top: 10px;">
+  <div style="float: left;padding-top: 5px;padding-right: 5px;font-weight: bold;font-size: 8pt;" class="white">
+    <%=session[:user_name]%><%if current_user.parent_id == nil%><a href="/users/profile" class="grey_link" title="click to edit your account settings">My Account</a><%end%><%= link_to "Sign Out", logout_path, { :class=>"grey_link" }%>
+  </div>
+    
+  </div>
+<% else -%>
+  <% form_tag session_path do -%>
+
+
+
+
+    <% if params[:frm] == "inv" %>
+      <%flash[:user_type] = "candidate"%>
+    <% else %>
+  <div style="float: left;text-align: left;">
+      <div class="white" style="margin-left: 4px;">username</div>
+      <div class="button_bg">
+        <%= text_field_tag 'login', @login,:class=>"login_input",:value =>"",:onfocus =>"",:onblur => "" %>
+      </div>
+  </div>
+  <div style="float: left;text-align: left;">
+    <div class="white" style="margin-left: 4px;">password</div>
+        <div class="button_bg">
+          <%= password_field_tag 'password', nil,:class=>"login_input",:value => "", :id =>"password",:style=>'font-size:10pt;' %>
+        </div>
+  </div>
+  <div style="float: left;text-align: left;">
+    <div style="margin-left: 5px;"><a href="/passwords/new" class="while_link" >Forgot your password ?</a></div>
+      <%= submit_tag '', :class=>"login_button" %>
+  </div>
+  
+      
+    <% end %>
+
+
+  <% end -%>
+<% end -%>
+</div>

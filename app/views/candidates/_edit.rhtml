@@ -1,0 +1,7 @@
+
+<% form_for :candidate,candidate, :url=>{:controller => "candidates/update/#{candidate.id}"} do |f| %>
+  
+  <%= render :partial => 'candidates/fields', :locals => { :f => f,:candidate=>candidate } %>
+  <p><div class="right_box"><%= submit_tag "Update",:class=>"silver_button_blue" %></div></p>
+<div class="spacer"></div>
+<% end %>
