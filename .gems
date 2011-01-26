@@ -1,0 +1,19 @@
+rails --version =2.3.8
+aws-s3 --version 0.6.2 --ignore-dependencies
+builder --version 2.1.2 --ignore-dependencies
+cgi_multipart_eof_fix --version 2.5.0 --ignore-dependencies
+configuration --version 1.1.0 --ignore-dependencies
+gem_plugin --version 0.2.3 --ignore-dependencies
+heroku --version 1.11.0 --ignore-dependencies
+json --version 1.4.6 --ignore-dependencies
+json_pure --version 1.4.6 --ignore-dependencies
+launchy --version 0.3.7 --ignore-dependencies
+mime-types --version 1.16 --ignore-dependencies
+mysql --version 2.8.1 --ignore-dependencies
+rake --version 0.8.7 --ignore-dependencies
+rest-client --version 1.6.1 --ignore-dependencies
+xml-simple --version 1.0.12 --ignore-dependencies
+sqlite3-ruby --version 1.2.4 --ignore-dependencies
+gdocs4ruby
+gemcutter
+declarative_authorization
