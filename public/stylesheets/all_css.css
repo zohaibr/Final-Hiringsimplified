@@ -275,7 +275,7 @@ float:right;
 
 .button_bg
 {
-width:146px;
+width:250px;
 height:22px;
  border: 2px solid #03204C;
 -webkit-border-radius: 7px;
@@ -284,7 +284,7 @@ background-color: #537DBD;
 font-style: italic;
 margin-right:5px;
 text-align:left;
-
+margin-bottom: 10px;
 
 }
 
@@ -780,17 +780,16 @@ background-repeat:repeat-x;
 .login_input
 {
 font-size:10pt;
-text-align:center;
-font-family: serif;
+
 width:85%;
 margin-top:2px;
 background-color:#537dbd;
 border:none;
 color:#D2E0ED;
-font-style: italic;
+
 margin-left: 10px;
 text-align:left;
-font-weight: bold;
+
 
 }
 
@@ -3027,13 +3026,9 @@ float:right;
 margin-right:25px;
 }
 
-.candidate_signup_box input
-{
-border:1.5px solid #9BA1AA;
--webkit-border-radius:3px;
--moz-border-radius:3px;
-padding: 5px;
-}
+
+
+
 
 .candidate_signup_box textarea
 {
@@ -4965,6 +4960,18 @@ background-color: transparent;
     padding: 5px;
     width: 210px;
 
+}
+
+.lg
+{
+    clear: both;
+    border:2px solid #3764af;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    padding: 5px;
+    width: 210px;
+
+margin-bottom: 10px;
 }
 .bluex
 {
@@ -7473,4 +7480,8 @@ h3 {
 
     color: #000000;
 
-    } 
+    }
+
+.button {
+    border: 0;
+}

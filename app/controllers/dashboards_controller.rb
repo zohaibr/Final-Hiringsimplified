@@ -10,13 +10,13 @@ class DashboardsController < ApplicationController
       #@interviews = Interview.find(:all,:conditions => ["user_id = ? or user_id = ?", current_user.id, current_user.parent_id],:order =>"created_at DESC")
     end
 
-    @new_users = User.find(:all,:conditions => ["parent_id = ?",current_user.id],:order =>"created_at DESC" ,:limit=>"5")
+    @new_users = User.find(:all,:conditions => ["parent_id = ?",current_user.id],:order =>"created_at DESC" ,:limit=>"10")
 
-    @interviews_feeds = Interview.find(:all,:conditions => ["user_id = ?",current_user.id],:order =>"created_at DESC" ,:limit=>"5")
+    @interviews_feeds = Interview.find(:all,:conditions => ["user_id = ?",current_user.id],:order =>"created_at DESC" ,:limit=>"10")
 
-    @invitations = Invitation.find(:all,:conditions => ["user_id = ?",current_user.id],:order =>"created_at DESC" ,:limit=>"5")
+    @invitations = Invitation.find(:all,:conditions => ["user_id = ?",current_user.id],:order =>"created_at DESC" ,:limit=>"10")
 
-    @job_feeds = JobProfile.find(:all,:conditions => ["user_id = ?",current_user.id],:order =>"created_at DESC" ,:limit=>"5")
+   # @job_feeds = JobProfile.find(:all,:conditions => ["user_id = ?",current_user.id],:order =>"created_at DESC" ,:limit=>"10")
 
     @events = Array.new
 
@@ -32,9 +32,9 @@ class DashboardsController < ApplicationController
       @events.push(m)
     end
 
-    @job_feeds.each do |m|
-      @events.push(m)
-    end
+#    @job_feeds.each do |m|
+#      @events.push(m)
+#    end
 
     @events = @events.sort_by { |evt|evt.created_at  }.reverse!
 

@@ -10,9 +10,13 @@ color = ""
 
 if event.class.name=="Invitation"
     interview = Interview.find(event.interview_id)
-    subject = "Invitation for <span class='dark_brown_alert'>"+interview.name+"</span> sent to"
+    if event.status == false
+      subject = "Invitation for <span class='dark_brown_alert'>"+interview.name+"</span> sent to"
+    else
+      subject = ""
+    end
     msg = event.candidate_email
-    body = "on"
+    body = "already completed the Interview <b>"+interview.name+"</b> on"
     color = "brown"
 elsif event.class.name=="User"
   subject = "New User "

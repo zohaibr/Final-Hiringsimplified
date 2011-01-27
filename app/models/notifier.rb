@@ -45,4 +45,8 @@ class Notifier < ActionMailer::Base
     @body[:user] = user
   end
 
+  def interview_completed(interview_id,candidate_id)
+
+  end
+
 end
