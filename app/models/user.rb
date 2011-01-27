@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   validates_length_of       :name,     :maximum => 100
 
   validates_presence_of     :email
+  validates_inclusion_of    :agree, :in => [true] ,:message => "You should agree to the terms"
   validates_length_of       :email,    :within => 6..100 #r@a.wk
   validates_uniqueness_of   :email
   validates_format_of       :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message
@@ -36,7 +37,7 @@ class User < ActiveRecord::Base
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
   attr_accessible :login, :email, :name, :company_name, :password, :password_confirmation, :first_name,
-    :last_name, :city, :state, :country, :user_type, :parent_id
+    :last_name, :city, :state, :country, :user_type, :parent_id,:agree
 
 
 

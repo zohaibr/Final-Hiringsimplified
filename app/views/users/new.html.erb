@@ -67,7 +67,8 @@
       <div class="left_box"><%= f.label :country %>
         <%= f.text_field :country, :class => "required" %></div>
       <div class="left_box" style="width: 208px;font-size: 13px;">
-       <div class="left" style="text-align: left;width: 240px;margin-top: 20px;"><input type="checkbox" value="1" name="agree" id="agree" />
+       <div class="left" style="text-align: left;width: 240px;margin-top: 20px;">
+         <%= f.check_box :agree%>
         I agree to the <a href="/users/static_page/1?name=terms" style="color: #a52a2a;font-weight: bold;">Terms & Conditions</a>
       </div></div>
     <% end %>

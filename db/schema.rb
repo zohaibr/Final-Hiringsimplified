@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101216110249) do
+ActiveRecord::Schema.define(:version => 20110127072925) do
 
   create_table "answers", :force => true do |t|
     t.integer  "candidate_id"
@@ -26,10 +26,10 @@ ActiveRecord::Schema.define(:version => 20101216110249) do
 
   create_table "attachments", :force => true do |t|
     t.integer  "parent_id"
-    t.string   "content_type",   :null => false
-    t.string   "filename",       :null => false
+    t.string   "content_type",   :default => "", :null => false
+    t.string   "filename",       :default => "", :null => false
     t.string   "thumbnail"
-    t.integer  "size",           :null => false
+    t.integer  "size",                           :null => false
     t.integer  "width"
     t.integer  "height"
     t.datetime "created_at"
@@ -219,6 +219,7 @@ ActiveRecord::Schema.define(:version => 20101216110249) do
     t.string   "plain_password"
     t.integer  "parent_id"
     t.string   "gdoc_id"
+    t.boolean  "agree"
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
