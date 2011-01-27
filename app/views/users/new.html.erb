@@ -27,6 +27,12 @@
         <%= f.password_field :password_confirmation, :class => "required"%>
       </div>
       <div class="spacer"></div>
+       <div class="left_box" style="width: 208px;font-size: 13px;">
+       <div class="left" style="text-align: left;width: 240px;margin-top: 20px;">
+         <%= f.check_box :agree%>
+        I agree to the <a href="/users/static_page/1?name=terms" style="color: #a52a2a;font-weight: bold;">Terms & Conditions</a>
+      </div></div>
+      <div class="spacer"></div>
     <% else %>
       <%= hidden_field :user, :user_type, :value => "recruiter" %>
       <h3>Sign up as a new user</h3>
