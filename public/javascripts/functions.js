@@ -43,6 +43,7 @@
   function MoveBackward_H(id,x)
   {
 
+  
     new Effect.Move(id, { x: x, y: 0, mode: 'absolute',duration: 0.3 });
   }
 
@@ -607,7 +608,7 @@ function open_dg(fetch,width,height)
 			'height'        	: height,
 			'transitionIn'		: 'elastic',
 			'transitionOut'		: 'elastic',
-                        'scrolling'             : 'yes'
+                        'scrolling'             : 'no'
 		}
 	);
 }

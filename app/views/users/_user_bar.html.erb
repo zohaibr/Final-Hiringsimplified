@@ -7,6 +7,9 @@
     
   </div>
 <% else -%>
+  <div style="display: none;">
+    <div style="text-align: left;" id="login">
+      <div style="padding: 20px;">
   <% form_tag session_path do -%>
 
 
@@ -15,23 +18,27 @@
     <% if params[:frm] == "inv" %>
       <%flash[:user_type] = "candidate"%>
     <% else %>
+ 
+      <div class="grey_text" style="text-align: left;color: #3764af;" >username : <br />
+      
+        <%= text_field_tag 'login', @login,:class=>"lg",:value =>"",:onfocus =>"",:onblur => "" %>
+      <br />
+    password:<br />
+        
+          <%= password_field_tag 'password', nil,:class=>"lg",:value => "", :id =>"password",:style=>'font-size:10pt;' %>
+        <br />
+  
   <div style="float: left;text-align: left;">
-      <div class="white" style="margin-left: 4px;">username</div>
-      <div class="button_bg">
-        <%= text_field_tag 'login', @login,:class=>"login_input",:value =>"",:onfocus =>"",:onblur => "" %>
-      </div>
-  </div>
-  <div style="float: left;text-align: left;">
-    <div class="white" style="margin-left: 4px;">password</div>
-        <div class="button_bg">
-          <%= password_field_tag 'password', nil,:class=>"login_input",:value => "", :id =>"password",:style=>'font-size:10pt;' %>
-        </div>
-  </div>
-  <div style="float: left;text-align: left;">
-    <div style="margin-left: 5px;"><a href="/passwords/new" class="while_link" >Forgot your password ?</a></div>
+    
       <%= submit_tag '', :class=>"login_button" %>
   </div>
-  
+      </div>
+        <div class="spacer"></div>
+</div>
+      </div>
+ </div>
+  <div style="margin-left: 5px;"><a href="/passwords/new" class="while_link" >Forgot your password ?</a></div>
+  <div class="login_button" onclick="open_dg('login', 'auto', 'auto')"></div>
       
     <% end %>
 

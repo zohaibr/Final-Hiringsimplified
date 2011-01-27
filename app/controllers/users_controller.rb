@@ -241,7 +241,13 @@ class UsersController < ApplicationController
   end
 
   def view_time
-    pckg = UserPackage.find(:first, :conditions => ["user_id = ? OR user_id = ?", current_user.id, current_user.parent_id])
+    uid = 0
+    unless current_user.parent_id.blank?
+      uid = current_user.parent_id
+    else
+      uid = current_user.id
+    end
+    pckg = UserPackage.find(:first, :conditions => ["user_id = ?", uid])
     @time_left = pckg.time_left
     render :layout=>false
   end
