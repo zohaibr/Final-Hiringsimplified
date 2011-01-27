@@ -625,7 +625,7 @@ function open_iframe(fetch,width,height)
 			'transitionIn'		: 'elastic',
                         'href'                  : fetch,
 			'transitionOut'		: 'elastic',
-                        'scrolling'             : 'yes'
+                        'scrolling'             : 'no'
 		}
 	);
 
