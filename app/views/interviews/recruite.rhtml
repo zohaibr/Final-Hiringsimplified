@@ -34,6 +34,24 @@
 
   }
 
+  function disable_comment()
+  {
+    //alert('adfadf');
+    //$("#comment_comment").attr("disabled","");
+    $("#comment_comment").attr("disabled", "disabled");
+    $("#save").hide();
+    $("#edit_comment").show();
+
+  }
+
+  function enable_comment()
+  {
+    //$("#comment_comment").attr("disabled", "disabled");
+     $("#save").show();
+     $("#edit_comment").hide();
+     $("#comment_comment").removeAttr("disabled");
+  }
+
 </script>
 
 <script>
@@ -431,15 +449,28 @@ function play_video(url,text,index,cid,qid,notepad,sketchpad,thumb)
       </div>
 
 
-      <% form_remote_for @comment, :url => { :controller => "comments",:action => "update",:id => @comment.id } do  %>
+
+      <% form_remote_for @comment, :url => { :controller => "comments",:action => "update",:id => @comment.id },:complete=>"disable_comment();" do  %>
         <div class="comment_box">
 
-
-          <textarea class="comment_text_area" name="comment[comment]" id="comment_comment"><%=@comment.comment unless @comment.comment.blank?%></textarea>
+          <%
+             status = ''
+             display = 'none'
+             s_display = 'block'
+             unless @comment.comment.blank?
+             status = 'disabled'
+             display = 'block'
+             s_display = 'none'
+             else
+               status = ''
+             end
+          %>
+          <textarea class="comment_text_area" name="comment[comment]" id="comment_comment" <%=status%> ><%=@comment.comment unless @comment.comment.blank?%></textarea>
 
         </div>
 
-        <div class="comment_box_save"><%= submit_tag '',:class=>"save_button" %></div>
+      <div class="comment_box_save" id="save" style="display: <%=s_display%>;"><%= submit_tag '',:class=>"save_button" %></div>
+      <div id="edit_comment" class="edit_button" onclick="enable_comment();" style="display: <%=display%>;margin: 5px;"></div>
       <% end %>
     </div>
 
