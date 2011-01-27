@@ -1844,13 +1844,15 @@ cursor:pointer;
 float:right;
 }
 
-.save_button:hover
+.edit_button
 {
-width:103px;
+border:0;
+width:106px;
 height:28px;
-background-image:url(../images/save_button_s.jpg);
+background-image:url(../images/edit_comm.jpg);
 background-repeat:no-repeat;
 cursor:pointer;
+float:right;
 }
 
 .comment_box_save
