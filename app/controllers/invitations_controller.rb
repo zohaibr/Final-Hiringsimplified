@@ -90,7 +90,7 @@ class InvitationsController < ApplicationController
     pckg = UserPackage.find(:first, :conditions => ["user_id = ? OR user_id = ?", current_user.id, current_user.parent_id])
 
      
-    @all_invitations = Invitation.find(:all,:conditions => ["user_id = ? AND status = 0",current_user.id])
+    @all_invitations = Invitation.find(:all,:conditions => ["user_id = ? AND status = false",current_user.id])
     dur = 0.0
 
     @all_invitations.each do |invitation|
@@ -144,7 +144,7 @@ class InvitationsController < ApplicationController
 
     pckg = UserPackage.find(:first, :conditions => ["user_id = ? OR user_id = ?", current_user.id, current_user.parent_id])
 
-    @all_invitations = Invitation.find(:all,:conditions => ["user_id = ? AND status = 0",current_user.id])
+    @all_invitations = Invitation.find(:all,:conditions => ["user_id = ? AND status = false",current_user.id])
     dur = 0.0
 
     @all_invitations.each do |invitation|
@@ -194,7 +194,7 @@ class InvitationsController < ApplicationController
     end
 
 
-    @all_invitations = Invitation.find(:all,:conditions => ["user_id = ? AND status = 0",current_user.id])
+    @all_invitations = Invitation.find(:all,:conditions => ["user_id = ? AND status = false",current_user.id])
     dur = 0.0
 
     @all_invitations.each do |invitation|
