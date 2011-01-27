@@ -26,6 +26,81 @@ var futura_bt = {
       }
     });
 
+    sIFR.replace(rockwell, {
+      selector: 'div.grey_alert'
+      ,css: {
+        '.sIFR-root': { 'color': '#454545','background-color': '#DCDCDC' ,'font-size':'13px' }
+
+      }
+    });
+
+    sIFR.replace(rockwell, {
+      selector: 'div.blue_alert'
+      ,css: {
+        '.sIFR-root': { 'color': '#274a7e','background-color': '#DCDCDC' ,'font-size':'13px' }
+
+      }
+    });
+
+
+     sIFR.replace(rockwell, {
+      selector: 'div.grey_text'
+      ,css: {
+        '.sIFR-root': { 'color': '#000000','background-color': '#DCDCDC' ,'font-size':'13px','text-align':'right','cursor':'pointer'}
+
+      }
+    });
+    sIFR.replace(rockwell, {
+      selector: 'div.rockwell_tx'
+      ,css: {
+        '.sIFR-root': { 'color': '#000000','background-color': '#DCDCDC' ,'font-size':'9px'}
+
+      }
+    });
+
+
+
+
+
+   sIFR.replace(rockwell, {
+      selector: 'span.dark_grey_text'
+      ,css: {
+        '.sIFR-root': { 'color': '#000000','background-color': '#DCDCDC' ,'font-size':'13px','font-weight':'bold' }
+
+      }
+    });
+
+
+
+
+
+    sIFR.replace(rockwell, {
+      selector: 'div.brown_alert'
+      ,css: {
+        '.sIFR-root': { 'color': '#a7551d','background-color': '#DCDCDC' ,'font-size':'13px' }
+
+      }
+    });
+
+    sIFR.replace(rockwell, {
+      selector: 'div.q_text_default'
+      ,css: {
+        '.sIFR-root': { 'color': '#a7551d','background-color': '#DCDCDC' ,'font-size':'13px' }
+
+      }
+    });
+
+
+
+     sIFR.replace(rockwell, {
+      selector: 'div.baker'
+      ,css: {
+        '.sIFR-root': { 'background-color': '#DCDCDC' ,'font-size':'16px' }
+        ,transparent :true
+        ,wmode:'transparent'
+      }
+    });
+
      sIFR.replace(rockwell, {
       selector: 'div.g_black_bt'
       ,css: {
@@ -60,13 +135,37 @@ var futura_bt = {
         '.sIFR-root': {'color': '#a52a2a', 'background-color': '#DCDCDC' ,'font-size': '32px','line-height': '50px' }
       }
     });
-    
+
     sIFR.replace(futura_bt, {
       selector: 'div.futura_heading'
       ,css: {
         '.sIFR-root': {'color': '#1c3f75', 'background-color': '#DCDCDC' ,'font-size': '21px' }
       }
     });
+
+     sIFR.replace(futura_bt, {
+      selector: 'div.heading'
+      ,css: {
+        '.sIFR-root': {'color': '#1c3f75', 'background-color': '#DCDCDC' ,'font-size': '21px' }
+      }
+    });
+
+     sIFR.replace(futura_bt, {
+      selector: 'div.blue_heading'
+      ,css: {
+        '.sIFR-root': {'color': '#4c6b99', 'background-color': '#DCDCDC' ,'font-size': '18px' }
+      }
+    });
+
+
+      sIFR.replace(futura_bt, {
+      selector: 'div.job'
+      ,css: {
+        '.sIFR-root': {'color': '#4c6b99', 'background-color': '#DCDCDC' ,'font-size': '15px','cursor':'pointer' }
+      }
+    });
+
+
 
      sIFR.replace(rockwell, {
       selector: 'h2'

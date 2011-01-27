@@ -606,7 +606,8 @@ function open_dg(fetch,width,height)
 			'width'         	: width,
 			'height'        	: height,
 			'transitionIn'		: 'elastic',
-			'transitionOut'		: 'elastic'
+			'transitionOut'		: 'elastic',
+                        'scrolling'             : 'yes'
 		}
 	);
 }
@@ -624,7 +625,7 @@ function open_iframe(fetch,width,height)
 			'transitionIn'		: 'elastic',
                         'href'                  : fetch,
 			'transitionOut'		: 'elastic',
-                        'scrolling'             : 'no'
+                        'scrolling'             : 'yes'
 		}
 	);
 
