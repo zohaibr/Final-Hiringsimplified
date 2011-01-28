@@ -185,7 +185,7 @@ var futura_bt = {
       sIFR.replace(rockwell, {
       selector: 'h4'
       ,css: {
-        '.sIFR-root': { 'background-color': '#DCDCDC' ,'font-size':'13px','font-weight':'bold','text-align': 'left' }
+        '.sIFR-root': { 'background-color': '#DCDCDC','color':'#ff0000' ,'font-size':'13px','font-weight':'bold','text-align': 'left' }
       }
     });
 
