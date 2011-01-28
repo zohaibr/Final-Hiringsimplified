@@ -14,17 +14,17 @@
          <%get_ints job.id%>
           
            
-
-     <div class="blue_buttonx" title="<%=interview.name%>" id="int_<%=interview.id%>" style="text-align: right;" >
+    <div class="blue_buttonx" title="<%=interview.name%>" id="int_<%=interview.id%>" style="text-align: right;" >
+     
                   <i>Created at: </i>
                   <b><%=job.created_at.strftime("%m/%d/%Y")%></b>
-            </div> <br />
+             <br />
 
-    <div class="blue_buttonx" title="<%=interview.name%>" id="int_<%=interview.id%>" style="text-align: right;" >
+   
                   <i>Duration: </i>
                   <b><%=@duration%></b>
-            </div> <br />
-          <div class="blue_buttonx" title="<%=interview.name%>" id="int_<%=interview.id%>" style="text-align: right;" >
+    <br />
+   
                   <i>Candidates Invited: </i>
                   <% unless invitations.blank? %>
                     <b><%=invitations%></b>
@@ -32,11 +32,9 @@
             </div>
               <div class="spacer"></div>
             
-              
+ </div>
       </div>
-   <div class="key caption"></div>
-   <div class="email"></div>
-  </div>
+
 
 
 <% end %>

@@ -19,26 +19,13 @@
       <%flash[:user_type] = "candidate"%>
     <% else %>
  
-      <div class="grey_text" style="text-align: left;color: #3764af;" >username : <br />
-      
-        <%= text_field_tag 'login', @login,:class=>"lg",:value =>"",:onfocus =>"",:onblur => "" %>
-      <br />
-    password:<br />
-        
-          <%= password_field_tag 'password', nil,:class=>"lg",:value => "", :id =>"password",:style=>'font-size:10pt;' %>
-        <br />
-  
-  <div style="float: left;text-align: left;">
-    
-      <%= submit_tag '', :class=>"login_button" %>
-  </div>
-      </div>
+
         <div class="spacer"></div>
 </div>
       </div>
  </div>
-  <div style="margin-left: 5px;"><a href="/passwords/new" class="while_link" >Forgot your password ?</a></div>
-  <div class="login_button" onclick="open_dg('login', 'auto', 'auto')"></div>
+  <div style="margin-left: 5px;display: none;"><a href="/passwords/new" class="while_link" >Forgot your password ?</a></div>
+  <a href="/direct_login" class="blue_button" style="margin-top: 10px;">SIGN IN</a>
       
     <% end %>
 

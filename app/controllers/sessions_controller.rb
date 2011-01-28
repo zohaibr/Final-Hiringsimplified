@@ -43,7 +43,7 @@ class SessionsController < ApplicationController
       end
       flash[:notice] = "Logged in successfully"
     else
-      redirect_to :action => 'direct_login'
+      redirect_back_or_default("/direct_login/?atempt=fail")
       note_failed_signin
       @login       = params[:login]
       @remember_me = params[:remember_me]

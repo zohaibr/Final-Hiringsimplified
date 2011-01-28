@@ -104,6 +104,7 @@
   function get_questionare(id,title,published,duration)
   {
     // alert(duration);
+    
     please_wait();
    
     document.getElementById('questionare').innerHTML ="";
@@ -192,6 +193,36 @@
 
   function publish_interview(id,name,duration)
   {
+
+     $('#msg').text('This interview will not be editable.');
+     $( "#dialog-confirm" ).dialog({
+			resizable: false,
+			height:'auto',
+                        width:'auto',
+                        title:'Publish Interview',
+                        draggable:false,
+			modal: true,
+			buttons: {
+				"OK": function() {
+                                  document.getElementById('edit_int'+id).innerHTML ="";
+                                  document.getElementById('edit_int'+id).style.display ="none";
+                                  $( this ).dialog( "close" );
+
+                                            $.ajax({complete:function(request){get_questionare(id,name,true,duration);},
+                                            data:'authenticity_token=' + encodeURIComponent('FI9rvJiu/2Oe3xjYaGdzj2KAsl/kDWPHrrtrAh8bfzE='),
+                                            error:function(request){$('#error').html(request.responseText);},
+                                            success:function(request){$('#questionare').html(request);},
+                                            type:'post',
+                                            url:'/interviews/publish_interview/'+id});
+                                            return false;
+				},
+				Cancel: function() {
+					$( this ).dialog( "close" );
+				}
+			}
+		});
+
+/*
     if (confirm('This interview will not be editable.')) {
     document.getElementById('edit_int'+id).innerHTML ="";
     document.getElementById('edit_int'+id).style.display =" none";
@@ -207,7 +238,7 @@
      //new Ajax.Updater({success:'questionare',failure:'error'}, '/interviews/publish_interview/'+id, {asynchronous:true, evalScripts:true,onComplete:function(request){get_questionare(id,name,true,duration);}}); return false;
     }; return false;
     
-
+*/
     
 
   }
@@ -236,6 +267,37 @@
   function delete_interview(id)
   {
     donothing = "yes";
+stop_wait();
+
+    $('#msg').text('This will also Delete Questionarre for this interview ?.');
+     $( "#dialog-confirm" ).dialog({
+			resizable: false,
+			height:'auto',
+                        width:'auto',
+                        title:'Delete Interview',
+                        draggable:false,
+			modal: true,
+			buttons: {
+				"OK": function() {
+                                
+                                  $( this ).dialog( "close" );
+
+                                           $.ajax({
+                                              data:'authenticity_token=' + encodeURIComponent('FI9rvJiu/2Oe3xjYaGdzj2KAsl/kDWPHrrtrAh8bfzE='),
+                                              error:function(request){$('#error').html(request.responseText);},
+                                              type:'post',
+                                              url:'/interviews/delete/'+id});
+                                              return false;
+				},
+				Cancel: function() {
+					$( this ).dialog( "close" );
+                                        stop_wait();
+				}
+			}
+		});
+
+/*
+
     if (confirm('This will also Delete Questionarre for this interview ?')) {
       $.ajax({
         data:'authenticity_token=' + encodeURIComponent('FI9rvJiu/2Oe3xjYaGdzj2KAsl/kDWPHrrtrAh8bfzE='),
@@ -246,7 +308,7 @@
       
       //new Ajax.Request('/interviews/delete/'+id, {asynchronous:true, evalScripts:true});
     }; return false;
-
+*/
   }
 
   function create_interview(id)
@@ -293,6 +355,38 @@
   {
     donothing = "yes";
     stop_wait();
+
+
+    $('#msg').text('This will also delete the questionnare of this interview ?');
+     $( "#dialog-confirm" ).dialog({
+			resizable: false,
+			height:'auto',
+                        width:'auto',
+                        title:'Delete Interview',
+                        draggable:false,
+			modal: true,
+			buttons: {
+				"OK": function() {
+                                 
+                                  $( this ).dialog( "close" );
+
+                                         stop_wait();
+                                          $.ajax({complete:function(request){clear_interviews();stop_wait();},
+                                            data:'authenticity_token=' + encodeURIComponent('FI9rvJiu/2Oe3xjYaGdzj2KAsl/kDWPHrrtrAh8bfzE='),
+                                            error:function(request){$('#error').html(request.responseText);},
+                                            type:'post',
+                                            url:'/job_profiles/delete/'+id});
+				},
+				Cancel: function() {
+					$( this ).dialog( "close" );
+                                        stop_wait();
+				}
+			}
+		});
+
+
+
+  /*
     if (confirm('This will also delete the questionnare of this interview ?')) 
     {
       stop_wait();
@@ -305,6 +399,7 @@
       //new Ajax.Request('/job_profiles/delete/'+id, {asynchronous:true, evalScripts:true, onComplete:function(request){clear_interviews();}});
 
      }; return false;
+    */
     }
 
 </script>
@@ -340,8 +435,8 @@ function restrictCharacters(myfield, e, restrictionType) {
 
 function show_upload(hide_me,show_me)
 {
-  document.getElementById(hide_me).style.display =" none";
-  document.getElementById(show_me).style.display =" block";
+  document.getElementById(hide_me).style.display ="none";
+  document.getElementById(show_me).style.display ="block";
   
 }
 
@@ -350,12 +445,12 @@ function show_upload(hide_me,show_me)
     
     if(document.getElementById(ch_box).checked)
       {
-        document.getElementById(show_me).style.display = " block";
+        document.getElementById(show_me).style.display = "block";
 
       }
     else
       {
-        document.getElementById(show_me).style.display = " none";
+        document.getElementById(show_me).style.display = "none";
       }
   }
 </script>
@@ -503,4 +598,13 @@ function show_upload(hide_me,show_me)
 
 <div id="question_bank" ></div>
 <div class="spacer"></div>
+
+<div style="display: none;">
+
+  <div id="dialog-confirm" title="">
+	<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
+          <span id="msg">These items will be permanently deleted and cannot be recovered. Are you sure?</span></p>
+</div>
+
+</div>
 
