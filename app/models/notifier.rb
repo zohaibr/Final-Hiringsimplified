@@ -35,6 +35,23 @@ class Notifier < ActionMailer::Base
     content_type "text/html"
   end
 
+
+   def interview_completed(interview_id,candidate_id)
+    interview = Interview.find interview_id
+    user = User.find interview.user_id
+    candidate = Candidate.find_by_user_id candidate_id
+
+    @recipients  = "#{user.email}"
+    @from        = "Support" "<noreply@hiringsimplified.com>"
+    @subject     = "#{interview.name} Interview completed."
+    @sent_on     = Time.now
+    @body[:candidate_name] = "#{candidate.first_name} #{candidate.last_name}"
+    @body[:interview_id] = "#{interview_id}"
+    @body[:user] = "#{user.first_name} #{user.last_name}"
+    @body[:candidate_id] = "#{candidate_id}"
+
+  end
+
   protected
 
   def setup_email(user)
@@ -45,8 +62,6 @@ class Notifier < ActionMailer::Base
     @body[:user] = user
   end
 
-  def interview_completed(interview_id,candidate_id)
-
-  end
+ 
 
 end
