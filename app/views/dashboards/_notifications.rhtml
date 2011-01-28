@@ -12,6 +12,7 @@ if event.class.name=="Invitation"
     interview = Interview.find(event.interview_id)
     if event.status == false
       subject = "Invitation for <span class='dark_brown_alert'>"+interview.name+"</span> sent to"
+      body = ""
     else
       subject = ""
     end

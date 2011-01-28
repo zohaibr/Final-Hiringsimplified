@@ -41,7 +41,12 @@ class UsersController < ApplicationController
         redirect_back_or_default("/candidates/new?uid=#{@user.id}")
       elsif params[:coming_from] == "child"
         roles(@user.user_type,@user.id)
-        group(@user.parent_id,@user.id,params[:group][:active])
+
+        gr = 'Self'
+        if params[:admin]
+          gr = 'Admin'
+        end
+        group(@user.parent_id,@user.id,gr)
         @notification = Notifier.deliver_share(@user)
         redirect_back_or_default('/users/profile')
       else
