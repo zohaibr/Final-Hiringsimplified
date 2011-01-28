@@ -7486,3 +7486,13 @@ h3 {
 .button {
     border: 0;
 }
+
+.sign_rockwell
+{
+    background: url('../images/sign_btn.jpg');
+    background-repeat: no-repeat;
+    width: 65px;
+    height: 20px;
+    cursor: pointer;
+
+}

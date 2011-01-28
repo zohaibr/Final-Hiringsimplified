@@ -12,6 +12,25 @@ class SessionsController < ApplicationController
   def new
     @key = 'IEJgyjS-Umgs2GBiVJsb'
     @msg = Digest::SHA1.hexdigest('update_payment--316130--IEJgyjS-Umgs2GBiVJsb')
+    pckg = Package.new(:id=>0,:hours=>1,:package_type=>'free',:price=>0)
+    pckg.save
+
+    pckg = Package.new(:id=>19289,:hours=>2.5,:package_type=>'tier 1',:price=>19.99)
+    pckg.save
+
+    pckg = Package.new(:id=>19290,:hours=>5,:package_type=>'tier 2',:price=>34.99)
+    pckg.save
+
+    pckg = Package.new(:id=>19291,:hours=>10,:package_type=>'tier 3',:price=>59.99)
+    pckg.save
+
+    pckg = Package.new(:id=>19292,:hours=>20,:package_type=>'tier 4',:price=>99.99)
+    pckg.save
+
+    pckg = Package.new(:id=>19293,:hours=>50,:package_type=>'tier 5',:price=>249.99)
+    pckg.save
+
+
     if params[:frm] == "inv"
       redirect_back_or_default('/direct_login')
     else

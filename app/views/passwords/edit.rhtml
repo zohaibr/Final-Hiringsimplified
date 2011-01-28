@@ -1,19 +1,19 @@
 <%#=current_user.login%>
-<div class="signup_box2" style="width: 750px;height:220px; padding: 15px;margin: 0px;float: left;" >
+<div class="signup_box2" style="width: 750px; padding: 15px;margin: 0px;float: left;" >
   <%= error_messages_for :user %>
 
   <% form_for(:user, :url => user_password_path(@user), :html => { :method => :put }) do |f| %>
     <div class="left_box">Old password
       <input type="password" class="required" name="old_password" id="old_password"></input>
        </div>
-    <div class="spacer"></div>
+  <div class="spacer"></div><div class="spacer"></div><div class="spacer"></div>
 
     <div class="left_box">New password
         <%= f.password_field :password ,:class=>"required"%></div>
 
     <div class="left_box">Retype the new password
         <%= f.password_field :password_confirmation ,:class=>"required"%></div>
-    <div class="spacer"></div>
+    <div class="spacer"></div><div class="spacer"></div><div class="spacer"></div>
       <div class="right_box">
         <%= f.submit "Update", :class => "silver_button_blue" %>
       </div>

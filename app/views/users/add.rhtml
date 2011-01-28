@@ -11,40 +11,41 @@
     <%@pwd=create_code%>
     <%= f.hidden_field :password_confirmation, :value => @pwd %>
     <%= f.hidden_field :password, :value => @pwd %>
+    <%= f.hidden_field :agree, :value => "1" %>
 
     <div style="float: left;margin-right: 10px;">
       Email address:<br />
-      <%= f.text_field :email,:class => "textbox" %>
+      <%= f.text_field :email,:class => "required" %>
     </div>
 
 
     <div>
       <div style="float: left;margin-right: 10px;">
         Company name:<br />
-        <%= f.text_field :company_name,:class => "textbox" %>
+        <%= f.text_field :company_name,:class => "required" %>
       </div>
     </div>
-    <div class="spacer"></div>
+    <div class="spacer"></div><div class="spacer"></div><div class="spacer"></div>
     <div>
       <div style="float: left;margin-right: 10px;">
         First name:<br />
-        <%= f.text_field :first_name,:class => "textbox" %>
+        <%= f.text_field :first_name,:class => "required" %>
       </div>
     </div>
 
     <div>
       <div style="float: left;margin-right: 10px;">
         Last name:<br />
-        <%= f.text_field :last_name,:class => "textbox" %>
+        <%= f.text_field :last_name,:class => "required" %>
       </div>
     </div>
 
-    <div class="spacer"></div>
+    <div class="spacer"></div><div class="spacer"></div><div class="spacer"></div>
 
     <div>
       <div>
-        Access:<br />
-        <%=radio_button(:group,:active,"Admin")%> Admin <%=radio_button(:group,:active,"Self")%> Self
+        <input type="checkbox" name="admin" id="admin" checked="checked" />Include Account Inheritance
+        
       </div>
     </div>
 
@@ -68,7 +69,7 @@
     </div>
 
 
-    <div class="spacer"></div>
+    <div class="spacer"></div><div class="spacer"></div><div class="spacer"></div>
 
 
     <div class="left_box">
