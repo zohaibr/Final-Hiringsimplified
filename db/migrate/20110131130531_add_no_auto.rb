@@ -9,6 +9,6 @@ class AddNoAuto < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :groups
+    drop_table :packages
   end
 end
