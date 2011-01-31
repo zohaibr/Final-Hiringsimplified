@@ -1,5 +1,6 @@
 class AddNoAuto < ActiveRecord::Migration
   def self.up
+    drop_table :packages
      create_table(:packages, :id => false) do |t|
       t.integer :id, :options => 'PRIMARY KEY'
       t.float  "hours"
