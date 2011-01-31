@@ -11,7 +11,7 @@ ed_dt = @newpass +'end'
 
     <div class="left_box">Job Title: <%= prev_work_history_form.text_field :job_title, :class => "bluex"%></div>
     <div class="spacer"></div>
-    <div class="pink_button"><%= link_to_function "REMOVE", "$(this).up('.prev_work_histories').remove()" %></div>
+    <div class="pink_button"><%= link_to_function "REMOVE", "$(this).parent().parent().remove()" %></div>
     <div class="spacer"></div>
  <script>
   attach("<%=st_dt%>");

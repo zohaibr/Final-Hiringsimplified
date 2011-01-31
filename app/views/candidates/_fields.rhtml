@@ -50,11 +50,11 @@
 <div id="education_histories">
   <%= render :partial => 'candidates/education_history', :collection => @candidate.education_histories %>
 </div>
-<div class="right_box"><div class="green_button" ><%= add_education_history_link "ADD" %></div></div>
+<div style="float: right;"><div class="green_button" ><%= add_education_history_link "ADD" %></div></div>
 <h3>Previous Work History</h3>
 <hr />
 <div id="prev_work_histories">
   <%= render :partial => 'candidates/prev_work_history', :collection => @candidate.prev_work_histories %>
 </div>
-<div class="right_box"><div class="green_button"><%= add_prev_work_history_link "ADD" %></div></div>
+<div style="float: right;"><div class="green_button"><%= add_prev_work_history_link "ADD" %></div></div>
 <div class="spacer"></div>

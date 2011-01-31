@@ -1,7 +1,10 @@
 //=========================================== carousels
 
 
-  var db_interviews_list_y = 0;
+  var curr_index = 0;
+  var cals=new Array();
+
+    var db_interviews_list_y = 0;
   var db_interviews_list_size = 214;
   var db_interviews_list_selected = null;
 
@@ -629,6 +632,21 @@ function open_iframe(fetch,width,height)
                         'scrolling'             : 'no'
 		}
 	);
+
+}
+
+
+function attach(obj) {
+    var dhxCalendarData = {
+        parent: obj,
+        isAutoDraw: false,
+        isYearEditable:true
+    };
+    cals[curr_index] = new dhtmlxCalendarObject(dhxCalendarData,true,{isYearEditable: true});
+    cals[curr_index].setSkin("dhx_blue");
+    cals[curr_index].setDateFormat("%m/%d/%Y");
+    curr_index++;
+
 
 }
 
