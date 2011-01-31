@@ -1,8 +1,7 @@
-class AddNoAuto < ActiveRecord::Migration
+class AddNoAutoAgain < ActiveRecord::Migration
   def self.up
     drop_table :packages
-     create_table(:packages, :id => false) do |t|
-      t.integer :id, :options => 'PRIMARY KEY'
+     create_table :packages do |t|
       t.float  "hours"
       t.string "package_type"
       t.float  "price"
