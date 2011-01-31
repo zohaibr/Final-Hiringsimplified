@@ -3,22 +3,7 @@
   jQuery("#candidateForm").validate();
   });
 
-  var curr_index = 0;
-  var cals=new Array();
 
-  function attach(obj) {
-    var dhxCalendarData = {
-        parent: obj,
-        isAutoDraw: false,
-        isYearEditable:true
-    };
-    cals[curr_index] = new dhtmlxCalendarObject(dhxCalendarData,true,{isYearEditable: true});
-    cals[curr_index].setSkin("dhx_blue");
-    cals[curr_index].setDateFormat("%m/%d/%Y");
-    curr_index++;
-
-
-}
 
 </script>
 <style type="text/css">

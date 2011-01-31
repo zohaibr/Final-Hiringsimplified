@@ -13,7 +13,7 @@
   <div class="left_box">Major: <%= education_history_form.text_field :major, :class => "bluex"%></div>
   <div class="left_box">2nd Major: <%= education_history_form.text_field :second_major, :class => "bluex"%></div>
   <div class="spacer"></div>
-      <div class="pink_button"><%= link_to_function "REMOVE", "$(this).up('.edu_histories').remove()" %></div>
+      <div class="pink_button"><%= link_to_function "REMOVE", "$(this).parent().parent().remove()" %></div>
   <% end %>
 </div>
 <script>
