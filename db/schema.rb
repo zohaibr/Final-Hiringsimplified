@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110131130531) do
+ActiveRecord::Schema.define(:version => 20110131133439) do
 
   create_table "answers", :force => true do |t|
     t.integer  "candidate_id"
@@ -141,11 +141,10 @@ ActiveRecord::Schema.define(:version => 20110131130531) do
     t.integer  "user_id"
   end
 
-  create_table "packages", :id => false, :force => true do |t|
-    t.integer "id"
-    t.float   "hours"
-    t.string  "package_type"
-    t.float   "price"
+  create_table "packages", :force => true do |t|
+    t.float  "hours"
+    t.string "package_type"
+    t.float  "price"
   end
 
   create_table "prev_work_histories", :force => true do |t|
