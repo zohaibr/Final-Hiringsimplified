@@ -244,6 +244,8 @@ class UsersController < ApplicationController
       else
         @msg = "there was some error while processing your transaction."
       end
+    else
+      @msg = "there was some error while processing your transaction."
     end    
   #  redirect_back_or_default('/dashboards')
   end
@@ -254,6 +256,14 @@ class UsersController < ApplicationController
 
 
   def view_packages
+
+    Chargify.configure do |c|
+      c.subdomain = 'hiringsimplified'
+      c.api_key = 'qG0XUKoBhtVsqrQ17tFr'
+    end
+
+    @sub = Chargify::Subscription.find(:all)
+
     @usr_pckg = UserPackage.find_by_user_id current_user.id
     if @usr_pckg.package_id!=0
       @pckg = Package.find(@usr_pckg.package_id)
