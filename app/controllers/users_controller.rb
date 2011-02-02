@@ -232,7 +232,7 @@ class UsersController < ApplicationController
     @customer = Chargify::Customer.find(params[:customer_id])
 
    # if @customer.customer_reference == user_id
-      package = Package.find(product_id)
+   #   package = Package.find(product_id)
       usr_pckg = UserPackage.find_by_user_id user_id
       if usr_pckg == 0
         usr_pckg.package_id = product_id
