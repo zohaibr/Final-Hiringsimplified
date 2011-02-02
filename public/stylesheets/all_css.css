@@ -2196,7 +2196,7 @@ text-align:right;
 {
 width:103px;
 height:26px;
-background-image:url(../images/next_d.png);
+background-image:url(../images/next_dd.png);
 cursor:pointer;
 margin-top:0px;
 border: 0;
@@ -2208,12 +2208,6 @@ background-color: transparent;
 float:right;
 margin-left:15px;
 
-}
-
-.next_button:hover
-{
-
-background-image:url(../images/next_s.png);
 }
 
 .candidate_question_container
@@ -4734,10 +4728,10 @@ input
     text-align: left;
     top: 0px;
     font-weight: bold;
-    margin-right: 15px;
+    margin-right: 5px;
     float: left;
     position: relative;
-    left: 120px;
+    
     background-color: #D4BC90;
     z-index: 100;
     border: 1px solid #9C783E;

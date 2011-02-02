@@ -53,24 +53,36 @@
 
  <div align="center" >
 
-   <% if @question.notepad %>
-   <div class="daba">
+   <%# if @question.notepad %>
+   <div class="daba" id="ntpd">
      <div id="notepad">Notepad</div><%= text_area:answer, :notepad, :style=>"width: 300px;height: 292px;", :rows=>"15", :cols=>"80" %>
     </div>
 
-   <% end %>
+   <%# end %>
 
-   <div  class="daba">
+   <div  class="daba" id="wbcm" >
      <div id="webcam">Webcam</div><%=render :partial => "layouts/webcam", :locals => { :question => @question }%>
      </div>
 
    
 
- <% if @question.sketchpad %>
-   <div class="daba" style="height: 300px;padding-bottom: 30px; width: 450px;">
+ <%# if @question.sketchpad %>
+   <div class="daba" id="skpd" style="height: 300px;padding-bottom: 30px; width: 450px;">
      <div id="sketchpadd">Sketchpad</div><%=render :partial => "layouts/sketchpad", :locals => { :question => @question }%>
   </div>
- <% end %>
+ <%# end %>
 
 <% end %>
 </div>
+
+<script>
+  alertSize();
+
+ // document.getElementById("wbcm").style.left = 0;
+  
+   document.getElementById("wbcm").style.left = (myWidth/2 - 450/2 - 300/2 - 324/2 - 20)+'px';
+   document.getElementById("skpd").style.left = (myWidth/2 - 450/2 - 300/2 - 324/2 - 20)+'px';
+   document.getElementById("ntpd").style.left = (myWidth/2 - 450/2 - 300/2 - 324/2 - 20)+'px';
+  //document.getElementById("skpd").style.left = (myWidth/2 - 450/2)+'px';
+
+</script>

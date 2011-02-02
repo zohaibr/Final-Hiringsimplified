@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  require 'chargify_api_ares'
   skip_before_filter :login_required
   layout "main"
   # Be sure to include AuthenticationSystem in Application Controller instead
@@ -7,6 +8,7 @@ class UsersController < ApplicationController
 
   # render new.rhtml
   def new
+
     if params[:c_id]
       @users = User.find(:first, :conditions => ["email = ?", params[:c_id]])
       unless @users.blank?
@@ -221,14 +223,18 @@ class UsersController < ApplicationController
   def add_subscription
     user_id = params[:customer_reference]
     product_id = params[:product_id]
+    @customer = Chargify::Customer.find(params[:customer_id])
 
-    package = Package.find(product_id)
-    usr_pckg = UserPackage.find_by_user_id user_id
-    usr_pckg.package_id = product_id
-    usr_pckg.time_left = usr_pckg.time_left + package.hours
-    usr_pckg.save
-
-    redirect_back_or_default('/dashboards')
+    if @customer.customer_reference == user_id
+      package = Package.find(product_id)
+      usr_pckg = UserPackage.find_by_user_id user_id
+      if usr_pckg == 0
+        usr_pckg.package_id = product_id
+      usr_pckg.time_left = usr_pckg.time_left + package.hours
+      usr_pckg.save
+      end
+    end    
+  #  redirect_back_or_default('/dashboards')
   end
 
   def new_recruiter

@@ -1,6 +1,7 @@
 # This controller handles the login/logout function of the site.  
 class SessionsController < ApplicationController
   require 'digest/sha1'
+  require 'chargify_api_ares'
   layout "main"
     
   skip_before_filter :login_required,:candidate_demo
@@ -12,6 +13,13 @@ class SessionsController < ApplicationController
   def new
     @key = 'IEJgyjS-Umgs2GBiVJsb'
     @msg = Digest::SHA1.hexdigest('update_payment--316130--IEJgyjS-Umgs2GBiVJsb')
+
+    Chargify.configure do |c|
+      c.subdomain = 'hiringsimplified'
+      c.api_key = 'qG0XUKoBhtVsqrQ17tFr'
+    end
+
+    @customer = Chargify::Customer.find(:all)
 
 #    Package.destroy_all()
 #    pckg = Package.new(:id=>0,:hours=>1,:package_type=>'free',:price=>0)
