@@ -2,7 +2,7 @@
   <%#= debug @pckg %>
   <% unless @pckg.blank? %>
   <div align="center">
-    <div style="width: 288px;">
+    <div style="width: 288px;text-align: left;">
         <b>Package Type:</b> <%=@pckg.product.name%> <br />
         <b>Description:</b> <%=@pckg.product.description%> <br />
         <%
@@ -10,10 +10,11 @@
         %>
         <b>Price:</b> <%=price%> <br />
         <b>Expiry date:</b> <%=@pckg.current_period_ends_at.strftime("%m/%d/%Y")%> <br />
-        <% else %>
-        You have not subscribed to any package yet. please click <b><a href="/users/static_page/1?name=price">here</a></b> to view all available packages
+      
         </div>
   </div>
+    <% else %>
+      You have not subscribed to any package yet. please click <b><a href="/users/static_page/1?name=price">here</a></b> to view all available packages
   <% end %>
 
 </div>
