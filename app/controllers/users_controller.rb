@@ -313,7 +313,7 @@ class UsersController < ApplicationController
 
     @pckg = Chargify::Subscription.find_by_customer_reference(current_user.id)
     
-    @pckg.product.id = id
+    @pckg.product_id = id
     @pckg.save
     @pckg.reload
     render :nothing =>true
