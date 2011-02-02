@@ -1,1 +1,9 @@
 Script started on Wed Feb  2 13:45:29 2011
+sh-3.2# git add *
+gsh-3.2# gi[K[K git commit -m 'mpjt[K[K[K[Knothing'
+[master 3461707] nothing
+ 3 files changed, 2 insertions(+), 0 deletions(-)
+ create mode 100644 Untitled.scpt
+ create mode 100644 asdf
+ create mode 100644 typescript
+sh-3.2# git push[K[K[K[Korigin [K[K[K[K
