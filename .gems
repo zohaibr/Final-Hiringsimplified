@@ -17,3 +17,4 @@ sqlite3-ruby --version 1.2.4 --ignore-dependencies
 gdocs4ruby
 gemcutter
 declarative_authorization
+chargify_api_ares
