@@ -227,6 +227,8 @@ class UsersController < ApplicationController
       c.api_key = 'qG0XUKoBhtVsqrQ17tFr'
     end
 
+    @msg = ""
+
     user_id = params[:customer_reference]
     product_id = params[:product_id]
     @customer = Chargify::Customer.find(params[:customer_id])
@@ -238,6 +240,9 @@ class UsersController < ApplicationController
         usr_pckg.package_id = product_id
         #usr_pckg.time_left = usr_pckg.time_left + package.hours
         usr_pckg.save
+        @msg = "you successfully subscribed to the package."
+      else
+        @msg = "there was some error while processing your transaction."
       end
     end    
   #  redirect_back_or_default('/dashboards')
