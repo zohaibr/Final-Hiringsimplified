@@ -282,6 +282,7 @@ class UsersController < ApplicationController
       unless @pckg.blank?
         @mg = "update_payment--#{@pckg.id}--IEJgyjS-Umgs2GBiVJsb"
         @msg = Digest::SHA1.hexdigest("update_payment--#{@pckg.id}--IEJgyjS-Umgs2GBiVJsb")
+        @products = Chargify::Product.find(:all)
       end
       
      #@date = ((@pckg.current_period_ends_at.to_time(:utc) - Time.new(:utc)) / (24*60*60)).to_i
