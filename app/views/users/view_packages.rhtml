@@ -32,7 +32,7 @@
 
       <select id="pckg">
           <% @products.each do |product| %>
-            <% if @pckg.id != product.id %>
+            <% if @pckg.product.id != product.id %>
               <option value="<%=product.id%>" ><%=product.name%></option>
             <% end %>        
           <% end %>
