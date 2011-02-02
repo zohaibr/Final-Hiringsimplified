@@ -43,6 +43,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.connect 'categories/by_csv', :controller => "categories", :action => "by_csv"
 
+  map.connect 'users/change_subscription/:id', :controller => "users", :action => "change_subscription"
 
 
   map.connect 'interviews/save_file', :controller => "interviews", :action => "save_file"

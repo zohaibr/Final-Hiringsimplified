@@ -2,7 +2,7 @@
   <%= debug @pckg.id %>
   <% unless @pckg.blank? %>
   <div align="center">
-    <div style="width: 288px;text-align: left;margin-top: 70px;">
+    <div  style="float: left;">
         <b>Package Type:</b> <%=@pckg.product.name%> <br />
         <b>Description:</b> <%=@pckg.product.description%> <br />
         <%
@@ -30,12 +30,14 @@
         </div>
     <div style="float: left;">
 
-      <select name="pckg">
+      <select id="pckg">
           <% @products.each do |product| %>
-        <option value="<%=product.id%>" ><%=product.name%></option>
+            <% if @pckg.id != product.id %>
+              <option value="<%=product.id%>" ><%=product.name%></option>
+            <% end %>        
           <% end %>
       </select>
-      
+      <a href="#" onclick="change_subcription();">change subcription</a>
 
     </div>
   </div>
@@ -46,5 +48,16 @@
 </div>
 <script>
   
+function change_subcription()
+{
+        var id = $("#pckg").val();
+       $.ajax({complete:function(request){},
+        data:'authenticity_token=' + encodeURIComponent('FI9rvJiu/2Oe3xjYaGdzj2KAsl/kDWPHrrtrAh8bfzE='),
+        error:function(request){$('#error').html(request.responseText);},
+        success:function(request){},
+        type:'post',
+        url:'/users/change_subscription?id='+id});
+        return false;
 
+}
 </script>

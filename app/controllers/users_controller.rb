@@ -302,5 +302,19 @@ class UsersController < ApplicationController
     @time_left = pckg.time_left
     render :layout=>false
   end
+
+  def change_subscription
+    id = params[:id]
+    
+    Chargify.configure do |c|
+      c.subdomain = 'hiringsimplified'
+      c.api_key = 'qG0XUKoBhtVsqrQ17tFr'
+    end
+
+    @pckg = Chargify::Subscription.find_by_customer_reference(current_user.id)
+    @pckg.id = id
+    @pckg.save
+
+  end
 end
 
