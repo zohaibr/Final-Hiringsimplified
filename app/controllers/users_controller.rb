@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   require 'chargify_api_ares'
+   require 'digest/sha1'
   skip_before_filter :login_required
   layout "main"
   # Be sure to include AuthenticationSystem in Application Controller instead

@@ -1,6 +1,6 @@
 # This controller handles the login/logout function of the site.  
 class SessionsController < ApplicationController
-  require 'digest/sha1'
+ 
  # require 'chargify_api_ares'
   layout "main"
     
@@ -11,8 +11,7 @@ class SessionsController < ApplicationController
 
   # render new.erb.html
   def new
-    @key = 'IEJgyjS-Umgs2GBiVJsb'
-    @msg = Digest::SHA1.hexdigest('update_payment--316130--IEJgyjS-Umgs2GBiVJsb')
+    
 
     
 

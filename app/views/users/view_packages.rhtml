@@ -13,8 +13,14 @@
 
         <%
           date = distance_of_time_in_words((@pckg.current_period_ends_at - Time.now))
-        %>
 
+          
+          msg = Digest::SHA1.hexdigest('update_payment--'+@pckg.id.to_s+'--IEJgyjS-Umgs2GBiVJsb')
+           
+          result = msg[0,9]
+
+        %>
+        <%=msg%>
         <b>Days remaining:</b> <%=date%>
       
         </div>
