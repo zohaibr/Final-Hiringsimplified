@@ -1,16 +1,18 @@
 <div class="signup_box2" style="width: 750px;height:220px; padding: 15px;margin: 0px;float: left;" >
   <%#= debug @pckg %>
   <% unless @pckg.blank? %>
-  <div style="padding-left: 200px;padding: 100px; ">
-  <b>Package Type:</b> <%=@pckg.product.name%> <br />
-  <b>Description:</b> <%=@pckg.product.description%> <br />
-  <%
-  price = (@pckg.product.price_in_cents.to_f / 100).to_f
-  %>
-  <b>Price:</b> <%=price%> <br />
-  <b>Expiry date:</b> <%=@pckg.current_period_ends_at.strftime("%m/%d/%Y")%> <br />
-  <% else %>
-  You have not subscribed to any package yet. please click <b><a href="/users/static_page/1?name=price">here</a></b> to view all available packages
+  <div align="center">
+    <div style="width: 288px;">
+        <b>Package Type:</b> <%=@pckg.product.name%> <br />
+        <b>Description:</b> <%=@pckg.product.description%> <br />
+        <%
+        price = (@pckg.product.price_in_cents.to_f / 100).to_f
+        %>
+        <b>Price:</b> <%=price%> <br />
+        <b>Expiry date:</b> <%=@pckg.current_period_ends_at.strftime("%m/%d/%Y")%> <br />
+        <% else %>
+        You have not subscribed to any package yet. please click <b><a href="/users/static_page/1?name=price">here</a></b> to view all available packages
+        </div>
   </div>
   <% end %>
 
