@@ -4,7 +4,7 @@
   <b>Package Type:</b> <%=@pckg.product.name%> <br />
   <b>Description:</b> <%=@pckg.product.description%> <br />
   <%
-  price = (@pckg.product.price_in_cents.to_i / 100).to_f
+  price = (@pckg.product.price_in_cents.to_f / 100).to_f
   %>
   <b>Price:</b> <%=price%> <br />
   <b>Expiry date:</b> <%=@pckg.current_period_ends_at.strftime("%m/%d/%Y")%> <br />
