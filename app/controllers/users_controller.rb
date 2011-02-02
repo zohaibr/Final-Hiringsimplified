@@ -279,7 +279,7 @@ class UsersController < ApplicationController
       @pckg = Chargify::Subscription.find_by_customer_reference(current_user.id)
 
       #@date = (@pckg.current_period_ends_at.to_date - Time.new.to_date).to_natural_language
-     @date = ((current_period_ends_at.to_time - Time.to_time) / (24*60*60)).to_i
+     @date = ((@pckg.current_period_ends_at.to_time(:utc) - Time.to_time(:utc)) / (24*60*60)).to_i
     end
     render :layout=>false
 
