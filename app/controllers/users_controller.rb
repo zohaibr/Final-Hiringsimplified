@@ -278,7 +278,7 @@ class UsersController < ApplicationController
     if @usr_pckg.package_id!=0
       @pckg = Chargify::Subscription.find_by_customer_reference(current_user.id)
 
-      @date = distance_of_time_in_words((@pckg.current_period_ends_at.to_date - Time.new.to_date))
+      @date = distance_of_time_in_words((@pckg.current_period_ends_at.to_date - Time.now.to_date))
       
      #@date = ((@pckg.current_period_ends_at.to_time(:utc) - Time.new(:utc)) / (24*60*60)).to_i
     end
