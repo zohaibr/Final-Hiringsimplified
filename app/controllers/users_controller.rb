@@ -231,12 +231,14 @@ class UsersController < ApplicationController
 
     user_id = params[:customer_reference]
     product_id = params[:product_id]
+
     @customer = Chargify::Customer.find(params[:customer_id])
 
     if @customer.reference == user_id
      # package = Package.find(product_id)
       usr_pckg = UserPackage.find_by_user_id user_id
       if usr_pckg.package_id == 0
+        @pckg = Chargify::Subscription.find_by_customer_reference(current_user.id)
         usr_pckg.package_id = product_id
         #usr_pckg.time_left = usr_pckg.time_left + package.hours
         usr_pckg.save
