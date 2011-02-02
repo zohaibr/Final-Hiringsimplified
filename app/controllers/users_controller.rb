@@ -236,7 +236,7 @@ class UsersController < ApplicationController
       usr_pckg = UserPackage.find_by_user_id user_id
       if usr_pckg == 0
         usr_pckg.package_id = product_id
-      usr_pckg.time_left = usr_pckg.time_left + package.hours
+    #  usr_pckg.time_left = usr_pckg.time_left + package.hours
       usr_pckg.save
       end
     end    
