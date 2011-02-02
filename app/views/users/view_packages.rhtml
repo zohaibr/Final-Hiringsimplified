@@ -4,9 +4,9 @@
   <b>Package Type:</b> <%=@pckg.product.name%> <br />
   <b>Description:</b> <%=@pckg.product.description%> <br />
   <%
-  price = (@pckg.product.price_in_cent.to_i / 100).to_f
+ # price = (@pckg.product.price_in_cent.to_i / 100).to_f
   %>
-  <b>Price:</b> <%=price%> <br />
+  <b>Price:</b> <%#=price%> <br />
   <b>Expiry date:</b> <%=@pckg.current_period_ends_at%> <br />
   <% else %>
   You have not subscribed to any package yet. please click <b><a href="/users/static_page/1?name=price">here</a></b> to view all available packages
