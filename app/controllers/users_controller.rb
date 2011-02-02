@@ -278,7 +278,7 @@ class UsersController < ApplicationController
     if @usr_pckg.package_id!=0
       @pckg = Chargify::Subscription.find_by_customer_reference(current_user.id)
 
-      @date = Time.new.day - @pckg.current_period_ends_at
+      @date = Time.new.day - @pckg.current_period_ends_at.day
     end
     render :layout=>false
 
