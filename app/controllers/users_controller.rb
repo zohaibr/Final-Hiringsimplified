@@ -245,7 +245,7 @@ class UsersController < ApplicationController
         @msg = "there was some error while processing your transaction."
       end
     else
-      @msg = "there was some error while processing your transaction."
+      @msg = "there was some error while processing your transaction2."
     end    
   #  redirect_back_or_default('/dashboards')
   end
