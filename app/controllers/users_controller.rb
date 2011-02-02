@@ -221,6 +221,12 @@ class UsersController < ApplicationController
   end
 
   def add_subscription
+    
+    Chargify.configure do |c|
+      c.subdomain = 'hiringsimplified'
+      c.api_key = 'qG0XUKoBhtVsqrQ17tFr'
+    end
+
     user_id = params[:customer_reference]
     product_id = params[:product_id]
     @customer = Chargify::Customer.find(params[:customer_id])
