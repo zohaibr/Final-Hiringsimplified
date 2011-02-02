@@ -15,13 +15,13 @@
           date = distance_of_time_in_words((@pckg.current_period_ends_at - Time.now))
 
           
-          msg = Digest::SHA1.hexdigest('update_payment--'+@pckg.id+'--IEJgyjS-Umgs2GBiVJsb')
+          
            
-          result = msg[0,9]
+          result = @msg[0,9]
 
         %>
-        <%=result%>
-        <a href="https://acme.chargify.com/update_payment/<%=@pckg.id%>/<%=result%>">update payment</a>
+        <%=@mg%>
+        <a href="https://hiringsimplified.chargify.com/update_payment/<%=@pckg.id%>/<%=result%>">update payment</a>
 
         <b>Days remaining:</b> <%=date%>
       
