@@ -20,7 +20,9 @@
           result = msg[0,9]
 
         %>
-        <%=msg%>
+        <%=result%>
+        <a href="https://acme.chargify.com/update_payment/<%=@pckg.id%>/<%=result%>">update payment</a>
+
         <b>Days remaining:</b> <%=date%>
       
         </div>
