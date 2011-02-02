@@ -2,7 +2,7 @@
   <%#= debug @pckg %>
   <% unless @pckg.blank? %>
   <div align="center">
-    <div style="width: 288px;text-align: left;margin-top: 100px;">
+    <div style="width: 288px;text-align: left;margin-top: 70px;">
         <b>Package Type:</b> <%=@pckg.product.name%> <br />
         <b>Description:</b> <%=@pckg.product.description%> <br />
         <%
@@ -15,7 +15,7 @@
           date = distance_of_time_in_words((@pckg.current_period_ends_at - Time.now))
         %>
 
-        <%=date%>
+        <b>Days remaining:</b><%=date%>
       
         </div>
   </div>
