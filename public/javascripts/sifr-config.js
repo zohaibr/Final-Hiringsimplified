@@ -190,6 +190,16 @@ var futura_bt = {
     });
 
 
+     sIFR.replace(rockwell, {
+      selector: 'div.bhai_jan'
+      ,css: {
+        '.sIFR-root': { 'background-color': '#DCDCDC' ,'font-size':'12px' }
+        ,transparent :true
+        ,wmode:'transparent'
+      }
+    });
+
+
 
     
 
