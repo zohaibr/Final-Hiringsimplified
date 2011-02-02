@@ -1,5 +1,5 @@
 <div class="signup_box2" style="width: 750px;height:220px; padding: 15px;margin: 0px;float: left;" >
-  <%= debug @pckg %>
+  <%= debug @pckg.id %>
   <% unless @pckg.blank? %>
   <div align="center">
     <div style="width: 288px;text-align: left;margin-top: 70px;">
@@ -15,7 +15,7 @@
           date = distance_of_time_in_words((@pckg.current_period_ends_at - Time.now))
 
           
-          msg = Digest::SHA1.hexdigest('update_payment--'+@pckg.id.to_s+'--IEJgyjS-Umgs2GBiVJsb')
+          msg = Digest::SHA1.hexdigest('update_payment--'+@pckg.id+'--IEJgyjS-Umgs2GBiVJsb')
            
           result = msg[0,9]
 
