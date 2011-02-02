@@ -12,10 +12,10 @@
         <b>Expiry date:</b> <%=@pckg.current_period_ends_at.strftime("%m/%d/%Y")%> <br />
 
         <%
-          date = distance_of_time_in_words((@pckg.current_period_ends_at.to_date - Time.now.to_date))
+          date = distance_of_time_in_words((@pckg.current_period_ends_at - Time.now))
         %>
 
-        <%=Time.now.to_date%>
+        <%=date%>
       
         </div>
   </div>
