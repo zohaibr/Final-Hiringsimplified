@@ -2,7 +2,7 @@
   <%= debug @pckg %>
   <% unless @pckg.blank? %>
   <b>Package Type:</b> <%=@pckg.product.name%> <br />
-  <b>Hours:</b> <%=@pckg.handle.description%> <br />
+  <b>Hours:</b> <%#=@pckg.handle.description%> <br />
   <b>Price:</b> <%#=@pckg.price%> <br />
   <% else %>
   You have not subscribed to any package yet. please click <b><a href="/users/static_page/1?name=price">here</a></b> to view all available packages
