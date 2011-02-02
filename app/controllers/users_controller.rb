@@ -315,7 +315,7 @@ class UsersController < ApplicationController
     
     @pckg.product.id = id
     @pckg.save
-
+    @pckg.reload
     render :nothing =>true
 
   end
