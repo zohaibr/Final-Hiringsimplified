@@ -12,7 +12,7 @@
         <b>Expiry date:</b> <%=@pckg.current_period_ends_at.strftime("%m/%d/%Y")%> <br />
 
         <%
-          date = ((@pckg.current_period_ends_at.to_date - Time.now.to_date))
+        date = ((@pckg.current_period_ends_at.to_date - Date.now))
         %>
 
         <%=@pckg.current_period_ends_at.to_date%>
