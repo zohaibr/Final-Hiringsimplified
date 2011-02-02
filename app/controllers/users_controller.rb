@@ -231,7 +231,7 @@ class UsersController < ApplicationController
     product_id = params[:product_id]
     @customer = Chargify::Customer.find(params[:customer_id])
 
-    if @customer.customer_reference == user_id
+   # if @customer.customer_reference == user_id
       package = Package.find(product_id)
       usr_pckg = UserPackage.find_by_user_id user_id
       if usr_pckg == 0
@@ -239,7 +239,7 @@ class UsersController < ApplicationController
     #  usr_pckg.time_left = usr_pckg.time_left + package.hours
       usr_pckg.save
       end
-    end    
+   # end
   #  redirect_back_or_default('/dashboards')
   end
 
