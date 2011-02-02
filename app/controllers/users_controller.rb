@@ -262,7 +262,7 @@ class UsersController < ApplicationController
       c.api_key = 'qG0XUKoBhtVsqrQ17tFr'
     end
 
-    @sub = Chargify::Subscription.find(:all)
+    @sub = Chargify::Subscription.find_by_customer_reference(current_user.id)
 
     @usr_pckg = UserPackage.find_by_user_id current_user.id
     if @usr_pckg.package_id!=0
