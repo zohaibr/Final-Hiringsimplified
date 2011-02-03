@@ -16,10 +16,10 @@
           result = @msg[0,10]
         %>
       <b>Days remaining:</b> <%=date%>
-      <br />
-      <a style="font-size: 11px;" href="https://hiringsimplified.chargify.com/update_payment/<%=@pckg.id%>/<%=result%>">Update Billing</a>
+      <br /><br /><br />
+      <a style="font-size: 12px;" href="https://hiringsimplified.chargify.com/update_payment/<%=@pckg.id%>/<%=result%>">Update Billing</a>
         </div>
-    <div style="float: left;">
+    <div style="float: right;">
 
       <select id="pckg" style="width: 90px;">
           <% @products.each do |product| %>
