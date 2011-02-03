@@ -31,15 +31,15 @@
               <div class="brown_button23" onclick="$('#plan').show();" style="background-color: transparent;border: 0;">Change Plan</div>
 
               <div class="spacer"></div>
-              <div id="plan">
-                <select id="pckg" style="width: 90px;display: none;">
+              <div id="plan" style="display: none;">
+                <select id="pckg" style="width: 90px;">
                     <% @products.each do |product| %>
                       <% if @pckg.product.id != product.id %>
                         <option value="<%=product.id%>" ><%=product.name%></option>
                       <% end %>
                     <% end %>
                 </select>
-              <div class="silver_button_blue" onclick="change_subscription();"></div>
+              <div class="silver_button_blue" onclick="change_subscription();">Update</div>
                 </div>
               </div>
             </div>
