@@ -272,7 +272,7 @@ class UsersController < ApplicationController
     end
 
 
-
+    @pckgx = Chargify::Subscription.find(400194)
     #@sub = Chargify::Subscription.find_by_customer_reference(current_user.id)
 
     @usr_pckg = UserPackage.find_by_user_id current_user.id
@@ -352,7 +352,7 @@ class UsersController < ApplicationController
         # Process updated subscriptions here
         #Rails.logger.debug("SUB ID: #{id}")
         pckg = Chargify::Subscription.find(id)
-        Rails.logger.debug("SUB ID: #{pckg}")
+       # Rails.logger.debug("SUB ID: #{pckg}")
         usr_pckg = UserPackage.find_by_package_id pckg.product.id
 
         user = User.find(pckg.reference)
