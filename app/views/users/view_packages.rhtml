@@ -6,8 +6,8 @@
   result = @msg[0,10]
   %>
   <div style="float: right;">
-    <a style="font-size: 12px;" class="hyper" href="https://hiringsimplified.chargify.com/update_payment/<%=@pckg.id%>/<%=result%>">Update Billing</a>
-  </div>
+    <div class="brown_button2" onclick="navigate('https://hiringsimplified.chargify.com/update_payment/<%=@pckg.id%>/<%=result%>');" style="background-color: transparent;border: 0;">Update Billing</div>
+   </div>
   <div class="spacer"></div>
                 
   <% if @pckg.state == 'active' %>
@@ -24,12 +24,11 @@
                   
                 <b>Days remaining:</b> <%=date%>
                 <br /><br /><br />
-                
-                <br /><br />
-                <a style="font-size: 12px;" class="hyper" onclick="cancel_subscription('<%=@pckg.id%>');" href="#">Cancel Subscription</a>
-                  </div>
-              <div style="float: right;">
 
+               </div>
+              <div style="float: right;">
+              <div class="brown_button2" onclick="cancel_subscription('<%=@pckg.id%>');" style="background-color: transparent;border: 0;">Cancel Subscription</div>
+              <div class="spacer"></div>
                 <select id="pckg" style="width: 90px;">
                     <% @products.each do |product| %>
                       <% if @pckg.product.id != product.id %>
