@@ -20,7 +20,7 @@
                 <br /><br /><br />
                 <a style="font-size: 12px;" href="https://hiringsimplified.chargify.com/update_payment/<%=@pckg.id%>/<%=result%>">Update Billing</a>
                 <br /><br />
-                <a style="font-size: 12px;" onclick="cancel_subscription();" href="#">Cancel Subscription</a>
+                <a style="font-size: 12px;" onclick="cancel_subscription('<%=@pckg.id%>');" href="#">Cancel Subscription</a>
                   </div>
               <div style="float: right;">
 
@@ -57,7 +57,7 @@ function change_subscription()
 
 }
 
-function cancel_subscription()
+function cancel_subscription(id)
 {
         $.ajax({complete:function(request){added('A notification will be sent to you when your subscription is changed.');},
         data:'authenticity_token=' + encodeURIComponent('FI9rvJiu/2Oe3xjYaGdzj2KAsl/kDWPHrrtrAh8bfzE='),
