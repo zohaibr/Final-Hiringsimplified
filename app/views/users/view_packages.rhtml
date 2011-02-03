@@ -32,14 +32,14 @@
 
               <div class="spacer"></div>
               <div id="plan" style="display: none;">
-                <select id="pckg" style="width: 90px;">
+                <select id="pckg" style="width: 90px;float: left;">
                     <% @products.each do |product| %>
                       <% if @pckg.product.id != product.id %>
                         <option value="<%=product.id%>" ><%=product.name%></option>
                       <% end %>
                     <% end %>
                 </select>
-              <div class="silver_button_blue" onclick="change_subscription();">Update</div>
+                <div class="silver_button_blue" onclick="change_subscription();" style="font-weight: normal;float: left;">Update</div>
                 </div>
               </div>
             </div>
