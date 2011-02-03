@@ -273,7 +273,7 @@ class UsersController < ApplicationController
 
 
 
-    @pckgx = Chargify::Subscription.find(400194)
+    #@pckgx = Chargify::Subscription.find(400194)
     #@sub = Chargify::Subscription.find_by_customer_reference(current_user.id)
 
     @usr_pckg = UserPackage.find_by_user_id current_user.id
@@ -371,7 +371,7 @@ class UsersController < ApplicationController
           #do nothing
         end
 
-    @x = pckg
+        @x = pckg
         
 
       #end
