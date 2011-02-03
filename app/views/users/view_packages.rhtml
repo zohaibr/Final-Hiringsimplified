@@ -41,7 +41,7 @@
 function change_subcription()
 {
         var id = $("#pckg").val();
-       $.ajax({complete:function(request){},
+       $.ajax({complete:function(request){view_package();},
         data:'authenticity_token=' + encodeURIComponent('FI9rvJiu/2Oe3xjYaGdzj2KAsl/kDWPHrrtrAh8bfzE='),
         error:function(request){$('#error').html(request.responseText);},
         success:function(request){},
