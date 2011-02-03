@@ -52,6 +52,14 @@ class Notifier < ActionMailer::Base
 
   end
 
+   def trigger_subscription (email,message)
+    @recipients  = "#{email}"
+    @from        = "Support" "<noreply@hiringsimplified.com>"
+    @subject     = "Billing Event."
+    @sent_on     = Time.now
+    @body[:msg] = "#{message}"
+   end
+
   protected
 
   def setup_email(user)

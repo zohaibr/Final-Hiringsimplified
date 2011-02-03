@@ -331,5 +331,33 @@ class UsersController < ApplicationController
     @pckg.reactivate
     render :nothing =>true
   end
+
+  def trigger_subscription
+    #subscription_ids = params['_json']
+      id =400194
+    #subscription_ids.each do |id|
+        # Process updated subscriptions here
+        #Rails.logger.debug("SUB ID: #{id}")
+        pckg = Chargify::Subscription.find(id)
+        usr_pckg = UserPackage.find_by_package_id @pckg.product.id
+
+        user = User.find(pckg.reference)
+
+        if pckg.state != 'active'
+          Notifier.deliver_trigger_subscription(user.email,'Your subscription has been canceled')
+
+        end
+
+        if @pckg.product.id < usr_pckg.package_id
+          Notifier.deliver_trigger_subscription(user.email,'Your subscription has downgraded')
+        elsif @pckg.product.id > usr_pckg.package_id
+          Notifier.deliver_trigger_subscription(user.email,'Your subscription has been upgraded')
+        else
+          #do nothing
+        end
+        
+
+      #end
+  end
 end
 
