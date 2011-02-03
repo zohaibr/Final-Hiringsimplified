@@ -47,6 +47,8 @@ ActionController::Routing::Routes.draw do |map|
   
   map.connect 'users/cancel_subscription/:id', :controller => "users", :action => "cancel_subscription"
 
+  map.connect 'users/reactivate_subscription/:id', :controller => "users", :action => "reactivate_subscription"
+
   map.connect 'interviews/save_file', :controller => "interviews", :action => "save_file"
 
   map.connect 'interviews/recruite/:id', :controller => "interviews", :action => "recruite"
