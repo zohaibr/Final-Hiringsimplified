@@ -370,6 +370,8 @@ class UsersController < ApplicationController
           @new_pckg =pckg.product.accounting_code.to_f
           @cons = usr_pckg.time_left
           @pg_time = product.accounting_code.to_f
+          usr_pckg.package_id = pckg.product.id
+          usr_pckg.save
 
 
           Notifier.deliver_trigger_subscription(user.email,'Your subscription has downgraded')
