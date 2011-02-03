@@ -6,7 +6,7 @@
   result = @msg[0,10]
   %>
   <div style="float: right;">
-    <a style="font-size: 12px;" href="https://hiringsimplified.chargify.com/update_payment/<%=@pckg.id%>/<%=result%>">Update Billing</a>
+    <a style="font-size: 12px;" class="hyper" href="https://hiringsimplified.chargify.com/update_payment/<%=@pckg.id%>/<%=result%>">Update Billing</a>
   </div>
   <div class="spacer"></div>
                 
@@ -26,7 +26,7 @@
                 <br /><br /><br />
                 
                 <br /><br />
-                <a style="font-size: 12px;" onclick="cancel_subscription('<%=@pckg.id%>');" href="#">Cancel Subscription</a>
+                <a style="font-size: 12px;" class="hyper" onclick="cancel_subscription('<%=@pckg.id%>');" href="#">Cancel Subscription</a>
                   </div>
               <div style="float: right;">
 
@@ -37,16 +37,16 @@
                       <% end %>
                     <% end %>
                 </select>
-                <a href="#" onclick="change_subscription();">change plan</a>
+                <a href="#" class="hyper" onclick="change_subscription();">change plan</a>
 
               </div>
             </div>
   <% else %>
-  <b>your subscription has been cancelled, please click <a href="#" onclick="reactivate_subscription('<%=@pckg.id%>');">here</a> to reactivate your subscription</b>
+  <b>your subscription has been cancelled, please click <a class="hyper" href="#" onclick="reactivate_subscription('<%=@pckg.id%>');">here</a> to reactivate your subscription</b>
   
   <% end %>
     <% else %>
-      You have not subscribed to any package yet. please click <b><a href="/users/static_page/1?name=price">here</a></b> to view all available packages
+      You have not subscribed to any package yet. please click <b><a class="hyper" href="/users/static_page/1?name=price">here</a></b> to view all available packages
   <% end %>
 </div>
 <script>
