@@ -4900,6 +4900,35 @@ background-color: transparent;
 
 }
 
+
+.brown_button23{
+
+font-size:11pt;
+color:#ffffff;
+font-weight:normal;
+width:176px;
+height:31px;
+
+background-image:url(../images/brown_button.png);
+background-repeat:no-repeat;
+background-color: transparent;
+cursor:pointer;
+padding-top:6px;
+font-weight:bold;
+text-align: center;
+
+
+
+}
+
+
+.brown_button23:hover{
+
+background-color: transparent;
+
+
+}
+
 #tooltip{
     width:auto;
     max-width:300px;
