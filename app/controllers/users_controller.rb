@@ -321,12 +321,21 @@ class UsersController < ApplicationController
   end
 
   def cancel_subscription
+     Chargify.configure do |c|
+      c.subdomain = 'hiringsimplified'
+      c.api_key = 'qG0XUKoBhtVsqrQ17tFr'
+    end
+
     @pckg = Chargify::Subscription.find_by_customer_reference(current_user.id)
     @pckg.cancel
     render :nothing =>true
   end
 
   def reactivate_subscription
+     Chargify.configure do |c|
+      c.subdomain = 'hiringsimplified'
+      c.api_key = 'qG0XUKoBhtVsqrQ17tFr'
+    end
     @pckg = Chargify::Subscription.find_by_customer_reference(current_user.id)
     @pckg.reactivate
     render :nothing =>true
@@ -334,6 +343,10 @@ class UsersController < ApplicationController
 
   def trigger_subscription
     #subscription_ids = params['_json']
+     Chargify.configure do |c|
+      c.subdomain = 'hiringsimplified'
+      c.api_key = 'qG0XUKoBhtVsqrQ17tFr'
+    end
       id = 400194
     #subscription_ids.each do |id|
         # Process updated subscriptions here
