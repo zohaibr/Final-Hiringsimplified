@@ -28,17 +28,19 @@
                </div>
               <div style="float: right;">
               <div class="brown_button23" onclick="cancel_subscription('<%=@pckg.id%>');" style="background-color: transparent;border: 0;">Cancel Subscription</div>
+              <div class="brown_button23" onclick="$('#pckg').show();" style="background-color: transparent;border: 0;">Change Plan</div>
+
               <div class="spacer"></div>
-                <select id="pckg" style="width: 90px;">
+              please select any package from the list below: <br />
+                <select id="pckg" style="width: 90px;display: none;">
                     <% @products.each do |product| %>
                       <% if @pckg.product.id != product.id %>
                         <option value="<%=product.id%>" ><%=product.name%></option>
                       <% end %>
                     <% end %>
                 </select>
-                <a href="#" class="hyper" onclick="change_subscription();">change plan</a>
-
-              </div>
+              <div class="silver_button_blue" onclick="change_subscription();"></div>
+                </div>
             </div>
   <% else %>
   <b>your subscription has been cancelled, please click <a class="hyper" href="#" onclick="reactivate_subscription('<%=@pckg.id%>');">here</a> to reactivate your subscription</b>
