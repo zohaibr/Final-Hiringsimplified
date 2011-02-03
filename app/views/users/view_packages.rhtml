@@ -20,7 +20,7 @@
                 <br /><br /><br />
                 <a style="font-size: 12px;" href="https://hiringsimplified.chargify.com/update_payment/<%=@pckg.id%>/<%=result%>">Update Billing</a>
                 <br /><br />
-                <a style="font-size: 12px;" onclick="cancel_subcription();" href="#">Cancel Subscription</a>
+                <a style="font-size: 12px;" onclick="cancel_subscription();" href="#">Cancel Subscription</a>
                   </div>
               <div style="float: right;">
 
@@ -31,7 +31,7 @@
                       <% end %>
                     <% end %>
                 </select>
-                <a href="#" onclick="change_subcription();">change plan</a>
+                <a href="#" onclick="change_subscription();">change plan</a>
 
               </div>
             </div>
@@ -44,7 +44,7 @@
 </div>
 <script>
   
-function change_subcription()
+function change_subscription()
 {
         var id = $("#pckg").val();
         $.ajax({complete:function(request){added('A notification will be sent to you when the package is changed.');},
