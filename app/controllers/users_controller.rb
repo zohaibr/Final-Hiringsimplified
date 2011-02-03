@@ -334,11 +334,11 @@ class UsersController < ApplicationController
 
   def trigger_subscription
     #subscription_ids = params['_json']
-      id =400194
+      id = 400194
     #subscription_ids.each do |id|
         # Process updated subscriptions here
         #Rails.logger.debug("SUB ID: #{id}")
-        pckg = Chargify::Subscription.find(id)
+        pckg = Chargify::Subscription.find_by_id(id)
         usr_pckg = UserPackage.find_by_package_id pckg.product.id
 
         user = User.find(pckg.reference)
