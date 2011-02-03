@@ -370,6 +370,8 @@ class UsersController < ApplicationController
         else
           #do nothing
         end
+
+    @x = pckg
         
 
       #end
