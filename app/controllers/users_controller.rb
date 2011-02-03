@@ -364,6 +364,14 @@ class UsersController < ApplicationController
         end
 
       if pckg.product.id < usr_pckg.package_id
+          product = Chargify::Product.find(usr_pckg.package_id)
+          @new_time =   ((product.accounting_code.to_f - usr_pckg.time_left) - pckg.product.accounting_code.to_f).abs
+
+          @new_pckg =pckg.product.accounting_code.to_f
+          @cons = usr_pckg.time_left
+          @pg_time = product.accounting_code.to_f
+
+
           Notifier.deliver_trigger_subscription(user.email,'Your subscription has downgraded')
         elsif pckg.product.id > usr_pckg.package_id
           Notifier.deliver_trigger_subscription(user.email,'Your subscription has been upgraded')
