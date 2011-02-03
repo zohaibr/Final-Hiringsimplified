@@ -1,5 +1,5 @@
 <div class="signup_box2" style="width: 750px;height:220px; padding: 15px;margin: 0px;float: left;" >
-  <%= debug @pckg %>
+  <%#= debug @pckg %>
   <% unless @pckg.blank? %>
                 <%
                     date = distance_of_time_in_words((@pckg.current_period_ends_at - Time.now))

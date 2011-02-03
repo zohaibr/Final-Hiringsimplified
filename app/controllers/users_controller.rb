@@ -322,7 +322,7 @@ class UsersController < ApplicationController
 
   def cancel_subscription
     @pckg = Chargify::Subscription.find_by_customer_reference(current_user.id)
-    @pckg.cancel
+    @pckg.destroy
     render :nothing =>true
   end
 end
