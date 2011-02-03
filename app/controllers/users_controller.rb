@@ -272,7 +272,7 @@ class UsersController < ApplicationController
     end
 
 
-    #@pckgx = Chargify::Subscription.find(400194)
+    @pckgx = Chargify::Subscription.find(400194)
     #@sub = Chargify::Subscription.find_by_customer_reference(current_user.id)
 
     @usr_pckg = UserPackage.find_by_user_id current_user.id
@@ -362,7 +362,7 @@ class UsersController < ApplicationController
 
         end
 
-        if pckg.product.id < usr_pckg.package_id
+      if pckg.product.id < usr_pckg.package_id
           Notifier.deliver_trigger_subscription(user.email,'Your subscription has downgraded')
         elsif pckg.product.id > usr_pckg.package_id
           Notifier.deliver_trigger_subscription(user.email,'Your subscription has been upgraded')
