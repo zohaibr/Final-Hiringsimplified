@@ -339,7 +339,7 @@ class UsersController < ApplicationController
         # Process updated subscriptions here
         #Rails.logger.debug("SUB ID: #{id}")
         pckg = Chargify::Subscription.find(id)
-        usr_pckg = UserPackage.find_by_package_id @pckg.product.id
+        usr_pckg = UserPackage.find_by_package_id pckg.product.id
 
         user = User.find(pckg.reference)
 
@@ -348,9 +348,9 @@ class UsersController < ApplicationController
 
         end
 
-        if @pckg.product.id < usr_pckg.package_id
+        if pckg.product.id < usr_pckg.package_id
           Notifier.deliver_trigger_subscription(user.email,'Your subscription has downgraded')
-        elsif @pckg.product.id > usr_pckg.package_id
+        elsif pckg.product.id > usr_pckg.package_id
           Notifier.deliver_trigger_subscription(user.email,'Your subscription has been upgraded')
         else
           #do nothing
