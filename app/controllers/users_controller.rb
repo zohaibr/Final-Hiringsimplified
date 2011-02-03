@@ -319,5 +319,11 @@ class UsersController < ApplicationController
     render :nothing =>true
 
   end
+
+  def cancel_subscription
+    @pckg = Chargify::Subscription.find_by_customer_reference(current_user.id)
+    @pckg.cancel
+    render :nothing =>true
+  end
 end
 

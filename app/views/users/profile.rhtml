@@ -53,7 +53,7 @@
   <div style="display: none;">
     <div id="dialog-confirm" title="">
 	<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
-          <span id="msg">A notification will be sent to you when the package is changed</span></p>
+          <span id="msg"></span></p>
     </div>
   </div>
 
@@ -63,13 +63,15 @@ function view_package()
   $.ajax({data:'authenticity_token=' + encodeURIComponent('7Z6EG+v2CKF7MWk2p769uHh8dhozFIqt1boF60OaaD0='), error:function(request){$('#error').html(request.responseText);}, success:function(request){$('#content').html(request);}, type:'post', url:'/users/view_packages'}); return false;
 }
 
-function added()
+function added(msg)
         {
+          $('#msg').html(msg);
+          
           	$( "#dialog-confirm" ).dialog({
 			resizable: false,
 			height:'auto',
                         width:'auto',
-                        title:'Question added.',
+                        title:'Alert.',
                         draggable:false,
 			modal: true,
 			buttons: {

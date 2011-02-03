@@ -1,39 +1,43 @@
 <div class="signup_box2" style="width: 750px;height:220px; padding: 15px;margin: 0px;float: left;" >
   <%= debug @pckg %>
   <% unless @pckg.blank? %>
-  <div align="center" style="text-align: left;">
-    <div  style="float: left;">
-        <b>Package Type:</b> <%=@pckg.product.name%> <br />
-        <b>Description:</b> <%=@pckg.product.description%> <br />
-        <%
-        price = (@pckg.product.price_in_cents.to_f / 100).to_f
-        %>
-        <b>Price:</b> <%=price%> <br />
-        <b>Expiry date:</b> <%=@pckg.current_period_ends_at.strftime("%m/%d/%Y")%> <br />
+  <% if @pckg.state == 'active' %>
+            <div align="center" style="text-align: left;">
+              <div  style="float: left;">
+                  <b>Package Type:</b> <%=@pckg.product.name%> <br />
+                  <b>Description:</b> <%=@pckg.product.description%> <br />
+                  <%
+                  price = (@pckg.product.price_in_cents.to_f / 100).to_f
+                  %>
+                  <b>Price:</b> <%=price%> <br />
+                  <b>Expiry date:</b> <%=@pckg.current_period_ends_at.strftime("%m/%d/%Y")%> <br />
 
-        <%
-          date = distance_of_time_in_words((@pckg.current_period_ends_at - Time.now))
-          result = @msg[0,10]
-        %>
-      <b>Days remaining:</b> <%=date%>
-      <br /><br /><br />
-      <a style="font-size: 12px;" href="https://hiringsimplified.chargify.com/update_payment/<%=@pckg.id%>/<%=result%>">Update Billing</a>
-      <br /><br />
-      <a style="font-size: 12px;" href="https://hiringsimplified.chargify.com/update_payment/<%=@pckg.id%>/<%=result%>">Cancel Subscription</a>
-        </div>
-    <div style="float: right;">
+                  <%
+                    date = distance_of_time_in_words((@pckg.current_period_ends_at - Time.now))
+                    result = @msg[0,10]
+                  %>
+                <b>Days remaining:</b> <%=date%>
+                <br /><br /><br />
+                <a style="font-size: 12px;" href="https://hiringsimplified.chargify.com/update_payment/<%=@pckg.id%>/<%=result%>">Update Billing</a>
+                <br /><br />
+                <a style="font-size: 12px;" onclick="cancel_subcription();" href="#">Cancel Subscription</a>
+                  </div>
+              <div style="float: right;">
 
-      <select id="pckg" style="width: 90px;">
-          <% @products.each do |product| %>
-            <% if @pckg.product.id != product.id %>
-              <option value="<%=product.id%>" ><%=product.name%></option>
-            <% end %>        
-          <% end %>
-      </select>
-      <a href="#" onclick="change_subcription();">change plan</a>
+                <select id="pckg" style="width: 90px;">
+                    <% @products.each do |product| %>
+                      <% if @pckg.product.id != product.id %>
+                        <option value="<%=product.id%>" ><%=product.name%></option>
+                      <% end %>
+                    <% end %>
+                </select>
+                <a href="#" onclick="change_subcription();">change plan</a>
 
-    </div>
-  </div>
+              </div>
+            </div>
+  <% else %>
+  <a style="font-size: 12px;" href="https://hiringsimplified.chargify.com/update_payment/<%=@pckg.id%>/<%=result%>">Update Billing</a>
+  <% end %>
     <% else %>
       You have not subscribed to any package yet. please click <b><a href="/users/static_page/1?name=price">here</a></b> to view all available packages
   <% end %>
@@ -43,7 +47,7 @@
 function change_subcription()
 {
         var id = $("#pckg").val();
-       $.ajax({complete:function(request){added();},
+        $.ajax({complete:function(request){added('A notification will be sent to you when the package is changed.');},
         data:'authenticity_token=' + encodeURIComponent('FI9rvJiu/2Oe3xjYaGdzj2KAsl/kDWPHrrtrAh8bfzE='),
         error:function(request){$('#error').html(request.responseText);},
         success:function(request){},
@@ -51,5 +55,16 @@ function change_subcription()
         url:'/users/change_subscription?id='+id});
         return false;
 
+}
+
+function cancel_subscription()
+{
+        $.ajax({complete:function(request){added('A notification will be sent to you when your subscription is changed.');},
+        data:'authenticity_token=' + encodeURIComponent('FI9rvJiu/2Oe3xjYaGdzj2KAsl/kDWPHrrtrAh8bfzE='),
+        error:function(request){$('#error').html(request.responseText);},
+        success:function(request){},
+        type:'post',
+        url:'/users/cancel_subscription?id='+id});
+        return false;
 }
 </script>
