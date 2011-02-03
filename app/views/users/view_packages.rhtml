@@ -1,13 +1,14 @@
 <div class="signup_box2" style="width: 750px;height:220px; padding: 15px;margin: 0px;float: left;" >
   <%#= debug @pckg %>
   <% unless @pckg.blank? %>
+  <%
+  date = distance_of_time_in_words((@pckg.current_period_ends_at - Time.now))
+  result = @msg[0,10]
+  %>
   <div style="float: right;">
     <a style="font-size: 12px;" href="https://hiringsimplified.chargify.com/update_payment/<%=@pckg.id%>/<%=result%>">Update Billing</a>
   </div>
-                <%
-                    date = distance_of_time_in_words((@pckg.current_period_ends_at - Time.now))
-                    result = @msg[0,10]
-                  %>
+                
   <% if @pckg.state == 'active' %>
             <div align="center" style="text-align: left;">
               <div  style="float: left;">
