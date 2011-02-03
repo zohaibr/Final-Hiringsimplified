@@ -354,7 +354,7 @@ class UsersController < ApplicationController
         pckg = Chargify::Subscription.find(id)
         usr_pckg = UserPackage.find_by_package_id pckg.product.id
 
-        user = User.find(pckg.reference)
+        user = User.find(pckg.customer_reference)
 
         if pckg.state != 'active'
           Notifier.deliver_trigger_subscription(user.email,'Your subscription has been canceled')
