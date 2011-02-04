@@ -20,7 +20,7 @@
                   %>
                   <b>Price:</b> <%=price%> <br />
                   <b>Next billing cycle:</b> <%=@pckg.next_assessment_at.strftime("%m/%d/%Y")%> (<%=date%>) <br />
-                  <b>Status:</b> <%=@pckg.state%><% if @pckg.state != 'active' %><span style="font-size: 11px;">(you not be charged on next billing cycle)</span><% end %> <br />
+                  <b>Status:</b><% if @pckg.state != 'active' %><span style="color:red;">Cancelled</span><span style="font-size: 12px;">- You not be charged on next billing cycle</span><%else%>Active<% end %> <br />
 
                 <br /><br /><br />
 
