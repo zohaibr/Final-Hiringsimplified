@@ -245,9 +245,9 @@ class UsersController < ApplicationController
 
             usr_pckg.package_id = product_id
             usr_pckg.time_left = usr_pckg.time_left + @pckg.product.accounting_code.to_f
-           # usr_pckg.next_assessment_at = @pckg.product.next_assessment_at.to_s
+            usr_pckg.next_assessment_at = @pckg.next_assessment_at.to_s
             usr_pckg.save
-            @msg = "you successfully subscribed to the package.#{usr_pckg.next_assessment_at} #{@pckg}"
+            @msg = "you successfully subscribed to the package."
           else
             @msg = "there was some error while processing your transaction."
           end
