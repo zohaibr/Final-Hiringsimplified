@@ -2,7 +2,7 @@
   <%= debug @pckg %>
   <% unless @pckg.blank? %>
   <%
-  date = distance_of_time_in_words((@pckg.current_period_ends_at - Time.now))
+  date = distance_of_time_in_words((@pckg.next_assessment_at - Time.now))
   result = @msg[0,10]
   %>
   <div style="float: right;">
@@ -19,10 +19,7 @@
                   price = (@pckg.product.price_in_cents.to_f / 100).to_f
                   %>
                   <b>Price:</b> <%=price%> <br />
-                  <b>Expiry date:</b> <%=@pckg.current_period_ends_at.strftime("%m/%d/%Y")%> <br />
-
-                  
-                <b>Days remaining:</b> <%=date%>
+                  <b>Next billing cycle:</b> <%=@pckg.next_assessment_at.strftime("%m/%d/%Y")%> (<%=date%>) <br />
                 <br /><br /><br />
 
                </div>

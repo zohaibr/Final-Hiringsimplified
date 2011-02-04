@@ -245,6 +245,7 @@ class UsersController < ApplicationController
 
             usr_pckg.package_id = product_id
             usr_pckg.time_left = usr_pckg.time_left + @pckg.product.accounting_code.to_f
+            usr_pckg.next_assessment_at = @pckg.product.next_assessment_at.to_s
             usr_pckg.save
             @msg = "you successfully subscribed to the package."
           else
@@ -365,13 +366,13 @@ class UsersController < ApplicationController
 
       if pckg.product.id < usr_pckg.package_id
           product = Chargify::Product.find(usr_pckg.package_id)
-          @new_time =   ((product.accounting_code.to_f - usr_pckg.time_left) - pckg.product.accounting_code.to_f).abs
+#          @new_time =   ((product.accounting_code.to_f - usr_pckg.time_left) - pckg.product.accounting_code.to_f).abs
+#
+#          @new_pckg =pckg.product.accounting_code.to_f
+#          @cons = usr_pckg.time_left
+          usr_pckg.time_left = pckg.product.accounting_code.to_f
 
-          @new_pckg =pckg.product.accounting_code.to_f
-          @cons = usr_pckg.time_left
-          @pg_time = product.accounting_code.to_f
-
-          usr_pckg.time_left = @new_time
+#          usr_pckg.time_left = @new_time
           usr_pckg.package_id = pckg.product.id
           usr_pckg.save
         Notifier.deliver_trigger_subscription(user.email,'Your subscription has downgraded')
@@ -381,7 +382,13 @@ class UsersController < ApplicationController
           usr_pckg.save
           Notifier.deliver_trigger_subscription(user.email,'Your subscription has been upgraded')
         else
-          #do nothing
+          if pckg.state == 'active' and pckg.product.id == usr_pckg.package_id
+            if usr_pckg.next_assessment_at != @pckg.product.next_assessment_at.to_s
+              usr_pckg.time_left = pckg.product.accounting_code.to_f
+              usr_pckg.next_assessment_at = @pckg.product.next_assessment_at.to_s
+              usr_pckg.save
+            end
+          end
         end
 
         @x = pckg
