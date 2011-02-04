@@ -10,7 +10,7 @@
    </div>
   <div class="spacer"></div> 
                 
-  <% if @pckg.state == 'active' %>
+  
             <div align="center" style="text-align: left;">
               <div  style="float: left;margin-left: 15px;">
                   <b>Package Type:</b> <%=@pckg.product.name%> <br />
@@ -20,6 +20,8 @@
                   %>
                   <b>Price:</b> <%=price%> <br />
                   <b>Next billing cycle:</b> <%=@pckg.next_assessment_at.strftime("%m/%d/%Y")%> (<%=date%>) <br />
+                  <b>Status:</b> <%=@pckg.state%><% if @pckg.state != 'active' %><span style="font-size: 11px;">(you not be charged on next billing cycle)</span><% end %> <br />
+
                 <br /><br /><br />
 
                </div>
@@ -27,7 +29,9 @@
                 <div class="spacer"></div> <div class="spacer"></div><div class="spacer"></div>
               <div class="brown_button23" onclick="cancel_subscription('<%=@pckg.id%>');" style="background-color: transparent;border: 0;">Cancel Subscription</div>
               <div class="brown_button23" onclick="$('#plan').show();" style="background-color: transparent;border: 0;">Change Plan</div>
-
+               <% if @pckg.state != 'active' %>
+                <div class="brown_button23" onclick="reactivate_subscription('<%=@pckg.id%>');" style="background-color: transparent;border: 0;">Activate Subscription</div>
+               <% end %>
               
               <div id="plan" style="display: none;">
                 <div class="spacer"></div>
@@ -43,10 +47,6 @@
               </div>
                             
             </div>
-  <% else %>
-  <b>your subscription has been cancelled, please click <a class="hyper" href="#" onclick="reactivate_subscription('<%=@pckg.id%>');">here</a> to reactivate your subscription</b>
-  
-  <% end %>
     <% else %>
       You have not subscribed to any package yet. please click <b><a class="hyper" href="/users/static_page/1?name=price">here</a></b> to view all available packages
   <% end %>
