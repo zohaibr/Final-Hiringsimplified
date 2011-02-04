@@ -314,7 +314,11 @@ class UsersController < ApplicationController
     end
 
     @pckg = Chargify::Subscription.find_by_customer_reference(current_user.id)
- 
+
+    pg = UserPackage.find(:first, :conditions => ["user_id = ? OR ",current_user.id,current_user.parent_id ])
+
+    pg.time_left = 0
+
     @pckg.product_id = id
     @pckg.save
     @pckg.reload
