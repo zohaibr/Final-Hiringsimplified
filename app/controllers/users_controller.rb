@@ -245,9 +245,9 @@ class UsersController < ApplicationController
 
             usr_pckg.package_id = product_id
             usr_pckg.time_left = usr_pckg.time_left + @pckg.product.accounting_code.to_f
-            usr_pckg.next_assessment_at = @pckg.next_assessment_at.to_s
+            usr_pckg.next_assessment_at = @pckg.next_assessment_at.strftime("%m/%d/%Y")
             usr_pckg.save
-            @msg = "you successfully subscribed to the package.#{usr_pckg.next_assessment_at}"
+            @msg = "you successfully subscribed to the package.#{usr_pckg.next_assessment_at} -- #{@pckg.next_assessment_at.strftime("%m/%d/%Y")}"
           else
             @msg = "there was some error while processing your transaction."
           end
@@ -383,9 +383,9 @@ class UsersController < ApplicationController
           Notifier.deliver_trigger_subscription(user.email,'Your subscription has been upgraded')
         else
           if pckg.state == 'active' and pckg.product.id == usr_pckg.package_id
-            if usr_pckg.next_assessment_at != @pckg.product.next_assessment_at.to_s
+            if usr_pckg.next_assessment_at != @pckg.next_assessment_at.strftime("%m/%d/%Y")
               usr_pckg.time_left = pckg.product.accounting_code.to_f
-              usr_pckg.next_assessment_at = @pckg.product.next_assessment_at.to_s
+              usr_pckg.next_assessment_at = @pckg.next_assessment_at.strftime("%m/%d/%Y")
               usr_pckg.save
             end
           end
