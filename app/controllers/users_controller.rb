@@ -343,13 +343,13 @@ class UsersController < ApplicationController
   end
 
   def trigger_subscription
-    #subscription_ids = params['_json']
+    subscription_ids = params['_json']
      Chargify.configure do |c|
       c.subdomain = 'hiringsimplified'
       c.api_key = 'qG0XUKoBhtVsqrQ17tFr'
     end
-      id = 401974
-    #subscription_ids.each do |id|
+     # id = 401974
+    subscription_ids.each do |id|
         # Process updated subscriptions here
         #Rails.logger.debug("SUB ID: #{id}")
         pckg = Chargify::Subscription.find(id)
@@ -376,7 +376,7 @@ class UsersController < ApplicationController
           usr_pckg.save
         Notifier.deliver_trigger_subscription(user.email,'Your subscription has downgraded')
         elsif pckg.product.id > usr_pckg.package_id
-          usr_pckg.time_left = usr_pckg.time_left.abs + pckg.product.accounting_code.to_f
+          usr_pckg.time_left = pckg.product.accounting_code.to_f
           usr_pckg.package_id = pckg.product.id
           usr_pckg.save
           Notifier.deliver_trigger_subscription(user.email,'Your subscription has been upgraded')
@@ -387,7 +387,7 @@ class UsersController < ApplicationController
         @x = pckg
         
 
-      #end
+      end
   end
 end
 
