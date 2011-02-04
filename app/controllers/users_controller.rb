@@ -314,7 +314,7 @@ class UsersController < ApplicationController
     end
 
     @pckg = Chargify::Subscription.find_by_customer_reference(current_user.id)
-    
+ 
     @pckg.product_id = id
     @pckg.save
     @pckg.reload
@@ -349,8 +349,8 @@ class UsersController < ApplicationController
       c.subdomain = 'hiringsimplified'
       c.api_key = 'qG0XUKoBhtVsqrQ17tFr'
     end
-     # id = 401974
-    subscription_ids.each do |id|
+      id = 403277
+   # subscription_ids.each do |id|
         # Process updated subscriptions here
         #Rails.logger.debug("SUB ID: #{id}")
         pckg = Chargify::Subscription.find(id)
@@ -383,9 +383,9 @@ class UsersController < ApplicationController
           Notifier.deliver_trigger_subscription(user.email,'Your subscription has been upgraded')
         else
           if pckg.state == 'active' and pckg.product.id == usr_pckg.package_id
-            if usr_pckg.next_assessment_at != @pckg.next_assessment_at.strftime("%m/%d/%Y")
+            if usr_pckg.next_assessment_at != @pckg.product.next_assessment_at.strftime("%m/%d/%Y")
               usr_pckg.time_left = pckg.product.accounting_code.to_f
-              usr_pckg.next_assessment_at = @pckg.next_assessment_at.strftime("%m/%d/%Y")
+              usr_pckg.next_assessment_at = @pckg.product.next_assessment_at.strftime("%m/%d/%Y")
               usr_pckg.save
             end
           end
@@ -394,7 +394,7 @@ class UsersController < ApplicationController
         @x = pckg
         
 
-      end
+      #end
   end
 end
 
