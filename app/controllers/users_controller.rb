@@ -349,8 +349,8 @@ class UsersController < ApplicationController
       c.subdomain = 'hiringsimplified'
       c.api_key = 'qG0XUKoBhtVsqrQ17tFr'
     end
-      id = 403277
-   # subscription_ids.each do |id|
+     # id = 401974
+    subscription_ids.each do |id|
         # Process updated subscriptions here
         #Rails.logger.debug("SUB ID: #{id}")
         pckg = Chargify::Subscription.find(id)
@@ -394,7 +394,7 @@ class UsersController < ApplicationController
         @x = pckg
         
 
-      #end
+      end
   end
 end
 
