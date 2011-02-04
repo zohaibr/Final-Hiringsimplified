@@ -318,7 +318,7 @@ class UsersController < ApplicationController
     pg = UserPackage.find(:first, :conditions => ["user_id = ? OR user_id = ?",current_user.id,current_user.parent_id ])
 
     pg.time_left = 0
-
+    pg.save
     @pckg.product_id = id
     @pckg.save
     @pckg.reload
