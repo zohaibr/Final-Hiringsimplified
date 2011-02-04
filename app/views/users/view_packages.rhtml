@@ -27,11 +27,13 @@
                </div>
               <div style="float: right;">
                 <div class="spacer"></div> <div class="spacer"></div><div class="spacer"></div>
-              <div class="brown_button23" onclick="cancel_subscription('<%=@pckg.id%>');" style="background-color: transparent;border: 0;">Cancel Subscription</div>
+              
               <div class="brown_button23" onclick="$('#plan').show();" style="background-color: transparent;border: 0;">Change Plan</div>
                <% if @pckg.state != 'active' %>
                 <div class="brown_button23" onclick="reactivate_subscription('<%=@pckg.id%>');" style="background-color: transparent;border: 0;">Activate Subscription</div>
-               <% end %>
+               <% else %>
+                <div class="brown_button23" onclick="cancel_subscription('<%=@pckg.id%>');" style="background-color: transparent;border: 0;">Cancel Subscription</div>
+                <% end %>
               
               <div id="plan" style="display: none;">
                 <div class="spacer"></div>
