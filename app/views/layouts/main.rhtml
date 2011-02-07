@@ -16,6 +16,7 @@
 
     <%= stylesheet_link_tag 'jquery.fancybox-1.3.4.css' %>
     <%= stylesheet_link_tag 'jquery-ui-1.8.9.custom.css' %>
+    <%= stylesheet_link_tag 'home.css' %>
    
     
     <%= feedback_includes %>
@@ -37,6 +38,7 @@
     <%#= javascript_include_tag 'dragdrop' %>
     <%#= javascript_include_tag 'lightbox' %>
     <%#= javascript_include_tag 'tooltips' %>
+    <%= javascript_include_tag 'slide' %>
     <%= javascript_include_tag 'AC_OETags' %>
 
 
@@ -157,6 +159,21 @@
   })();
 
 </script>
+
+
+         <script type="text/javascript">
+			var outerDeck = $('.outerSlidedeck').slidedeck({ hideSpines: true, keys: false });
+            outerDeck.vertical();
+            var innerDeck = $('.innerSlidedeck').slidedeck({ hideSpines: true, keys: false, speed: 125 });
+		        </script>
+          <!-- Help support SlideDeck! Place this noscript tag on your page when you deploy a SlideDeck to provide a link back! -->
+        </p>
+        <noscript>
+	    </noscript>
+        <noscript>
+        <p>Powered By <a href="http://www.slidedeck.com/" title="Visit SlideDeck.com">SlideDeck</a></p>
+        </noscript>
+
   </body>
 </html>
 

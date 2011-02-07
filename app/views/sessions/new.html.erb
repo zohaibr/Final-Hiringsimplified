@@ -5,32 +5,49 @@ function candidate_demo()
   }
 </script>
 <%#= @msg %>
-<div style="float: left;text-align: left;">
-  
-  <div class="home_screen" style="width: 450px;">
-    <div class="red_head">
-Step 1 - Post Job <br />
-Step 2 - Collect Resumes
-    </div>
-<div class="red_head_bt">Step 3 - HiringSimplified </div>
-<div class="red_head">
-Step 4 - In Office Interview <br />
-Step 5 - Successful Hire <br />
-</div>
-  </div>
-  <div class="g_black" style="text-align: center;">
-    <div class="g_black_bt">
-    HiringSimplified provides an easy to use video screening platform to help employers find better employees
-    </div>
-    </div>
-  <div style="margin-top: 30px;margin-left: 45px;">
-    <div onclick="open_dg('rec_demo','auto','auto');" class="btn_recs"></div>
-    <div  onclick="open_dg('candidate_demo','auto','auto');" class="btn_candidates" ></div>
-  </div>
-</div>
+<div id="slidedeck_frame_wrapper" style="float: left;">
+            <div id="slidedeck_frame">
+    			<dl class="slidedeck outerSlidedeck">
+    				<dt>Slide 1</dt>
+    				<dd>
+                        <ul class="slidesVertical">
+                            <li>
+                            	<div class="bgj_a"> </div>
+							</li>
+                            <li>
 
-<div style="float: right;margin-top: 15px;">
+
+                            </li>
+                            <li>
+
+						    </li>
+                            <li>
+
+								<div id="inner_slidedeck_wrapper">
+                                    <div id="inner_slidedeck_frame">
+                            			<dl class="innerSlidedeck slidedeck">
+
+                            				<dd><a href="#" border="0"><img src="../images/slidedeck/cr_int.png" alt="Step 1" border="0"/></a></dd>
+                                                        <dd><a href="#" border="0"><img src="../images/slidedeck/cr_int_2.png" alt="Step 2" border="0"/></a></dd>
+                            				<dd><a href="#" border="0"><img src="../images/slidedeck/cr_int_3.png" alt="Step 3" border="0"/></a></dd>
+                            			</dl>
+                                    </div>
+                                </div>
+
+							</li>
+                            <li>
+                            </li>
+
+                        </ul>
+    				</dd>
+    			</dl>
+            </div>
+            <div id="feature_demo_overlay_popup" style="display: none;"><img src="images/slidedeck/overlay_popup.png" alt="Overlay Feature Demo" /></div>
+        </div>
+
+<div style="float: right;">
   <div class="sign_box">
+    <div class="g_black_bt" style="margin: 10px;">SIGN IN TODAY</div>
     <% form_for :user, :url => users_path do |f| %>
     <%= hidden_field :user, :user_type, :value => "recruiter" %>
     <div class="form">
@@ -62,16 +79,19 @@ Step 5 - Successful Hire <br />
 
        <div>
         <div class="left">Full Name:</div>
-        <div class="left" style="width: 108px;margin-right: 17px;margin-left: 16px;"><%= f.text_field :first_name %></div>
-        <div class="left" style="width: 108px;"><%= f.text_field :last_name %></div>
+        <div class="right">
+        <div class="left" style="width: 78px;margin-right: 10px;"><%= f.text_field :first_name %></div>
+        <div class="left" style="width: 78px;"><%= f.text_field :last_name %></div>
+        </div>
       </div>
 
        <div class="spacer"></div>
 
         <div>
-        <div class="left"></div>
-        <div class="left" style="width: 108px;margin-right: 15px;margin-left: 16px;"><%= f.text_field :city,:value=>'city' %></div>
-        <div class="left" style="width: 110px;margin-left: 2px;">
+        <div class="left">Location:</div>
+        <div class="right">
+        <div class="left" style="width: 78px;margin-right: 10px;"><%= f.text_field :city,:value=>'city' %></div>
+        <div class="left" style="width: 78px;margin-left: 2px;">
           <select name="user[state]" style="padding: 2px;">
             <option value="" selected="selected">Select State</option>
             <option value="AL">Alabama</option>
@@ -128,48 +148,36 @@ Step 5 - Successful Hire <br />
 
           </select>
 </div>
+        </div>
       </div>
 
         <div>
-        <div class="left"></div>
-        <div class="left" style="text-align: left;width: 40px;"><%= f.check_box :agree%></div>
-        <div class="left" style="width: 208px;font-size: 13px;">I agree to the <a href="/users/static_page/1?name=terms" style="color: #a52a2a;font-weight: bold;">Terms & Conditions</a></div>
+        <div class="spacer"></div>
+        <div style="font-size: 13px; width: 100%;"><%= f.check_box :agree ,:style=>"width:20px;"%>I agree to the <a href="/users/static_page/1?name=terms" style="color: #a52a2a;font-weight: bold;">Terms & Conditions</a></div>
+        
       </div>
 
         <div class="spacer"></div>
         <div class="right" style="text-align: right;"><%= submit_tag '', :class=>"join" ,:style=>'-webkit-border-radius: 0px;-moz-border-radius: 0px;border:none;width:133px;height:40px;'%></div>
 	<div class="spacer"></div>
-
-
-
     </div>
 <% end %>
   </div>
 
 </div>
-<div class="spacer" style="height: 30px;"></div>
-<div style="height: 250px;">
-<div class="cre_int">
-  <div class="g_red">Create Interview</div>
-  <div class="imgr"></div>
-  <div class="g_bl" style="margin-top: 8px;">Recruiter can create multiple interviews in few simple and easy steps! Screening process has never been simpler!</div>
-</div>
-
-  <div class="cre_panel" style="margin-left: 139px;">
-  <div class="g_red">Candidate Portal</div>
-  <div class="imgr" style="padding-top: 18px;"></div>
-  <div class="g_bl">User friendly interface for candidates to record interviews!
-</div>
-</div>
-
-
-  <div class="cre_int" style="float: right;">
-  <div class="g_red">Interview Portal</div>
-  <div class="imgr"></div>
-  <div class="g_bl" style="margin-top: 8px;">Recruiter dashboard provides interview status updates, interview sharing, rating candidates and much much more! Try it to see it!</div>
-</div>
-
+<div class="spacer"></div>
+<div style="height: 300px;padding-left: 40px;">
+  <div style="float: left;">
+    <div class="g_black_bt" style="margin: 10px;">Recruiter</div>
+    <iframe title="YouTube video player" width="450" height="278"  src="http://www.youtube.com/embed/zYtWyrcobNA?rel=0" frameborder="0" allowfullscreen></iframe>
+      
   </div>
+
+  <div style="float: left;margin-left: 15px;">
+    <div class="g_black_bt" style="margin: 10px;">Candidate</div>
+      <iframe title="YouTube video player" width="450" height="278"  src="http://www.youtube.com/embed/nCJlACOud6w?rel=0" frameborder="0" allowfullscreen></iframe>
+  </div>
+</div>
 <div class="spacer"></div>
 <div id="candidate_demo" style="display:none">  
   <object width="640" height="385"><param name="movie" value="http://www.youtube.com/v/nCJlACOud6w?fs=1&amp;hl=en_US&amp;color1=0x006699&amp;color2=0x54abd6"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/nCJlACOud6w?fs=1&amp;hl=en_US&amp;color1=0x006699&amp;color2=0x54abd6" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="640" height="385"></embed></object>
@@ -177,5 +185,5 @@ Step 5 - Successful Hire <br />
 
 <div id="rec_demo" style="display:none">
   <object width="640" height="385"><param name="movie" value="http://www.youtube.com/v/zYtWyrcobNA?fs=1&amp;hl=en_US&amp;color1=0x006699&amp;color2=0x54abd6"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/zYtWyrcobNA?fs=1&amp;hl=en_US&amp;color1=0x006699&amp;color2=0x54abd6" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="640" height="385"></embed></object>
-</div>
+</div
 
