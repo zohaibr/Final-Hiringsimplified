@@ -47,7 +47,7 @@
 	width: 200px;
 	height: 248px;
 	overflow: hidden;
-	padding-top: 80px; }
+	 }
 
 	#slidedeck_frame .outerSlidedeck .verticalSlideNav li.arrow { background: url('../images/slidedeck/indicator_background.png') no-repeat right top; }
 
