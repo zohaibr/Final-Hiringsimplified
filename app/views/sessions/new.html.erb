@@ -12,7 +12,7 @@ function candidate_demo()
     				<dd>
                         <ul class="slidesVertical">
                             <li>
-                            	<div class="bgj_a"> </div>
+                              <div class="bgj_a" style="margin-top: 320px;"> <a href="./users/static_page/1?name=price" border="0"><img src="../images/slidedeck/plans.png" alt="Step 1" border="0"/></a></div>
 							</li>
                             <li>
 
@@ -47,52 +47,104 @@ function candidate_demo()
 
 <div style="float: right;">
   <div class="sign_box">
-    <div class="g_black_bt" style="margin: 10px;">SIGN IN TODAY</div>
+    <h3 >New to HiringSimplified?</h3>
+   <div class="spacer"></div>
+    <div class="btn_sign" onclick="open_dg('regis', 500, 'auto')"></div>
+    <div class="spacer"></div>
+    
+  </div>
+<div class="spacer"></div>
+<div class="sign_box">
+  <h3 >Video Demo for Recruiter</h3>
+    <a href="#" border="0" onclick="open_dg('rec_demo','auto','auto');"><img src="../images/vdo_demo_rec.png" alt="Step 1" border="0"/></a>
+
+  </div>
+<div class="spacer"></div>
+  <div class="sign_box">
+    <h3 >Video Demo for Candidate</h3>
+    <a href="#" border="0" onclick="open_dg('candidate_demo','auto','auto');"><img src="../images/vdo_demo_candi.png" alt="Step 1" border="0"/></a>
+      </div>
+
+</div>
+<div class="spacer"></div>
+<div id="candidate_demo" style="display:none">  
+  <object width="640" height="385"><param name="movie" value="http://www.youtube.com/v/nCJlACOud6w?fs=1&amp;hl=en_US&amp;color1=0x006699&amp;color2=0x54abd6"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/nCJlACOud6w?fs=1&amp;hl=en_US&amp;color1=0x006699&amp;color2=0x54abd6" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="640" height="385"></embed></object>
+</div>
+
+<div id="rec_demo" style="display:none">
+  <object width="640" height="385"><param name="movie" value="http://www.youtube.com/v/zYtWyrcobNA?fs=1&amp;hl=en_US&amp;color1=0x006699&amp;color2=0x54abd6"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/zYtWyrcobNA?fs=1&amp;hl=en_US&amp;color1=0x006699&amp;color2=0x54abd6" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="640" height="385"></embed></object>
+</div>
+
+
+
+
+<div style="display: none;">
+
+  <div align="left" class="candidate_signup_box" id="regis" >
+     <h3>New User</h3>
+     <div style="text-align: left;">
     <% form_for :user, :url => users_path do |f| %>
     <%= hidden_field :user, :user_type, :value => "recruiter" %>
-    <div class="form">
-      <div>
-        <div class="left">Company Name:</div>
-        <div class="right"><%= f.text_field :company_name %></div>
-      </div>
-      <div class="spacer"></div>
-      <div>
-        <div class="left">Email Address:</div>
-        <div class="right"><%= f.text_field :email %></div>
-      </div>
 
-      <div class="spacer"></div>
+  <div style="">
+      <div style="float: left; margin-top: 5px;padding-right: 15px;">
+        Company:<br />
+        <%= f.text_field :company_name,:class=>'required' %>
+     </div>
+  </div>
 
-      <div>
-        <div class="left">Password:</div>
-        <div class="right"><%= f.password_field :password %></div>
-      </div>
+    <div>
+      <div style="float: left; margin-top: 5px;padding-right: 15px;">
+        Email:<br />
+        <%= f.text_field :email,:class=>'required'  %>
+     </div>
+  </div>
 
-      <div class="spacer"></div>
+     <div class="spacer"></div>
 
-       <div>
-        <div class="left">Confirm Password:</div>
-        <div class="right"><%= f.password_field :password_confirmation %></div>
-      </div>
 
-       <div class="spacer"></div>
+     <div>
+      <div style="float: left; margin-top: 5px;padding-right: 15px;">
+        Password:<br />
+        <%= f.password_field :password,:class=>'required'  %>
+     </div>
+  </div>
 
-       <div>
-        <div class="left">Full Name:</div>
-        <div class="right">
-        <div class="left" style="width: 68px;margin-right: 10px;"><%= f.text_field :first_name %></div>
-        <div class="left" style="width: 68px;"><%= f.text_field :last_name %></div>
-        </div>
-      </div>
+     <div>
+      <div style="float: left; margin-top: 5px;padding-right: 15px;">
+        Confirm Password:<br />
+        <%= f.password_field :password_confirmation ,:class=>'required' %>
+     </div>
+  </div>
 
-       <div class="spacer"></div>
+     <div class="spacer"></div>
 
-        <div>
-        <div class="left">Location:</div>
-        <div class="right">
-        <div class="left" style="width: 68px;margin-right: 10px;"><%= f.text_field :city,:value=>'city' %></div>
-        <div class="left" style="width: 68px;margin-left: 2px;">
-          <select name="user[state]" style="padding: 2px;">
+
+    <div>
+      <div style="float: left; margin-top: 5px;padding-right: 15px;">
+        First Name:<br />
+        <%= f.text_field :first_name ,:class=>'required'  %>
+     </div>
+  </div>
+
+     <div>
+      <div style="float: left; margin-top: 5px;padding-right: 15px;">
+        Last Name:<br />
+        <%= f.text_field :first_name ,:class=>'required'  %>
+     </div>
+  </div>
+<div class="spacer"></div>
+     <div>
+      <div style="float: left; margin-top: 5px;padding-right: 15px;">
+        City:<br />
+        <%= f.text_field :city,:value=>'city',:class=>'required'  %>
+     </div>
+  </div>
+
+     <div>
+      <div style="float: left; margin-top: 5px;padding-right: 15px;">
+        State:<br />
+        <select name="user[state]" class="required" >
             <option value="" selected="selected">Select State</option>
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
@@ -147,43 +199,20 @@ function candidate_demo()
             <option value="WY">Wyoming</option>
 
           </select>
-</div>
-        </div>
-      </div>
+     </div>
+  </div>
+     <div class="spacer"></div>
+     <div style="font-size: 13px; width: 100%;"><%= f.check_box :agree ,:style=>"width:20px;"%>I agree to the <a href="/users/static_page/1?name=terms" style="color: #a52a2a;font-weight: bold;">Terms & Conditions</a></div>
 
-        <div>
-        <div class="spacer"></div>
-        <div style="font-size: 13px; width: 100%;"><%= f.check_box :agree ,:style=>"width:20px;"%>I agree to the <a href="/users/static_page/1?name=terms" style="color: #a52a2a;font-weight: bold;">Terms & Conditions</a></div>
-        
-      </div>
+      <div class="spacer"></div>
 
-        <div class="spacer"></div>
-        <div class="right" style="text-align: right;"><%= submit_tag '', :class=>"join" ,:style=>'-webkit-border-radius: 0px;-moz-border-radius: 0px;border:none;width:133px;height:40px;'%></div>
-	<div class="spacer"></div>
-    </div>
+      <%= submit_tag 'Create' ,:class=>"silver_button_blue" ,:style=>"border:0;float:right;" %>
+
+      <div class="spacer"></div>
+     
 <% end %>
-  </div>
 
+      </div>
 </div>
-<div class="spacer"></div>
-<div style="height: 300px;padding-left: 40px;">
-  <div style="float: left;">
-    <div class="g_black_bt" style="margin: 10px;">For Recruiters</div>
-    <iframe title="YouTube video player" width="450" height="278"  src="http://www.youtube.com/embed/zYtWyrcobNA?rel=0" frameborder="0" allowfullscreen></iframe>
-      
-  </div>
-
-  <div style="float: left;margin-left: 15px;">
-    <div class="g_black_bt" style="margin: 10px;">For Candidates</div>
-      <iframe title="YouTube video player" width="450" height="278"  src="http://www.youtube.com/embed/nCJlACOud6w?rel=0" frameborder="0" allowfullscreen></iframe>
-  </div>
 </div>
-<div class="spacer"></div>
-<div id="candidate_demo" style="display:none">  
-  <object width="640" height="385"><param name="movie" value="http://www.youtube.com/v/nCJlACOud6w?fs=1&amp;hl=en_US&amp;color1=0x006699&amp;color2=0x54abd6"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/nCJlACOud6w?fs=1&amp;hl=en_US&amp;color1=0x006699&amp;color2=0x54abd6" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="640" height="385"></embed></object>
-</div>
-
-<div id="rec_demo" style="display:none">
-  <object width="640" height="385"><param name="movie" value="http://www.youtube.com/v/zYtWyrcobNA?fs=1&amp;hl=en_US&amp;color1=0x006699&amp;color2=0x54abd6"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/zYtWyrcobNA?fs=1&amp;hl=en_US&amp;color1=0x006699&amp;color2=0x54abd6" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="640" height="385"></embed></object>
-</div
 

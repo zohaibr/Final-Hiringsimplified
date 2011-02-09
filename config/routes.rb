@@ -89,6 +89,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.signup 'users/add_subscription', :controller => 'users', :action => 'add_subscription'
 
+  map.signup 'users/welcome', :controller => 'users', :action => 'welcome'
+
   map.resources :users
 
   map.resource :session

@@ -21,6 +21,10 @@ class UsersController < ApplicationController
       @user = User.new
     end
   end
+
+  def welcome
+    
+  end
  
   def create
     #login_keeping_session!
@@ -53,7 +57,7 @@ class UsersController < ApplicationController
         @notification = Notifier.deliver_share(@user)
         redirect_back_or_default('/users/profile')
       else
-        self.current_user = @user # !! now logged in
+        #self.current_user = @user # !! now logged in
         roles(@user.user_type,@user.id)
         @notification = Notifier.deliver_confirmation_email(@user)
         pckg = Package.find_by_package_type("free")
@@ -62,7 +66,7 @@ class UsersController < ApplicationController
         user_package.package_id =0
         user_package.time_left =1
         user_package.save
-        redirect_back_or_default('/dashboards')
+        redirect_back_or_default('/sessions/direct_login?created=yes')
       end
 
       flash[:notice] = "<span style='color:green;'>Thanks for signing up!</span>"

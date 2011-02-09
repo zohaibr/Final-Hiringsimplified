@@ -9,6 +9,10 @@
         <% if params[:atempt] %>
         <h4>Invalid username/password</h4>
         <% end %>
+
+        <% if params[:created] %>
+        <h3>Your account has been created.Please check your email for credentials.</h3><br />
+        <% end %>
         
         <div style="float: left;margin-right: 15px;">
           Email Address:<br/>
