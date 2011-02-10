@@ -395,6 +395,8 @@ class UsersController < ApplicationController
               usr_pckg.time_left = pckg.product.accounting_code.to_f
               usr_pckg.next_assessment_at = pckg.product.next_assessment_at.strftime("%m/%d/%Y")
               usr_pckg.save
+
+            Notifier.deliver_trigger_subscription(user.email,'You are now subscribed')
             end
           end
         end
