@@ -391,9 +391,9 @@ class UsersController < ApplicationController
           Notifier.deliver_trigger_subscription(user.email,'Your subscription has been upgraded')
         else
           if pckg.state == 'active' and pckg.product.id == usr_pckg.package_id
-            if usr_pckg.next_assessment_at != pckg.product.next_assessment_at.strftime("%m/%d/%Y")
+            if usr_pckg.next_assessment_at != pckg.next_assessment_at.strftime("%m/%d/%Y")
               usr_pckg.time_left = pckg.product.accounting_code.to_f
-              usr_pckg.next_assessment_at = pckg.product.next_assessment_at.strftime("%m/%d/%Y")
+              usr_pckg.next_assessment_at = pckg.next_assessment_at.strftime("%m/%d/%Y")
               usr_pckg.save
 
             Notifier.deliver_trigger_subscription(user.email,'You are now subscribed')
