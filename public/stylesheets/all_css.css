@@ -7547,3 +7547,11 @@ h3 {
     cursor: pointer;
 
 }
+
+.free
+{
+    background: url('../images/free.png');
+    background-repeat: no-repeat;
+    width:122px;
+    height: 38px;
+}
