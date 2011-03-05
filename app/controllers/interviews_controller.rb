@@ -253,14 +253,14 @@ render :nothing => true
 
   def share
     @interview_id = session[:int_id]
-    usr = User.find_by_email params[:user][:email]
+    @usr = User.find_by_email params[:user][:email]
 
     chars = (("a".."z").to_a + ("1".."9").to_a )- %w(i o 0 1 l 0)
     promo_code = Array.new(8, '').collect{chars[rand(chars.size)]}.join
 
     share_invite = RateInterview.new
 
-    unless usr.blank?
+    unless @usr.blank?
      
     else
       @user = User.new(params[:user])
@@ -270,15 +270,15 @@ render :nothing => true
       if @user.save
           roles(@user.user_type,@user.id)
           @notification = Notifier.deliver_share(@user)
-          usr = @user
+          @usr = @user
       end
 
     end
         share_invite.code = promo_code
-        share_invite.user_id = usr.id
+        share_invite.user_id = @usr.id
         share_invite.interview_id = @interview_id
         share_invite.save
-        @notification = Notifier.deliver_rate_interview(current_user,usr,share_invite.code)
+        @notification = Notifier.deliver_rate_interview(current_user,@usr,share_invite.code)
 
   end
 
