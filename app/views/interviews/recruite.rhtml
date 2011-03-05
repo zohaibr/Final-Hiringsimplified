@@ -339,7 +339,7 @@ function play_video(url,text,index,cid,qid,notepad,sketchpad,thumb)
   {
 
 
-  open_iframe("/users/add/<%=@interview_id%>?cid=<%=@default_candidate%>&url='+document.location.href'",600,600);
+  open_iframe("/interviews/invite/",460,300);
   /*$.ajax({complete:function(request){open_dg('share_interview', 900, 500)},
         data:'authenticity_token=' + encodeURIComponent('FI9rvJiu/2Oe3xjYaGdzj2KAsl/kDWPHrrtrAh8bfzE='),
         error:function(request){$('#error').html(request.responseText);},
@@ -358,10 +358,11 @@ function play_video(url,text,index,cid,qid,notepad,sketchpad,thumb)
 <div id="" style="text-align: left;">
 
   <div class="upper">
-
     <div class="brown_heading" style="margin-left:23px;"><div style="float: left;">Candidate List</div>
-      <% if current_user.user_type == "recruiter" %>
+      <% if current_user.user_type == "recruiter" && session[:for_here] == ''%>
         <div class="share_interview" style="float: right;margin-right:23px"  onclick="share_interview();"></div>
+        <%else%>
+        <div class="silver_button_blue" style="float: right;margin-right:23px"  onclick="navigate('/interviews/done_rate');">Done</div>
       <% end %>
       <div class="spacer"></div></div>
     <!-- Candidates list!-->

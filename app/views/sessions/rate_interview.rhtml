@@ -1,0 +1,33 @@
+<div align="center">
+  <% form_tag :action => "check_code"  do %>
+
+      <div class="candidate_signup_box" id="candidate" style="width: 510px;clear: both;float: none;" >
+        <h3>Rate Interview</h3>
+        <hr />
+        <% if params[:atempt] %>
+        <h4>Sorry...The interview you looking for may does not exist or already rated.</h4>
+        <% end %>
+
+
+        <h3>Please insert the Invitation code to rate the Interview.</h3><br />
+
+
+        <div style="float: left;margin-right: 15px;">
+          Invitation code:<br/>
+          <input type="text" style="width: 480px;" size="30" name="code" id="code" class="required" />
+         </div>
+         <div class="spacer"></div>
+
+        <div class="spacer"></div>
+        <div class="right_box" >
+          <%= submit_tag '', :class=>"login_button" %>
+
+
+        </div>
+        <div class="spacer"></div>
+
+
+      </div>
+<% end %>
+</div>
+

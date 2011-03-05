@@ -70,6 +70,21 @@ class Notifier < ActionMailer::Base
     @body[:user] = user
   end
 
+
+  def rate_interview(from_user,to_user,rate_code)
+
+    @recipients  = "#{to_user.email}"
+    @from        = "Support" "<support@hiringsimplified.com>"
+    @subject     = "Invitation to rate the interview"
+
+    @sent_on     = Time.now
+    @body[:from_user] = "#{from_user.first_name} #{from_user.last_name}"
+    @body[:to_user] = "#{to_user.first_name} #{to_user.last_name}"
+    @body[:code] = rate_code
+
+
+  end
+
  
 
 end

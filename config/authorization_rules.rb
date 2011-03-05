@@ -42,7 +42,7 @@ authorization do
       :ratings, :users, :settings],
       :to => [:manage,:get_candidates,:recruite,:get_compare_list,:publish_interview,:get_interviews,:get_questionare,
       :add_question, :get_current_questionare, :rate, :get_comments, :get_comment_by_user, :get_user_comments, :update_comment, :invitations_form, :data_bank,
-      :get_questions, :update_status,:send_invitations,:view_package,:by_csv,:add_csv,:csv_import,:ajax_update,:change_subscription,:cancel_subscription,:reactivate_subscription,:trigger_subscription,:welcome]do
+      :get_questions, :update_status,:send_invitations,:view_package,:by_csv,:add_csv,:csv_import,:ajax_update,:change_subscription,:cancel_subscription,:get_ratings,:reactivate_subscription,:trigger_subscription,:welcome,:invite,:share,:rate_interview,:check_code,:done_rate]do
       if_attribute :user => is { user || user.parent_id }
       #if_attribute :user => is { user.parent_id }
     end

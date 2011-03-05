@@ -4,10 +4,48 @@ class SessionsController < ApplicationController
  # require 'chargify_api_ares'
   layout "main"
     
-  skip_before_filter :login_required,:candidate_demo
+  skip_before_filter :login_required,:candidate_demo,:rate_interview,:check_code
   
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
+
+
+   def rate_interview
+  end
+
+
+   def roles(user_type,user_id)
+    @role = Role.new
+    @role.title = user_type
+    @role.user_id = user_id
+    @role.save
+  end
+
+
+
+def check_code
+
+  code = params[:code]
+
+  rate_interview = RateInterview.find_by_code code
+
+  unless rate_interview.blank?
+    if rate_interview.done !=true
+      @user = User.find rate_interview.user_id
+      user = User.authenticate(@user.login, @user.plain_password)
+      self.current_user = user
+      session[:for_here] = 'to rate'
+      session[:code] = code
+      redirect_to("/interviews/recruite/#{rate_interview.interview_id}?cid=")
+    else
+
+      redirect_back_or_default("/sessions/rate_interview/?atempt=fail")
+    end
+  else
+    redirect_to("/sessions/rate_interview/?atempt=fail")
+  end
+
+end
 
   # render new.erb.html
   def new
@@ -54,6 +92,7 @@ class SessionsController < ApplicationController
     logout_keeping_session!
     user = User.authenticate(params[:login], params[:password])
     if user
+      session[:for_here] = ''
       # Protects against session fixation attacks, causes request forgery
       # protection if user resubmits an earlier form using back
       # button. Uncomment if you understand the tradeoffs.
@@ -102,4 +141,7 @@ class SessionsController < ApplicationController
     
       render :nothing => true
   end
+
+ 
+
 end

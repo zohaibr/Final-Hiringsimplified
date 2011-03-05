@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110131133439) do
+ActiveRecord::Schema.define(:version => 20110305045109) do
 
   create_table "answers", :force => true do |t|
     t.integer  "candidate_id"
@@ -26,10 +26,10 @@ ActiveRecord::Schema.define(:version => 20110131133439) do
 
   create_table "attachments", :force => true do |t|
     t.integer  "parent_id"
-    t.string   "content_type",   :null => false
-    t.string   "filename",       :null => false
+    t.string   "content_type",   :default => "", :null => false
+    t.string   "filename",       :default => "", :null => false
     t.string   "thumbnail"
-    t.integer  "size",           :null => false
+    t.integer  "size",                           :null => false
     t.integer  "width"
     t.integer  "height"
     t.datetime "created_at"
@@ -176,6 +176,13 @@ ActiveRecord::Schema.define(:version => 20110131133439) do
     t.string   "filename"
   end
 
+  create_table "rate_interviews", :force => true do |t|
+    t.string  "code"
+    t.integer "interview_id"
+    t.integer "user_id"
+    t.boolean "done"
+  end
+
   create_table "ratings", :force => true do |t|
     t.integer  "candidate_id"
     t.integer  "user_id"
@@ -197,6 +204,7 @@ ActiveRecord::Schema.define(:version => 20110131133439) do
     t.integer "user_id"
     t.integer "package_id"
     t.float   "time_left"
+    t.string  "next_assessment_at"
   end
 
   create_table "users", :force => true do |t|

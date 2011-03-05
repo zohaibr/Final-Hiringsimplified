@@ -1,0 +1,78 @@
+<style>
+
+  body{
+    font-smooth:always;
+    font-family:Helvetica, Arial, sans-serif;
+}
+  .required
+{
+    border:1.5px solid #9BA1AA;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    padding: 5px;
+    width: 210px;
+
+}
+
+hr
+{
+color: #d9d3c8;
+
+border: 0;
+
+}
+</style>
+
+  <%= error_messages_for :user %>
+  <% form_for @user, :url => { :controller => "interviews", :action => "share" } do |f| -%>
+    <% @user.password = @user.password_confirmation = nil %>
+    <%= f.hidden_field :user_type, :value => "recruiter" %>
+    <%@pwd=create_code%>
+    <%= f.hidden_field :password_confirmation, :value => @pwd %>
+    <%= f.hidden_field :password, :value => @pwd %>
+    <%= f.hidden_field :agree, :value => "1" %>
+
+<h3>Share Interview</h3>
+<hr />
+    <div style="float: left;margin-right: 10px;">
+      Email address:<br />
+      <%= f.text_field :email,:class => "required" %>
+    </div>
+
+
+    <div>
+      <div style="float: left;margin-right: 10px;">
+        Company name:<br />
+        <%= f.text_field :company_name,:class => "required" %>
+      </div>
+    </div>
+<br /><br /><br />
+    <div class="spacer"></div><div class="spacer"></div><div class="spacer"></div>
+    <div>
+      <div style="float: left;margin-right: 10px;">
+        First name:<br />
+        <%= f.text_field :first_name,:class => "required" %>
+      </div>
+    </div>
+
+    <div>
+      <div style="float: left;margin-right: 10px;">
+        Last name:<br />
+        <%= f.text_field :last_name,:class => "required" %>
+      </div>
+    </div>
+
+   <br /><br /><br /><br />
+
+    <div>
+
+    </div>
+
+
+
+   <div class="left_box" style="float: right;margin-right: 10px;">
+      <%= submit_tag 'Share',:class=>"silver_button_blue" %>
+    </div>
+    <div class="spacer"></div>
+
+  <% end -%>

@@ -25,6 +25,40 @@ class UsersController < ApplicationController
   def welcome
     
   end
+
+  def add_user
+
+    @user = User.new(params[:user])
+    @user.login = params[:user][:email]
+    @user.plain_password = params[:user][:password]
+
+    usr = User.find_by_login params[:user][:email]
+
+    unless usr.blank?
+        if params[:coming_from] == "child"
+          roles(usr.user_type,usr.id)
+          gr = 'Self'
+          if params[:admin]
+            gr = 'Admin'
+          end
+          group(usr.parent_id,usr.id,gr)
+          @notification = Notifier.deliver_share(usr)
+
+        end
+    else
+      if @user.save
+          roles(@user.user_type,@user.id)
+          gr = 'Self'
+          if params[:admin]
+            gr = 'Admin'
+          end
+          group(@user.parent_id,@user.id,gr)
+          @notification = Notifier.deliver_share(@user)
+
+        end
+    end
+    redirect_back_or_default('/users/profile')
+  end
  
   def create
     #login_keeping_session!

@@ -35,6 +35,20 @@ ActionController::Routing::Routes.draw do |map|
 
   map.connect 'interviews/pre_interview', :controller => "interviews", :action => "pre_interview"
 
+  map.connect 'interviews/invite', :controller => "interviews", :action => "invite"
+  
+  map.connect 'interviews/done_rate', :controller => "interviews", :action => "done_rate"
+  
+  map.connect 'sessions/rate_interview', :controller => "sessions", :action => "rate_interview"
+  
+  map.connect 'sessions/check_code', :controller => "sessions", :action => "check_code"
+
+
+
+
+
+  map.connect 'interviews/share', :controller => "interviews", :action => "share"
+
   map.connect 'interviews/record_test', :controller => "interviews", :action => "record_test"
 
   map.connect 'users/profile', :controller => "users", :action => "profile"

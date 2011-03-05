@@ -3,7 +3,7 @@
 <% if logged_in? -%>
   <div style="margin-top: 10px;">
   <div style="float: left;padding-top: 5px;padding-right: 5px;font-weight: bold;font-size: 8pt;" class="white">
-    <%=session[:user_name]%><%if current_user.parent_id == nil%><a href="/users/profile" class="grey_link" title="click to edit your account settings">My Account</a><%end%><%= link_to "Sign Out", logout_path, { :class=>"grey_link" }%>
+    <%=session[:user_name]%><%if current_user.parent_id == nil || current_user.parent_id == 0%><a href="/users/profile" class="grey_link" title="click to edit your account settings">My Account</a><%end%><%= link_to "Sign Out", logout_path, { :class=>"grey_link" }%>
   </div>
     
   </div>
