@@ -292,5 +292,12 @@ render :nothing => true
       redirect_to("/sessions/new")
   end
 
+   def roles(user_type,user_id)
+    @role = Role.new
+    @role.title = user_type
+    @role.user_id = user_id
+    @role.save
+  end
+
   
 end
