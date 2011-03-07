@@ -77,8 +77,6 @@ end
 #    pckg.save
 
 
-    usr = User.find_by_email 'zohaib.rahman@hiringsimplified.com'
-    usr.destroy
 
     
 
