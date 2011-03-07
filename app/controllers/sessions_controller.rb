@@ -76,13 +76,8 @@ end
 #    pckg = Package.new(:id=>19293,:hours=>50,:package_type=>'tier 5',:price=>249.99)
 #    pckg.save
 
-    usr = User.find_by_email 'zohaibr@gmail.com'
-    usr.destroy
 
-    usr = User.find_by_email 'zohaibr@hotmail.com'
-    usr.destroy
-
-    usr = User.find_by_email 'zohaibrahman@hiringsimplified'
+    usr = User.find_by_email 'zohaib.rahman@hiringsimplified.com'
     usr.destroy
 
     
