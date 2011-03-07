@@ -1,5 +1,5 @@
 class InterviewsController < ApplicationController
-  skip_before_filter :rate_interview
+  skip_before_filter :rate_interview,:recruite
   filter_access_to :all
   layout "main"
   

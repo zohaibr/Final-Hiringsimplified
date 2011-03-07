@@ -34,6 +34,8 @@ def check_code
       @user = User.find rate_interview.user_id
       user = User.authenticate(@user.login, @user.plain_password)
       self.current_user = user
+      new_cookie_flag = (params[:remember_me] == "1")
+      handle_remember_cookie! new_cookie_flag
       session[:for_here] = 'to rate'
       session[:code] = code
       redirect_to("/interviews/recruite/#{rate_interview.interview_id}?cid=")
