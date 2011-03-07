@@ -5,7 +5,7 @@ cgi_multipart_eof_fix --version 2.5.0 --ignore-dependencies
 configuration --version 1.1.0 --ignore-dependencies
 gem_plugin --version 0.2.3 --ignore-dependencies
 heroku --version 1.11.0 --ignore-dependencies
-json --version 1.4.6 --ignore-dependencies
+json --version 1.5.1 --ignore-dependencies
 json_pure --version 1.4.6 --ignore-dependencies
 launchy --version 0.3.7 --ignore-dependencies
 mime-types --version 1.16 --ignore-dependencies
