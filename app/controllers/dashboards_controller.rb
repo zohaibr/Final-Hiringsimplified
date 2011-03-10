@@ -8,7 +8,7 @@ class DashboardsController < ApplicationController
     elsif current_user.user_type == "recruiter"
       @job_profiles = JobProfile.find(:all,:conditions => ["user_id = ? OR user_id = ?", current_user.id, current_user.parent_id],:order =>"created_at DESC")
 
-      unless @interviews.blank?
+      unless @job_profiles.blank?
         @interviews = Interview.find(:all,:conditions => ["id= ?",@job_profiles.first.id ],:order =>"created_at DESC")
       end
     end
