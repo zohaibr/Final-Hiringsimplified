@@ -7,7 +7,10 @@ class DashboardsController < ApplicationController
       @job_profiles = JobProfile.find(:all,:order =>"created_at DESC")
     elsif current_user.user_type == "recruiter"
       @job_profiles = JobProfile.find(:all,:conditions => ["user_id = ? OR user_id = ?", current_user.id, current_user.parent_id],:order =>"created_at DESC")
-      #@interviews = Interview.find(:all,:conditions => ["user_id = ? or user_id = ?", current_user.id, current_user.parent_id],:order =>"created_at DESC")
+
+      unless @interviews.blank?
+        @interviews = Interview.find(:all,:conditions => ["id= ?",@job_profiles.first.id ],:order =>"created_at DESC")
+      end
     end
 
     @new_users = User.find(:all,:conditions => ["parent_id = ?",current_user.id],:order =>"created_at DESC" ,:limit=>"10")
