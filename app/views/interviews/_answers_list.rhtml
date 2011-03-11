@@ -5,7 +5,7 @@
 
 <% answers=get_answer_cid_qid(cid,questionn.id)%>
 
-<div class="question_container_default" title="<%= questionn.question  %>" style="text-align: left;" id="answers_item_<%=questionn.id%>" onclick="change_selected('answers_list',<%=questionn.id %>);play_video('<%=answers.video_url%>','<%=h questionn.question %>','<%=[i+1] %>','<%=cid %>','<%=questionn.id %>','<%=answers.video_url%>','<%=answers.sketchpad %>','<%=  answers.vdo_thumbnail%>')">
+<div class="question_container_default" title="<%= questionn.question  %>" style="text-align: left;" id="answers_item_<%=questionn.id%>" onclick="change_selected('answers_list',<%=questionn.id %>);play_video('<%=answers.video_url%>','<%=escape_javascript(questionn.question) %>','<%=[i+1] %>','<%=cid %>','<%=questionn.id %>','<%=answers.video_url%>','<%=answers.sketchpad %>','<%=  answers.vdo_thumbnail%>')">
   <img src="http://hiringsi.s3.amazonaws.com/user_data/<%=  answers.vdo_thumbnail%>" class="q_img" />
   <div class="q_text_default" ><%=truncate(questionn.question,:length=>55)%></div>
   <div style="display: none;">
