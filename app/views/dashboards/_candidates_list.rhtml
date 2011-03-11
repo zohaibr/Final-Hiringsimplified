@@ -1,11 +1,14 @@
 <%#= debug invites %>
+<% name = ''%>
 <% i =0 %>
 <% invites.each do |invite| %>
 <% is_user invite.candidate_email %>
 <% if @is_there == false %>
 <% name = invite.candidate_email%>
 <% else %>
-<% name = "#{@candidate.first_name} #{@candidate.last_name}"%>
+<% if  invite.candidate_email == @candidate.login%>
+  <% name = "#{@candidate.first_name} #{@candidate.last_name}"%>
+ <% end %>
 <% end %>
 <div class="question_container_default" title="<%=name%>" >
   <div class="number"><div style="margin-top: 17px;"><%= [i+1]  %></div></div>
