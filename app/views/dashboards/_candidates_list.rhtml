@@ -1,8 +1,19 @@
 <%#= debug invites %>
-<% name = ''%>
 <% i =0 %>
+<% name = ''
+@incomplete = Array.new
+@complete = Array.new
+%>
 <% invites.each do |invite| %>
-<% usr = User.find_by_login invite.candidate_email%>
+  <% if invite.status == true
+    @complete.push(invite)
+    else
+    @incomplete.push(invite)
+   end %>
+<% end %>
+
+<% @complete.each do |complete| %>
+<% usr = User.find_by_login complete.candidate_email%>
 <%
 unless usr.blank?
       @candidate = Candidate.find_by_user_id usr.id
@@ -13,14 +24,14 @@ end
     <% name = "#{@candidate.first_name} #{@candidate.last_name}"%>
 <% end %>
 <% else %>
-<% name = invite.candidate_email%>
+<% name = complete.candidate_email%>
  <% end %>
 
-<div class="question_container_default" title="<%=name%>" >
+ <div class="question_container_default" title="<%=name%>" >
   <div class="number"><div style="margin-top: 17px;"><%= [i+1]  %></div></div>
     <div class="q_text_default"><%=name%></div>
 
-    <% if invite.status ==true%>
+    <% if complete.status ==true%>
     <div class="gol_gr"><div class="brown_button" onclick="navigate('/interviews/recruite/<%=interview_id%>?cid=<%=@candidate.user_id%>')">VIEW INTERVIEW</div>
       <!--<div class="brown_button">REFER</div>!-->
 
@@ -30,11 +41,53 @@ end
       </div>
     <% end %>
 
-    
+
 
     </div>
 <% i= i +1 %>
+
+
 <% end %>
+
+
+<% @incomplete.each do |incomplete| %>
+<% usr = User.find_by_login incomplete.candidate_email%>
+<%
+unless usr.blank?
+      @candidate = Candidate.find_by_user_id usr.id
+end
+%>
+<%unless usr.blank?%>
+    <% unless @candidate.blank?%>
+    <% name = "#{@candidate.first_name} #{@candidate.last_name}"%>
+<% end %>
+<% else %>
+<% name = incomplete.candidate_email%>
+ <% end %>
+
+ <div class="question_container_default" title="<%=name%>" >
+  <div class="number"><div style="margin-top: 17px;"><%= [i+1]  %></div></div>
+    <div class="q_text_default"><%=name%></div>
+
+    <% if incomplete.status ==true%>
+    <div class="gol_gr"><div class="brown_button" onclick="navigate('/interviews/recruite/<%=interview_id%>?cid=<%=@candidate.user_id%>')">VIEW INTERVIEW</div>
+      <!--<div class="brown_button">REFER</div>!-->
+
+    </div>
+    <%  else %>
+    <div class="gol_gr"><div class="brown_button" style="cursor: default;float: right;background-color: transparent;border: none;" >INTERVIEW PENDING</div>
+      </div>
+    <% end %>
+
+
+
+    </div>
+<% i= i +1 %>
+
+
+<% end %>
+
+
 
 
 
