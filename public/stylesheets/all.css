@@ -1668,8 +1668,9 @@ color:#20447e;
 
 .question_box
 {
-height:114px;
+
 margin-top:30px;
+margin-bottom: 20px;
 
 }
 
@@ -1709,7 +1710,8 @@ padding-right:8px;
 .ques_question
 {
 margin-top:15px;
-overflow:auto;
+margin-bottom:15px;
+
 padding-right:10px;
 font-family: Georgia;
 text-align:center;
