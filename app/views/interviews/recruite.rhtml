@@ -174,17 +174,19 @@ function play_video(url,text,index,cid,qid,notepad,sketchpad,thumb)
   document.getElementById('contactLink').innerHTML +=" \"";
 
   $('#skt').html('');
+  $('#notepad').hide();
+
 
   if($('#ntpd_'+index).html() != '')
     {
-     
+     $('#notepad').show();
      $('#ntpdx').html(index);
 
      open_nodepad();
     }
    if($('#skpd_'+index).html() != '')
     {
-
+     // alert($('#skpd_'+index).html());
      $('#skpdx').html(index);
      
      open_sketchpad();
@@ -394,8 +396,8 @@ function play_video(url,text,index,cid,qid,notepad,sketchpad,thumb)
           <div class="bt"><div class="blue_heading" style="text-align:left;margin-left:23px;">Question List</div>
             <div class="button navButton previous" onclick="ScrollBackward('answers_list');" ></div>
           </div>
-
-          <div class="question_list_container">
+          <div style="height: 5px;"></div>
+          <div class="question_list_container" style=" height: 265px;">
             <div class="items" id="answers_list" style="z-index:70;position:relative;">
               <%=render :partial => "interviews/answers_list" , :locals => { :cid => @default_candidate_id, :questionare_list=>@questionare_list}%>
             </div>
