@@ -396,7 +396,7 @@ function play_video(url,text,index,cid,qid,notepad,sketchpad,thumb)
           </div>
 
           <div class="question_list_container">
-            <div class="items" id="answers_list">
+            <div class="items" id="answers_list" style="z-index:70;position:relative;">
               <%=render :partial => "interviews/answers_list" , :locals => { :cid => @default_candidate_id, :questionare_list=>@questionare_list}%>
             </div>
           </div>
