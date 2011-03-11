@@ -1,18 +1,18 @@
 <%#= debug invites %>
 <% i =0 %>
-<% candidates.each do |candidate| %>
-<% is_user candidate.candidate_email %>
+<% invites.each do |invite| %>
+<% is_user invite.candidate_email %>
 <% if @is_there == false %>
-<% name = truncate(candidate.candidate_email,:length=>25) %>
+<% name = invite.candidate_email%>
 <% else %>
-<% name = "#{candidate.first_name} #{candidate.last_name}" %>
+<% name = "#{@candidate.first_name} #{@candidate.last_name}"%>
 <% end %>
-
 <div class="question_container_default" title="<%=name%>" >
   <div class="number"><div style="margin-top: 17px;"><%= [i+1]  %></div></div>
     <div class="q_text_default"><%=name%> </div>
-    <% if candidate.status ==true%>
-    <div class="gol_gr"><div class="brown_button" onclick="navigate('/interviews/recruite/<%=interview_id%>?cid=<%=candidate.c_id%>')">VIEW INTERVIEW</div>
+
+    <% if invite.status ==true%>
+    <div class="gol_gr"><div class="brown_button" onclick="navigate('/interviews/recruite/<%=interview_id%>?cid=<%=@candidate.user_id%>')">VIEW INTERVIEW</div>
       <!--<div class="brown_button">REFER</div>!-->
 
     </div>

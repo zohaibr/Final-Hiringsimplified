@@ -104,9 +104,12 @@ module UsersHelper
   end
 
   def is_user email
-    user = User.find_by_login email
+   usr = User.find_by_login email
+    unless usr.blank?
+      @candidate = Candidate.find_by_user_id usr.id
+    end
     @is_there = false
-    unless user.blank?
+    unless @candidate.blank?
       @is_there = true
     end
   end

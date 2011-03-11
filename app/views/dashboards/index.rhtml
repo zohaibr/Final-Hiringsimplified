@@ -3,7 +3,7 @@
 # and open the template in the editor.
 %>
 <div style="display: none;">
-<%=debug @candidates%>
+<%=debug @invites%>
 </div>
 <script>
   var selected_item ='';
@@ -106,8 +106,8 @@
       </div>
       <div class="question_list_container">
         <div class="items" id="candidates_list" style="z-index:70;position:relative;" >
-          <% unless @candidates.blank? %>
-            <%=render :partial => "dashboards/candidates_list", :locals => { :candidates => @candidates,:interview_id => @interviews.first.id,:invites=>@invitations} %>
+          <% unless @invites.blank? %>
+            <%=render :partial => "dashboards/candidates_list", :locals => { :invites => @invites,:interview_id => @interviews.first.id} %>
           <% else %>
             No Records Found.
           <% end %>
