@@ -81,8 +81,8 @@
       </div>
       <div class="question_list_container">
         <div class="items" id="candidates_list" style="z-index:70;position:relative;" >
-          <% unless @candidates.blank? %>
-            <%=render :partial => "dashboards/candidates_list", :locals => { :candidates => @candidates,:interview_id => @interviews.first.id} %>
+          <% unless @invites.blank? %>
+            <%=render :partial => "dashboards/candidates_list", :locals => { :invites => @invites,:interview_id => @interviews.first.id} %>
           <% else %>
             No Records Found.
           <% end %>

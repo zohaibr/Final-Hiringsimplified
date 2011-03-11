@@ -44,7 +44,8 @@ class DashboardsController < ApplicationController
 
     unless @interviews.blank?
 
-      @candidates = Invitation.find(:all, :select => "invitations.candidate_email ,invitations.interview_id ,users.id as c_id,candidates.first_name,candidates.last_name ,invitations.status", :from => "candidates,invitations", :joins => "LEFT JOIN users ON invitations.candidate_email = users.email", :conditions => "invitations.interview_id = #{@interviews.first.id}",:group => "invitations.candidate_email")
+      #@invites = Invitation.find(:all,:conditions => "interview_id = #{@interviews.first.id}")
+       @invites = Invitation.find(:all,:conditions => ["interview_id = ?",@interviews.first.id],:order =>"created_at DESC")
       #@candidates = Invitation.find(:all, :select => "invitations.candidate_email ,invitations.interview_id ,users.id as c_id,candidates.first_name,candidates.last_name ,invitations.status", :from => "candidates,invitations", :joins => "LEFT JOIN users ON invitations.candidate_email = users.email", :conditions => "invitations.interview_id = #{@interviews.first.id} and candidates.user_id = users.id and invitations.status = true", :group => "c_id")
       #@candidates = Invitation.find_by_sql("SELECT invitations.candidate_email ,invitations.interview_id ,users.id as c_id,candidates.first_name,candidates.last_name ,invitations.status
       #                         FROM candidates,invitations LEFT JOIN users ON invitations.candidate_email = users.email WHERE invitations.interview_id = #{@interviews.first.id} and candidates.user_id = users.id group by c_id")
@@ -66,13 +67,13 @@ class DashboardsController < ApplicationController
   def get_candidates
     @interview_id = params[:id]
     #@candidates = Invitation.find(:all, :select => "invitations.candidate_email ,invitations.interview_id ,users.id as c_id,candidates.first_name,candidates.last_name ,invitations.status", :from => "candidates,invitations", :joins => "LEFT JOIN users ON invitations.candidate_email = users.email", :conditions => "invitations.interview_id = #{params[:id]} and candidates.user_id = users.id and invitations.status = true", :group => "invitations.candidate_email,invitations.interview_id,c_id,candidates.first_name,candidates.last_name ,invitations.status")
-    @candidates = Invitation.find(:all, :select => "invitations.candidate_email ,invitations.interview_id ,users.id as c_id,candidates.first_name,candidates.last_name ,invitations.status", :from => "candidates,invitations", :joins => "LEFT JOIN users ON invitations.candidate_email = users.email", :conditions => "invitations.interview_id = #{params[:id]}",:group => "invitations.candidate_email")
+   # @candidates = Invitation.find(:all, :select => "invitations.candidate_email ,invitations.interview_id ,users.id as c_id,candidates.first_name,candidates.last_name ,invitations.status", :from => "candidates,invitations", :joins => "LEFT JOIN users ON invitations.candidate_email = users.email", :conditions => "invitations.interview_id = #{params[:id]}",:group => "invitations.candidate_email")
    # @candidates = Invitation.find(:all, :select => "invitations.candidate_email ,invitations.interview_id ,users.id as c_id,candidates.first_name,candidates.last_name ,invitations.status", :from => "candidates,invitations", :joins => "LEFT JOIN users ON invitations.candidate_email = users.email", :conditions => "invitations.interview_id = #{params[:id]}",:group => "invitations.candidate_email ,invitations.interview_id ,users.id as c_id,candidates.first_name,candidates.last_name ,invitations.status" )
     #@candidates = Invitation.find(:all, :select => "invitations.candidate_email ,invitations.interview_id ,users.id as c_id,candidates.first_name,candidates.last_name ,invitations.status", :from => "candidates,invitations", :joins => "LEFT JOIN users ON invitations.candidate_email = users.email", :conditions => "invitations.interview_id = #{params[:id]} and candidates.user_id = users.id and invitations.status = true")
     #@candidates = Invitation.find_by_sql("SELECT invitations.candidate_email ,invitations.interview_id ,users.id as c_id,candidates.first_name,candidates.last_name ,invitations.status
     #FROM candidates,invitations LEFT JOIN users ON invitations.candidate_email = users.email WHERE invitations.interview_id = #{@interview_id} and candidates.user_id = users.id group by c_id")
-    @invites = Invitation.find(:all,:conditions => ["interview_id = ? and status != true ",@interview_id],:order =>"created_at DESC" ,:limit=>"5")
-    render :partial => "dashboards/candidates_list" , :locals => { :candidates => @candidates, :interview_id =>@interview_id,:invites=>@invites }
+    @invites = Invitation.find(:all,:conditions => ["interview_id = ?",@interview_id],:order =>"created_at DESC")
+    render :partial => "dashboards/candidates_list" , :locals => { :interview_id =>@interview_id,:invites=>@invites }
   end
 
  
