@@ -950,7 +950,7 @@ float:left;
 
 
 
-    #Carousel .navButton.previous {  background: transparent url(../images/q_arrow_default.png) no-repeat ; background-position:center; }
+    #Carousel .navButton.previous {  background: transparent url(../images/q_arrow_default.png) no-repeat ; background-position:center;margin-bottom: 10px; }
 	#Carousel .navButton.previous:hover {   background: transparent url(../images/q_arrow_selected.png) no-repeat ; background-position:center; }
     #Carousel .navButton.next {  background: transparent url(../images/q_arrow_d_default.png) no-repeat ; background-position:center;}
 	#Carousel .navButton.next:hover {  background: transparent url(../images/q_arrow_d_selected.png) no-repeat ; background-position:center;}
@@ -963,7 +963,7 @@ float:left;
 
 	height:271px;
 	overflow:hidden;
-	margin-top:28px;
+	margin-top:25px;
 
 }
 
@@ -1668,9 +1668,8 @@ color:#20447e;
 
 .question_box
 {
-
+height:114px;
 margin-top:30px;
-margin-bottom: 20px;
 
 }
 
