@@ -8,9 +8,10 @@ unless usr.blank?
       @candidate = Candidate.find_by_user_id usr.id
 end
 %>
-<% unless @candidate.blank?%>
-<% name = "#{@candidate.first_name} #{@candidate.last_name}"%>
-
+<%unless usr.blank?%>
+    <% unless @candidate.blank?%>
+    <% name = "#{@candidate.first_name} #{@candidate.last_name}"%>
+<% end %>
 <% else %>
 <% name = invite.candidate_email%>
  <% end %>
