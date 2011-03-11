@@ -108,9 +108,11 @@ module UsersHelper
     unless usr.blank?
       @candidate = Candidate.find_by_user_id usr.id
     end
-    @is_there = false
+    
     unless @candidate.blank?
       @is_there = true
+    else
+      @is_there = false
     end
   end
 end
