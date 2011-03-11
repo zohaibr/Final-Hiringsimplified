@@ -2,9 +2,15 @@
 <% name = ''%>
 <% i =0 %>
 <% invites.each do |invite| %>
-<% is_user invite.candidate_email %>
-<% if @is_there == true %>
+<% usr = User.find_by_login invite.candidate_email%>
+<%
+unless usr.blank?
+      @candidate = Candidate.find_by_user_id usr.id
+end
+%>
+<% unless @candidate.blank?%>
 <% name = "#{@candidate.first_name} #{@candidate.last_name}"%>
+
 <% else %>
 <% name = invite.candidate_email%>
  <% end %>
