@@ -961,9 +961,10 @@ float:left;
 	#Carousel .question_list_container
 {
 
-	height:271px;
+	height:260px;
 	overflow:hidden;
 	margin-top:25px;
+        
 
 }
 
