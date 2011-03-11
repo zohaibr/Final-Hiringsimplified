@@ -82,13 +82,14 @@ var futura_bt = {
       }
     });
 
-    sIFR.replace(rockwell, {
+  /*  sIFR.replace(rockwell, {
       selector: 'div.q_text_default'
       ,css: {
         '.sIFR-root': { 'color': '#a7551d','background-color': '#DCDCDC' ,'font-size':'13px' }
 
       }
     });
+    */
 
 
 
