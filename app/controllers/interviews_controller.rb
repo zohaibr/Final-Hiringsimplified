@@ -222,9 +222,13 @@ render :nothing => true
     @job_profiles = JobProfile.find(:all,:conditions => ["user_id = ? OR user_id = ?", current_user.id, current_user.parent_id],:order =>"created_at DESC")
     #@job_profiles = JobProfile.find(:all,:conditions => ["user_id = ?", current_user.id],:order =>"created_at DESC")
     
-
+    unless @job_profiles.blank?
+        @interviews = Interview.find(:all,:conditions => ["id= ?",@job_profiles.first.id ],:order =>"created_at DESC")
+      end
+      
     unless @interviews.blank?
-      @candidates = Invitation.find(:all, :select => "invitations.candidate_email ,invitations.interview_id ,users.id as c_id,candidates.first_name,candidates.last_name ,invitations.status", :from => "candidates,invitations", :joins => "LEFT JOIN users ON invitations.candidate_email = users.email", :conditions => "invitations.interview_id = #{@interviews.first.id} and candidates.user_id = users.id and invitations.status = true", :group => "invitations.candidate_email ,invitations.interview_id,candidates.first_name,candidates.last_name ,invitations.status,c_id")
+      #@candidates = Invitation.find(:all, :select => "invitations.candidate_email ,invitations.interview_id ,users.id as c_id,candidates.first_name,candidates.last_name ,invitations.status", :from => "candidates,invitations", :joins => "LEFT JOIN users ON invitations.candidate_email = users.email", :conditions => "invitations.interview_id = #{@interviews.first.id} and candidates.user_id = users.id", :group => "invitations.candidate_email ,invitations.interview_id,candidates.first_name,candidates.last_name ,invitations.status,c_id")
+      @candidates = Invitation.find(:all, :select => "invitations.candidate_email ,invitations.interview_id ,users.id as c_id,candidates.first_name,candidates.last_name ,invitations.status", :from => "candidates,invitations", :joins => "LEFT JOIN users ON invitations.candidate_email = users.email", :conditions => "invitations.interview_id = #{@interviews.first.id}",:group => "c_id")
       #@candidates = Invitation.find_by_sql("SELECT invitations.candidate_email ,invitations.interview_id ,users.id as c_id,candidates.first_name,candidates.last_name ,invitations.status
       #                         FROM candidates,invitations LEFT JOIN users ON invitations.candidate_email = users.email WHERE invitations.interview_id = #{@interviews.first.id} and candidates.user_id = users.id group by c_id")
       
