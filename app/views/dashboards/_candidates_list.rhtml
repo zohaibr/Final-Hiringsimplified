@@ -17,7 +17,7 @@ end
 
 <div class="question_container_default" title="<%=name%>" >
   <div class="number"><div style="margin-top: 17px;"><%= [i+1]  %></div></div>
-    <div class="q_text_default"><%=name%> </div>
+    <div class="q_text_default"><%=name%><%=invite.id%> </div>
 
     <% if invite.status ==true%>
     <div class="gol_gr"><div class="brown_button" onclick="navigate('/interviews/recruite/<%=interview_id%>?cid=<%=@candidate.user_id%>')">VIEW INTERVIEW</div>
