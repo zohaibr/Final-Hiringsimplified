@@ -2,16 +2,16 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1">
         <file>
-            <url>app/controllers/interviews_controller.rb</url>
-            <line>299</line>
-        </file>
-        <file>
             <url>app/views/layouts/main.rhtml</url>
             <line>1</line>
         </file>
         <file>
             <url>app/views/categories/data_bank.rhtml</url>
             <line>43</line>
+        </file>
+        <file>
+            <url>app/controllers/interviews_controller.rb</url>
+            <line>299</line>
         </file>
     </editor-bookmarks>
 </project-private>
