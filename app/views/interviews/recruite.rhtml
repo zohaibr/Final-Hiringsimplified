@@ -519,17 +519,17 @@ function play_video(url,text,index,cid,qid,notepad,sketchpad,thumb)
       <div class="accordion_content" id="caro2_content" style="display:nfone">
         <div id="Carousel3">
           <div class="bt">
-            <div class="button navButton previous" ></div>
+            <div class="button navButton previous" onclick="ScrollBackward('compare_list');" ></div>
           </div>
           <div class="question_list_container">
-            <div class="items" id="compare_list">
+            <div class="items" id="compare_list" style="z-index:70;position:relative;">
               <%=render :partial => "interviews/compare" , :locals => { :candidates => @candidates, :thumb_id=>@thumb_id, :qid =>@questionare_list.first.id, :interview_id =>@interview_id }%>
             </div>
 
           </div>
 
           <div class="bt">
-            <div class="button navButton next" ></div>
+            <div class="button navButton next" onclick="ScrollForward('compare_list');"></div>
           </div>
         </div>
 

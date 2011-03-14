@@ -40,6 +40,11 @@
   var answers_list_selected=null;
 
 
+  var compare_list_y=0;
+  var compare_list_size=119;
+  var compare_list_selected=null;
+
+
 
   function MoveForward_H(id,x)
   {
@@ -120,6 +125,22 @@
             MoveForward(id,answers_list_y);
           }
       }
+      
+      if(id == "compare_list")
+      {
+             if(compare_list_y>-(GetHeight(id) - compare_list_size))
+          {
+
+            compare_list_y-=compare_list_size;
+             if(compare_list_y == 0)
+              {
+                compare_list_y -= answers_list_size;
+              }
+            MoveForward(id,compare_list_y);
+          }
+      }
+
+
 
       if(id == "candidates_list_h")
       {
@@ -253,6 +274,27 @@
           }
 
       }
+      
+      if(id == "compare_list")
+      {
+
+        if(compare_list_y < (GetHeight(id) - compare_list_size) && compare_list_y != compare_list_size)
+          {
+
+              if(compare_list_y == 0)
+              {
+               // candidates_list_y = candidates_list_size;
+               return;
+              }
+            compare_list_y+=compare_list_size;
+            MoveBackward(id,compare_list_y)
+
+          }
+
+      }
+
+
+      
 
 
 
