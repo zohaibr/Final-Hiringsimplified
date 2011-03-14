@@ -41,7 +41,7 @@
 
 
   var compare_list_y=0;
-  var compare_list_size=119;
+  var compare_list_size=108;
   var compare_list_selected=null;
 
 

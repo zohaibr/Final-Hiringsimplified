@@ -524,6 +524,7 @@ function play_video(url,text,index,cid,qid,notepad,sketchpad,thumb)
           <div class="question_list_container">
             <div class="items" id="compare_list" style="z-index:70;position:relative;">
               <%=render :partial => "interviews/compare" , :locals => { :candidates => @candidates, :thumb_id=>@thumb_id, :qid =>@questionare_list.first.id, :interview_id =>@interview_id }%>
+              <div style="clear:both"></div>
             </div>
 
           </div>
