@@ -372,7 +372,7 @@ function play_video(url,text,index,cid,qid,notepad,sketchpad,thumb)
       <div class="button navButton previous" onclick="ScrollBackward('candidates_list_h');"></div>
 
       <div class="question_list_container">
-        <div class="items" id="candidates_list">
+        <div class="items" id="candidates_list_h" style="z-index:70;position:relative;">
 
 
           <%=render :partial => "interviews/candidates_list" , :locals => { :candidates => @candidates, :thumb_id=>@thumb_id, :interview_id =>@interview_id }%>

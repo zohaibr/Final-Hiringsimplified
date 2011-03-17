@@ -1025,7 +1025,7 @@ background-position:right;
 
 	}
     #Carousel2 .container { left:26px; top:12px; width:210px; height:100px; }
-    #Carousel2 .items { top:0; left:2px; width:1000px; padding-top:10px;}
+    #Carousel2 .items { top:0; left:2px; width:3000px; padding-top:10px;}
     #Carousel2 .item { height:70px;  width:70px; float:left; clear:right; }
     #Carousel2 .item .icon img {  }
 
@@ -1073,10 +1073,10 @@ background-position:right;
 
 	#Carousel2 .question_container_default
 	{
-		height:70px; float:left; clear:right; padding:5px;cursor:pointer;
-	 	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70);
-        -moz-opacity:0.5;
-        opacity:0.5;
+		height:70px; float:left; clear:right;cursor:pointer;
+
+                -moz-opacity:0.5;
+                opacity:0.5;
 		padding:3px;
 		background-color: #ffffff;
 		 border: 2px solid #666666;

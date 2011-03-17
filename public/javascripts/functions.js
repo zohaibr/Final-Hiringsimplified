@@ -48,14 +48,16 @@
 
   function MoveForward_H(id,x)
   {
-    new Effect.Move(id, { x: x, y: 0, mode: 'absolute',duration: 0.3 });
+      $('#'+id).animate({'left': x},'slow');
+    //new Effect.Move(id, { x: x, y: 0, mode: 'absolute',duration: 0.3 });
   }
 
   function MoveBackward_H(id,x)
   {
 
-  
-    new Effect.Move(id, { x: x, y: 0, mode: 'absolute',duration: 0.3 });
+
+    $('#'+id).animate({'left': x},'slow');
+    //new Effect.Move(id, { x: x, y: 0, mode: 'absolute',duration: 0.3 });
   }
 
 
@@ -144,7 +146,7 @@
 
       if(id == "candidates_list_h")
       {
-             if(candidates_list_h_y>-(GetWidth('candidates_list') - candidates_list_h_size))
+             if(candidates_list_h_y>-(GetWidth('candidates_list_h') - candidates_list_h_size))
           {
 
             candidates_list_h_y-=candidates_list_h_size;
@@ -152,7 +154,7 @@
               {
                 candidates_list_h_y -= candidates_list_h_size;
               }
-            MoveForward_H('candidates_list',candidates_list_h_y);
+            MoveForward_H('candidates_list_h',candidates_list_h_y);
           }
       }
     if(id == "db_interviews_list")
@@ -301,7 +303,7 @@
       if(id == "candidates_list_h")
       {
 
-        if(candidates_list_h_y < (GetWidth('candidates_list') - candidates_list_h_size) && candidates_list_h_y != candidates_list_h_size)
+        if(candidates_list_h_y < (GetWidth('candidates_list_h') - candidates_list_h_size) && candidates_list_h_y != candidates_list_h_size)
           {
 
               if(candidates_list_h_y == 0)
@@ -310,7 +312,7 @@
                return;
               }
             candidates_list_h_y+=candidates_list_h_size;
-            MoveBackward_H('candidates_list',candidates_list_h_y)
+            MoveBackward_H('candidates_list_h',candidates_list_h_y)
 
           }
 
