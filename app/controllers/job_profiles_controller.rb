@@ -114,6 +114,7 @@ class JobProfilesController < ApplicationController
   end
 
   def get_job_details
+    session[:interview_id] = params[:int_id]
     @job_profiles = JobProfile.find(params[:id])
     @interview = Invitation.find_by_interview_id_and_candidate_email params[:int_id],current_user.email
 
