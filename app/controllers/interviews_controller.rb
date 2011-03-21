@@ -248,7 +248,7 @@ render :nothing => true
   end
 
   def record_test
-    
+    session[:interview_id] = params[:int_id]
   end
 
   def invite
