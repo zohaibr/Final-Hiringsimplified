@@ -110,7 +110,7 @@ class AnswersController < ApplicationController
     elsif params[:from] == "resume"
       session[:interview_id] = params[:int_id]
       @all_question = Questionare.find(:all, :conditions => ["interview_id = #{session[:interview_id]}"])
-      @question = Questionare.find(:first, :conditions => ["id <> #{params[:q_id]}"])
+      @question = Questionare.find(:first, :conditions => ["interview_id = #{session[:interview_id]} AND id <> #{params[:q_id]}"])
       session[:all_questions] = @all_question.count
       @iter = 0
       @all_question.each do |question|
