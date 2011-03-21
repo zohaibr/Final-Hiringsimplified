@@ -105,7 +105,7 @@ class AnswersController < ApplicationController
 
      
  qx = Questionare.find_by_sql("select * from questionares where questionares.id not in (select answers.questionare_id
-                    from answers where answers.interview_id =#{session[:interview_id]} and answers.candidate_id=#{current_user.id}) and questionares.interview_id = #{session[:interview_id]}")
+                    from answers where answers.interview_id =#{params[:int_id]} and answers.candidate_id=#{current_user.id}) and questionares.interview_id = #{session[:interview_id]}")
 
     @question = qx.first
 
