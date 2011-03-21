@@ -153,7 +153,7 @@ class AnswersController < ApplicationController
        pckg.time_left = pckg.time_left - @int_duration
        pckg.save
 
-      #Notifier.deliver_interview_completed(session[:interview_id],current_user.id)
+      Notifier.deliver_interview_completed(session[:interview_id],current_user.id)
        
 
        session[:all_questions] = nil
