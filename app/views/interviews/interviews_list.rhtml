@@ -25,7 +25,7 @@
 
 
       <div class="question_list_container">
-        <div class="items" id="c_int">
+        <div class="items" id="c_int" style="z-index: 70; position: relative;">
           <%@invitations.each do |invitations|%>
             <%get_interview invitations.interview_id%>
             <% unless @interview.blank? %>
