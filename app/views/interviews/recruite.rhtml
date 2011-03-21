@@ -503,8 +503,8 @@ function play_video(url,text,index,cid,qid,notepad,sketchpad,thumb)
           <br />
           <div class="vertical_accordion_toggle" onclick="handle_nested_accordion('caro5')" id="caro5"><img src="/images/skpad.png" class="vertical_icon" />SKETCHPAD</div>
           <div class="vertical_accordion_content" id="caro5_content" style="display:<%if !answers.sketchpad.blank?%><%='block;'%><%else%><%='none;'%><% end %>">
-            <p id="sketchpad">              
-              <a href='#'  onclick="LaunchWindow('skpd')"><div id="skt"><img src="http://hiringsi.s3.amazonaws.com/user_data/<%=answers.sketchpad %>" width="100%" class="tool_img"  /></div> </a>
+            <p id="sketchpad" >
+              <a href='#'  onclick="LaunchWindow('skpd')"><div id="skt" style="width: 180px;height: 125px;" ><img src="http://hiringsi.s3.amazonaws.com/user_data/<%=answers.sketchpad %>" width="100%" class="tool_img"  /></div> </a>
             <div id="skpdx" style="display: none;"></div>
               
             </p>
