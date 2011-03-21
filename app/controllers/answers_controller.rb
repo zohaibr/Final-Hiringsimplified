@@ -102,15 +102,22 @@ class AnswersController < ApplicationController
   def interview_area
 
     @answer = Answer.new
+
+     
+ qx = Questionare.find_by_sql("select * from questionares where questionares.id not in (select answers.questionare_id
+                    from answers where answers.interview_id =#{session[:interview_id]} and answers.candidate_id=#{current_user.id}) and questionares.interview_id = #{session[:interview_id]}")
+
+    @question = qx.first
+
     if params[:from] == "create"
       session[:questions_iter] += 1
       ans = Answer.find(:last, :conditions => ["candidate_id = #{current_user.id} AND interview_id = #{session[:interview_id]}"])
-      @question = Questionare.find(:first, :conditions => ["interview_id = #{session[:interview_id]} AND id <> #{params[:q_id]}"])
+      #@question = Questionare.find(:first, :conditions => ["interview_id = #{session[:interview_id]} AND id <> #{params[:q_id]}"])
       #@question = Questionare.find(:first, :conditions => ["id > #{ans.questionare_id}"])
     elsif params[:from] == "resume"
       session[:interview_id] = params[:int_id]
       @all_question = Questionare.find(:all, :conditions => ["interview_id = #{session[:interview_id]}"])
-      @question = Questionare.find(:first, :conditions => ["interview_id = #{session[:interview_id]} AND id <> #{params[:q_id]}"])
+     # @question = Questionare.find(:first, :conditions => ["interview_id = #{session[:interview_id]} AND id <> #{params[:q_id]}"])
       session[:all_questions] = @all_question.count
       @iter = 0
       @all_question.each do |question|
@@ -125,7 +132,7 @@ class AnswersController < ApplicationController
       session[:all_questions] = @all_question.count
       session[:questions_iter] = 0
       session[:questions_iter] += 1
-      @question = Questionare.find_by_interview_id(session[:interview_id])
+      #@question = Questionare.find_by_interview_id(session[:interview_id])
     end
     unless @question.blank?
       render :partial => "check_question" ,:layout =>"interview"
