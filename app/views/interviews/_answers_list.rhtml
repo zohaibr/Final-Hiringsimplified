@@ -8,17 +8,7 @@
 <div class="question_container_default" title="<%= questionn.question  %>" style="text-align: left;" id="answers_item_<%=questionn.id%>" onclick="change_selected('answers_list',<%=questionn.id %>);play_video('<%=answers.video_url%>','<%=escape_javascript(questionn.question) %>','<%=[i+1] %>','<%=cid %>','<%=questionn.id %>','<%=answers.video_url%>','<%=answers.video_url %>','<%=  answers.vdo_thumbnail%>')">
   <img src="http://hiringsi.s3.amazonaws.com/user_data/<%=  answers.vdo_thumbnail%>" class="q_img" />
   <div class="q_text_default" ><%=truncate(questionn.question,:length=>55)%></div>
-  <div style="display: none;">
-    <div id="ntpd_<%=[i+1]%>">
-      <% unless answers.notepad.blank?%>
-        <div align="left" style="font-size: 12px;"><%=answers.notepad%></div>
-      <% end %>
-    </div>
-    <div id="skpd_<%=[i+1]%>" style="width: 180px;height: 125px;">
-      <% unless answers.sketchpad.blank?%>
-      <img src="http://hiringsi.s3.amazonaws.com/user_data/<%=answers.sketchpad %>" width="100%" height="100%"  />
-      <% end %>
-    </div>
+  <div style="display: none;"><div id="ntpd_<%=[i+1]%>"><% unless answers.notepad.blank?%><div align="left" style="font-size: 12px;"><%=answers.notepad%></div><% end %></div><div id="skpd_<%=[i+1]%>" style="width: 180px;height: 125px;"><% unless answers.sketchpad.blank?%><img src="http://hiringsi.s3.amazonaws.com/user_data/<%=answers.sketchpad %>" width="100%" height="100%"  /><% end %></div>
   </div>
   <div class="gol_gr"><%= [i+1]  %></div>
   <div class="key caption"></div>

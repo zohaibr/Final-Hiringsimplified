@@ -27,7 +27,8 @@
 			autoOpen: false,
 			title: ttl,
                         position : 'top',
-                        width: 640
+                        width: 640,
+                        height: 480
 		});
 
                 $dialog.dialog('open');
@@ -175,10 +176,15 @@ function play_video(url,text,index,cid,qid,notepad,sketchpad,thumb)
 
   $('#skt').html('');
   $('#notepad').hide();
+  $('#sketchpad').hide();
+  $('#caro5_content').hide();
+   $('#skt').hide();
+
 
 
   if($('#ntpd_'+index).html() != '')
     {
+      
      $('#notepad').show();
      $('#ntpdx').html(index);
 
@@ -186,7 +192,10 @@ function play_video(url,text,index,cid,qid,notepad,sketchpad,thumb)
     }
    if($('#skpd_'+index).html() != '')
     {
-     // alert($('#skpd_'+index).html());
+   //alert($('#skpd_'+index).html());
+     $('#sketchpad').show();
+      $('#skt').show();
+    // $('#skt').hide();
      $('#skpdx').html(index);
      
      open_sketchpad();
@@ -493,10 +502,7 @@ function play_video(url,text,index,cid,qid,notepad,sketchpad,thumb)
             <img src="/images/notepad.png" class="vertical_icon" />NOTEPAD</div>
           <div class="vertical_accordion_content" id="caro4_content" style="display:<%if !answers.notepad.blank?%><%='block;'%><%else%><%='none;'%><% end %>">
 
-            <p id="notepad">
-              
-
-              <a href='#'  onclick="LaunchWindow('ntpd');"><img src="/images/nt.jpg" width="100%" class="tool_img" /> </a>
+            <p id="notepad"><a href='#'  onclick="LaunchWindow('ntpd');"><img src="/images/nt.jpg" width="100%" class="tool_img" /> </a>
             <div id="ntpdx" style="display: none;"></div>
             </p>
           </div>
@@ -504,7 +510,7 @@ function play_video(url,text,index,cid,qid,notepad,sketchpad,thumb)
           <div class="vertical_accordion_toggle" onclick="handle_nested_accordion('caro5')" id="caro5"><img src="/images/skpad.png" class="vertical_icon" />SKETCHPAD</div>
           <div class="vertical_accordion_content" id="caro5_content" style="display:<%if !answers.sketchpad.blank?%><%='block;'%><%else%><%='none;'%><% end %>">
             <p id="sketchpad" >
-              <a href='#'  onclick="LaunchWindow('skpd')"><div id="skt" style="width: 180px;height: 125px;" ><img src="http://hiringsi.s3.amazonaws.com/user_data/<%=answers.sketchpad %>" width="100%" class="tool_img"  /></div> </a>
+              <div id="skt" style="width: 180px;height: 125px;cursor: pointer;" onclick="LaunchWindow('skpd');"><img src="http://hiringsi.s3.amazonaws.com/user_data/<%=answers.sketchpad %>" width="100%" class="tool_img"  /></div>
             <div id="skpdx" style="display: none;"></div>
               
             </p>
