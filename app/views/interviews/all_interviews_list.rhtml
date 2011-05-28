@@ -84,22 +84,22 @@
                 <tr>
                   <td colspan="2" class="Bigtitle">Work History</td>
                 </tr>
-                <%@user.candidate.work_histories.each do |work_histories|%>
+                <%@user.candidate.prev_work_histories.each do |work_histories|%>
                   <tr>
                     <td class="title">Organization:</td>
-                    <td>&nbsp;</td>
+                    <td><%=work_histories.organization%></td>
                   </tr>
                   <tr>
                     <td class="title">Job Title:</td>
-                    <td>&nbsp;</td>
+                    <td><%=work_histories.job_title%></td>
                   </tr>
                   <tr>
                     <td class="title">Start Date:</td>
-                    <td>&nbsp;</td>
+                    <td><%=work_histories.start_date%></td>
                   </tr>
                   <tr>
                     <td class="title">End Date:</td>
-                    <td>&nbsp;</td>
+                    <td><%=work_histories.end_date%></td>
                   </tr>
                 <% end %>
               </table></td>
