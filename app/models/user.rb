@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
 
 
   ######################Associations################
+  has_one :candidate
   has_many :groups
   has_many :locations
   has_many :interviews

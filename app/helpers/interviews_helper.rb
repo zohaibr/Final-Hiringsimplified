@@ -50,4 +50,8 @@ module InterviewsHelper
     @documents = @account.files
   end
 
+  def get_candidates_detail email
+    @user = User.find_last_by_email email
+  end
+
 end

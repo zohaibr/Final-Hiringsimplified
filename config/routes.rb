@@ -1,6 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
+  map.connect "interviews/all_interviews_list", :controller => 'interviews', :action => 'all_interviews_list'
+  
   map.feedback 'feedbacks', :controller => 'feedbacks', :action => 'create'
+
   map.new_feedback 'feedbacks/new', :controller => 'feedbacks', :action => 'new'
+
   map.connect "/direct_login", :controller => "sessions", :action => "direct_login"
 
   map.connect "users/upload", :controller => "users", :action => "upload"
@@ -21,7 +25,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.connect 'invitations/invitations_form/:id', :controller => "invitations", :action => "invitations_form"
 
-   map.connect 'answers/webcam', :controller => "answers", :action => "webcam"
+  map.connect 'answers/webcam', :controller => "answers", :action => "webcam"
 
   map.connect 'answers/man', :controller => "answers", :action => "man"
 

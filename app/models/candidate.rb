@@ -1,4 +1,5 @@
 class Candidate < ActiveRecord::Base
+  belongs_to :user
   has_many :education_histories, :dependent => :destroy
   has_many :prev_work_histories, :dependent => :destroy
   has_many :answers, :dependent => :destroy

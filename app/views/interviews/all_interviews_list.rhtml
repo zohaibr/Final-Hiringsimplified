@@ -1,0 +1,129 @@
+<style type="text/css">
+  .title{
+    font-family: fantasy;
+    font-size: 16pt;
+    font-weight: bold;
+  }
+  .data{
+    font-family: fantasy;
+    font-size: 16pt;
+  }
+  .Bigtitle{
+    font-style: italic;
+    font-size: 18pt;
+  }
+</style>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><img src="/images/Logo.jpg" /></td>
+  </tr>
+  <tr>
+    <td style="font-family:sans-serif;font-size: 24pt;text-align: center;padding:10px;">Ratings & Comments Summary</td>
+  </tr>
+  <tr>
+    <td><span class="title">Interview Title: </span><span class="data"><%=@interview.job_profile.title%></span></td>
+  </tr>
+  <tr>
+    <td><span class="title">Company: </span><span class="data"><%=@interview.job_profile.company%></span></td>
+  </tr>
+  <% @candidates.each do |candidate| %>
+    <% get_candidates_detail candidate.candidate_email %>
+    <tr style="height: 200px;">
+      <td>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td>Snap</td>
+            <td><%=@user.candidate.first_name%> <%=@user.candidate.last_name%></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="46%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td width="38%" class="title">Email: </td>
+                  <td width="62%"><%=@user.email%></td>
+                </tr>
+                <tr>
+                  <td class="title">Address: </td>
+                  <td><%=@user.candidate.address%></td>
+                </tr>
+                <tr>
+                  <td class="title">City: </td>
+                  <td><%=@user.candidate.city%></td>
+                </tr>
+                <tr>
+                  <td class="title">State: </td>
+                  <td><%=@user.candidate.state%></td>
+                </tr>
+              </table></td>
+            <td width="54%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td colspan="2" class="Bigtitle">Education History</td>
+                </tr>
+                <%@user.candidate.education_histories.each do |edu_histories|%>
+                  <tr>
+                    <td class="title">School: </td>
+                    <td><%=edu_histories.school%></td>
+                  </tr>
+                  <tr>
+                    <td class="title">Degree: </td>
+                    <td><%=edu_histories.degree%></td>
+                  </tr>
+                <% end %>
+              </table></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr>
+      <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="46%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td colspan="2" class="Bigtitle">Work History</td>
+                </tr>
+                <%@user.candidate.work_histories.each do |work_histories|%>
+                  <tr>
+                    <td class="title">Organization:</td>
+                    <td>&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td class="title">Job Title:</td>
+                    <td>&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td class="title">Start Date:</td>
+                    <td>&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td class="title">End Date:</td>
+                    <td>&nbsp;</td>
+                  </tr>
+                <% end %>
+              </table></td>
+            <td width="54%" style="border: 1px solid black;padding-left: 20px;">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td colspan="2" class="Bigtitle">Ratings</td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table></td>
+    </tr>
+  <% end %>
+</table>

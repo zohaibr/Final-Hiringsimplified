@@ -1,7 +1,7 @@
 class InterviewsController < ApplicationController
   skip_before_filter :rate_interview,:recruite
   filter_access_to :all
-  layout "main"
+  layout "main", :except => "all_interviews_list"
   
   
   # GET /interviews
@@ -304,5 +304,9 @@ render :nothing => true
     @role.save
   end
 
+   def all_interviews_list
+     @interview = Interview.find(params[:int_id])
+     @candidates = Invitation.find_all_by_interview_id_and_status(params[:int_id],1)
+   end
   
 end
